@@ -4,6 +4,8 @@ UoB 2015 EFC auxiliary exercises
 
 http://efc.2015.uob.bram.xyz/
 
+http://bit.ly/focs-aux
+
 These are some auxiliary exercises for the programming tutorials.
 
 
