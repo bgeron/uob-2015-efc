@@ -3,6 +3,6 @@
 Week 2 tutorial programming exercises
 *************************************
 
-http://uob-2015-efc.bram.xyz/
+http://efc.2015.uob.bram.xyz/
 
 :To do: Make some exercises.
