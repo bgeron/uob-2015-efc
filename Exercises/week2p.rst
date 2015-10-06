@@ -12,6 +12,11 @@ Exercise 1 (test)
 
 Question.
 
-.. collapse::
+Quiz
+====
 
-	answer
+Please take the quiz: http://bit.ly/focs-aux-survey
+
+.. image:: ../resources/focs-aux-survey.png
+    :scale: 30%
+
