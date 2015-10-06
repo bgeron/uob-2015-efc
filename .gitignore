@@ -2,3 +2,5 @@ _build
 _gh-pages
 
 reload-trigger
+*.pyc
+
