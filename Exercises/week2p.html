@@ -8,7 +8,7 @@
     
     <title>Week 2 tutorial programming exercises &mdash; UoB 2015 EFC auxiliary exercises</title>
     
-    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../_static/collapse-details-polyfill.css" type="text/css" />
     
@@ -28,13 +28,21 @@
     <script type="text/javascript" src="../_static/jquery.details.min.js"></script>
     <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
     <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
-    <link rel="prev" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
-   
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
-
+    <link rel="prev" title="UoB 2015 EFC auxiliary exercises" href="../index.html" /> 
   </head>
-  <body role="document">  
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../index.html" title="UoB 2015 EFC auxiliary exercises"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UoB 2015 EFC auxiliary exercises</a> &raquo;</li> 
+      </ul>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -43,23 +51,213 @@
             
   <div class="section" id="week-2-tutorial-programming-exercises">
 <h1>Week 2 tutorial programming exercises<a class="headerlink" href="#week-2-tutorial-programming-exercises" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="http://efc.2015.uob.bram.xyz/">http://efc.2015.uob.bram.xyz/</a></p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">To do:</th><td class="field-body">Make some exercises.</td>
+<tr class="field-odd field"><th class="field-name">Author:</th><td class="field-body">Bram Geron</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Description:</th><td class="field-body">These exercises are to assist in the programming remedial tutorials.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">Subsite home page:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><a class="reference external" href="http://bit.ly/focs-aux">http://bit.ly/focs-aux</a></td>
 </tr>
 </tbody>
 </table>
-<div class="section" id="exercise-1-test">
-<h2>Exercise 1 (test)<a class="headerlink" href="#exercise-1-test" title="Permalink to this headline">¶</a></h2>
-<p>Question.</p>
+<hr class="docutils" />
+<p>You will receive this sheet with the questions; all the answers are on the indicated URL (but collapsed).</p>
+<p>You can also find the answer by opening <code class="docutils literal"><span class="pre">utop</span></code> or <code class="docutils literal"><span class="pre">ocaml</span></code>, and I highly recommend to install <code class="docutils literal"><span class="pre">utop</span></code>.</p>
+<p>Try it: enter <code class="code docutils literal"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">4</span> <span class="pre">;;</span></code> and verify that the result is <code class="docutils literal"><span class="pre">7</span></code>.</p>
+<div class="section" id="syntax-and-precedence">
+<h2>Syntax and precedence<a class="headerlink" href="#syntax-and-precedence" title="Permalink to this headline">¶</a></h2>
+<p>The basic elements of OCaml are:</p>
+<dl class="docutils">
+<dt>Variables</dt>
+<dd><p class="first">These are &#8220;names&#8221;. Examples:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">x</span><span class="o">,</span> <span class="n">f</span><span class="o">,</span> <span class="n">g</span><span class="o">,</span> <span class="n">three</span><span class="o">,</span> <span class="n">double</span><span class="o">,</span> <span class="n">twice</span>
+</pre></div>
+</div>
+<p class="last">OCaml can remember a meaning for variables if you use <code class="docutils literal"><span class="pre">let</span></code> (see below).</p>
+</dd>
+<dt>Constants</dt>
+<dd><p class="first">Examples of integer constants:</p>
+<div class="last highlight-ocaml"><div class="highlight"><pre><span class="mi">42</span><span class="o">,</span> <span class="o">-</span><span class="mi">3</span>
+</pre></div>
+</div>
+</dd>
+<dt>Arithmetic</dt>
+<dd><p class="first">Nothing surprising.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>
+<span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>Like in school, you can write complex expressions, such as</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>Like in school, this means:</p>
+<div class="last highlight-ocaml"><div class="highlight"><pre><span class="mi">3</span> <span class="o">+</span> <span class="o">(</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span><span class="o">)</span>
+</pre></div>
+</div>
+</dd>
+<dt>Defining variables</dt>
+<dd><div class="first highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;;</span>
+</pre></div>
+</div>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">three</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">;;</span>
+</pre></div>
+</div>
+<p>From now on, OCaml knows that <code class="docutils literal"><span class="pre">three</span> <span class="pre">+</span> <span class="pre">three</span></code> = <code class="docutils literal"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">3</span></code> = <code class="docutils literal"><span class="pre">6</span></code>.</p>
+<p class="last">When you define a variable like this, it stays until you redefine it.</p>
+</dd>
+<dt>Let..in..</dt>
+<dd><p class="first">You can also &#8220;temporarily&#8221; define a variable.</p>
+<p>For instance, let&#8217;s say that <code class="docutils literal"><span class="pre">x</span></code> is not yet defined. Then</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>evaluates to 3, and</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+</pre></div>
+</div>
+<p>evaluates to 6.</p>
+<p><strong>Exercise.</strong> Add the right brackets here.</p>
 <details>
 <summary>
-(collapsed)</summary><div>
-<p>answer</p>
-</div></details></div>
+(click to open)</summary><div>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span>
+</pre></div>
+</div>
+</div></details><p>You can temporarily define multiple variables; this is nothing special. Example:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>Now let&#8217;s add parentheses:</p>
+<div class="last highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">))</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
+<p>To evaluate <code class="docutils literal"><span class="pre">let</span> <span class="pre">variable</span> <span class="pre">=</span> <span class="pre">expression1</span> <span class="pre">in</span> <span class="pre">expression2</span></code>:</p>
+<ol class="arabic simple">
+<li>Try to simplify (evaluate) <code class="docutils literal"><span class="pre">expression1</span></code> as far as you can.</li>
+<li>Draw a big box around <code class="docutils literal"><span class="pre">expression2</span></code></li>
+<li>In the right-hand corner of it, write <code class="docutils literal"><span class="pre">variable</span> <span class="pre">=</span> <span class="pre">simplifiedexpression1</span></code>.</li>
+<li>Erase <code class="docutils literal"><span class="pre">let</span> <span class="pre">variable</span> <span class="pre">=</span> <span class="pre">...</span></code>.</li>
+<li>Continue working in</li>
+</ol>
+<p>To evaluate a variable <code class="docutils literal"><span class="pre">x</span></code>:</p>
+<ol class="arabic simple">
+<li>Find the innermost box that is annotated with <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">value</span></code></li>
+<li>Replace <code class="docutils literal"><span class="pre">x</span></code> where you wanted to evaluate it with <code class="docutils literal"><span class="pre">value</span></code>.</li>
+</ol>
+<p>When you have a number (in general, a value) in the innermost box, then you can erase all the boxes.</p>
+<p><strong>Exercise.</strong> Evaluate all the expressions from the last section.</p>
+<div class="section" id="exercises">
+<h3>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h3>
+<p>Calculate by hand the value of the expressions below, or say that it returns an error. Use the method above.</p>
+<p>OCaml keywords are printed in bold. Bold does not mean anything, but might make the code easier to read.</p>
+<ol class="arabic">
+<li><p class="first">Evaluate all expressions in the previous section.</p>
+</li>
+<li><p class="first">.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">))</span>
+</pre></div>
+</div>
+<details>
+<summary>
+(click to open)</summary><div>
+<ol class="arabic simple" start="7">
+<li></li>
+</ol>
+</div></details></li>
+<li><p class="first">We can use multiple let..in.. in a different way.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="k">in</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>First, add the right parentheses.</p>
+<p>Then, compute the result.</p>
+<details>
+<summary>
+(click to open)</summary><div>
+<p>Before we draw any boxes, we simplify <code class="code docutils literal"><span class="pre">let</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">3</span> <span class="pre">in</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">y</span></code>. Draw a box with <code class="docutils literal"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">3</span></code>, fill in <code class="docutils literal"><span class="pre">y</span></code>, simplify to 6.</p>
+<p>Then you can draw a box with <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">6</span></code>. Fill in <code class="docutils literal"><span class="pre">x</span></code>, simplify to 12.</p>
+</div></details></li>
+</ol>
+</div>
+</div>
+<div class="section" id="other">
+<h2>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>As before.</p>
+<ol class="arabic">
+<li><p class="first">.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="k">in</span> <span class="k">let</span> <span class="n">g</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">g</span> <span class="mi">4</span><span class="o">)</span>
+</pre></div>
+</div>
+<details>
+<summary>
+(click to open)</summary><div>
+<p>21</p>
+<p>This was from the lecture: <a class="reference external" href="http://bit.ly/focs04a">http://bit.ly/focs04a</a></p>
+</div></details></li>
+<li><p class="first">.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
+</pre></div>
+</div>
+<details>
+<summary>
+(click to open)</summary><div>
+<p>The answer is the same as the next exercise. I just renamed the variables and swapped the <code class="docutils literal"><span class="pre">let</span></code>s.</p>
+<p>Let&#8217;s do it in steps. First, I&#8217;ll lay out the code differently.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
+<span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+<span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
+</pre></div>
+</div>
+<p>Then I&#8217;ll reorder the lets.</p>
+<blockquote>
+<div><p>let h x = x + x
+let f g = g (g 1) in
+in f h</p>
+</div></blockquote>
+<p>Then I&#8217;ll rename the variables.</p>
+<blockquote>
+<div><p>let f x = x + x
+let g h = h (h 1) in
+in g f</p>
+</div></blockquote>
+<p>Now it should be obvious.</p>
+<p>.</p>
+<p>You cannot always reorder the lets. Can you give an example?</p>
+</div></details></li>
+<li><p class="first">.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="k">let</span> <span class="n">g</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="n">g</span> <span class="n">f</span>
+</pre></div>
+</div>
+<details>
+<summary>
+(click to open)</summary><div>
+<p>The exercise is easier when we rename the variables:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span>
+<span class="k">let</span> <span class="n">apply_twice_to_one</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
+<span class="n">apply_twice_to_one</span> <span class="n">double</span>
+</pre></div>
+</div>
+<p>This was from the lecture: <a class="reference external" href="http://bit.ly/focs04b">http://bit.ly/focs04b</a></p>
+</div></details></li>
+</ol>
+</div>
+</div>
+<div class="section" id="quiz">
+<h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h2>
+<p>Please take the quiz: <a class="reference external" href="http://bit.ly/focs-aux-survey">http://bit.ly/focs-aux-survey</a></p>
+<a class="reference internal image-reference" href="../_images/focs-aux-survey.png"><img alt="../_images/focs-aux-survey.png" src="../_images/focs-aux-survey.png" style="width: 90.0px; height: 90.0px;" /></a>
+</div>
 </div>
 
 
@@ -71,7 +269,16 @@
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Week 2 tutorial programming exercises</a><ul>
-<li><a class="reference internal" href="#exercise-1-test">Exercise 1 (test)</a></li>
+<li><a class="reference internal" href="#syntax-and-precedence">Syntax and precedence</a></li>
+<li><a class="reference internal" href="#evaluation">Evaluation</a><ul>
+<li><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#other">Other</a><ul>
+<li><a class="reference internal" href="#id1">Exercises</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quiz">Quiz</a></li>
 </ul>
 </li>
 </ul>
@@ -107,24 +314,21 @@
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="footer">
-      &copy;2015. Feel free to reuse under CC-BY 4.0.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
-      
-      |
-      <a href="../_sources/Exercises/week2p.txt"
-          rel="nofollow">Page source</a>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../index.html" title="UoB 2015 EFC auxiliary exercises"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UoB 2015 EFC auxiliary exercises</a> &raquo;</li> 
+      </ul>
     </div>
-
-    
-    <a href="https://github.com/bgeron/uob-2015-efc" class="github">
-        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
-    </a>
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
   </body>
 </html>
