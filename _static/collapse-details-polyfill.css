@@ -61,3 +61,25 @@ summary:hover, summary:focus {
 details > ul, details > ol, details > div > ul, details > div > ol {
 	padding-left: 40px;
 }
+
+
+@media print {
+	details {
+		/*border: 0px;*/
+		border-right-style: none;
+		margin: 0px;
+		/*padding: 0px;*/
+		min-height: 300px;
+	}
+	summary {
+		/*padding: 0px;*/
+		margin: 0px;
+		background-color: white;
+		border: 0px;
+	}
+
+	.no-details details > summary:before {
+		content: none;
+	}
+}
+

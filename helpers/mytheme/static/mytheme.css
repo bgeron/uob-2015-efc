@@ -393,3 +393,8 @@ div.skip-xxlarge:before, div.skip-xxlarge:after {
 	}
 
 }
+
+pre {
+	margin: 5px 0px;
+	padding: 4px 30px;
+}
