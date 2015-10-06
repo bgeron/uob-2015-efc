@@ -2,7 +2,7 @@
 UoB 2015 EFC auxiliary exercises
 ================================
 
-http://uob-2015-efc.bram.xyz/
+http://efc.2015.uob.bram.xyz/
 
 These are some auxiliary exercises for the programming tutorials.
 
