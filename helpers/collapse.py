@@ -87,7 +87,7 @@ def visit_collapse_html(self, node):
     self.body.append(self.starttag(node, 'details'))
     self.body.append(self.starttag(node, 'summary'))
     # self.visit_title(node.title)
-    self.body.append("(click to open)")
+    self.body.append("(answer goes here)")
     self.body.append("</summary>")
     self.body.append(self.starttag(node, 'div'))
 

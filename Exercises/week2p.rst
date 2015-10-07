@@ -1,7 +1,7 @@
 
-*************************************
-Week 2 tutorial programming exercises
-*************************************
+**********************************************************
+Week 2 tutorial programming exercises: Thinking like OCaml
+**********************************************************
 
 .. highlight:: ocaml
 
@@ -83,6 +83,8 @@ Let..in..
 
     evaluates to 6.
 
+    You should always add the right bracket as far to the right as possible.
+
     |ex| Add the right brackets here.
 
     .. collapse::
@@ -95,12 +97,34 @@ Let..in..
 
         let x = 3 in let y = 4 in x + y
 
-    Now let's add parentheses::
+    Now let's add parentheses:
 
-        let x = 3 in (let y = 4 in (x + y))
+    .. collapse::
 
-Evaluation
-==========
+        ::
+
+            let x = 3 in (let y = 4 in (x + y))
+
+    You can combine multiple let..in.. in a different way. Parenthesise::
+
+        let x = let y = 4 in y in x
+
+    |ex| Add parentheses. There is only one way that you can add parentheses, all other ways are invalid OCaml.
+
+    |ex| Can you see why all other parenthesisations are invalid?
+
+    .. collapse::
+
+        ::
+
+            let x = (let y = 4 in y) in x
+
+
+
+
+
+Let-bindings, variables, evaluation
+===================================
 
 To evaluate ``let variable = expression1 in expression2``:
 
@@ -126,6 +150,8 @@ Calculate by hand the value of the expressions below, or say that it returns an 
 
 OCaml keywords are printed in bold. Bold does not mean anything, but might make the code easier to read.
 
+----
+
 1.  Evaluate all expressions in the previous section.
 
 #.  . ::
@@ -148,17 +174,194 @@ OCaml keywords are printed in bold. Bold does not mean anything, but might make 
 
         Then you can draw a box with ``x = 6``. Fill in ``x``, simplify to 12.
 
+#.  Parenthesise, then solve. ::
+        
+        let x = let y = 5 in 3 in let y = 4 in x * y
 
-Other
-=====
+    .. collapse::
+
+        - Simplify the ``x =`` part. Inside it, replace ``let y = 5 in`` with a bubble. Simplifying 3 is finished, so erase the bubble again.
+        - We now have ``let x = 3 in``. Draw a bubble for it.
+        - We now have ``let y = 4 in``. Draw a bubble for it.
+        - Replace x by 3 and y by 4.
+        - Simplify ``3 * 4`` to 12.
+
+        If you try it in utop, you will get a warning that you have an unused variable. This is okay.
+
+        Often, unused variables mean you are doing unnecessary computations. Indeed, we did ``let y = 5 in`` but it was useless.
+
+#.  Parenthesise, then solve. ::
+        
+        let x = let y = 5 in 3 in y
+
+    .. collapse::
+
+        - Simplify the ``x =`` part as in the previous exercise. You now have ``let x = 3 in y``.
+        - Make a bubble with ``x = 3`` in the corner.
+        - ``y`` is undefined, so ERROR.
+
+#.  Parenthesise, then solve. ::
+    
+        let x = 2 in let x = x + 1 in x
+
+    .. collapse::
+
+        Answer: 3.
+
+#.  Parenthesise, then solve. ::
+        
+        let x = 2 in let y = x + 1 in y * let y = y + 1 in y
+
+    .. collapse::
+
+        ::
+
+            let x = 2 in (let y = (x + 1) in y * (let y = y + 1 in y))
+
+        - Draw a bubble with x = 2.
+        - Replace ``x`` in ``x + 1`` with ``2``, simplify 2+1 to 3.
+        - Draw a bubble with y = 3
+        - Replace ``y`` in ``y + 1`` with ``3``, simplify 3+1 to 4.
+        - Replace inner ``y`` with 4.
+        - Erase bubble
+        - Replace ``y`` with 3.
+        - Simplify 3 * 4 = 12
+
+
+|ex| If time: make an expression for your neighbour with between 2 and 4 uses of ``let..in..``. Solve it yourself, let them solve it, and compare your answers.
+
+Anonymous functions
+===================
+
+Anonymous functions (or *lambdas*) are integral to programming.
+
+They look like this::
+
+    fun x -> x + 3
+
+Also very important is *function application*. For instance, ::
+
+    (fun x -> x + 3) 4
+
+The parentheses always go as far to the right as possible::
+
+    fun x -> (x + 3)
+
+for the first example, and for the second example ::
+
+    (fun x -> (x + 3)) 4
+
+Be careful! Space is not just space separating two things, but it has meaning. Space is called *application*, and you have to simplify when you can.
+
+Application works the same as let..in.. . Draw a bubble with ``x = 4``, and evaluate ``x + 3``. The value of ``(fun x -> (x + 3)) 4`` is 7.
+
+Exercises
+---------
+
+8.  Parenthesise and evaluate. ::
+        
+        (fun x -> 2 * x) 3
+
+    .. collapse:: Answer: 6.
+
+#.  Parenthesise and evaluate. ::
+        
+        (fun x -> 2 * x) 3 + (fun x -> x + 1) 3
+
+    Note that you will have multiple bubbles here.
+
+    .. collapse:: Answer: 10.
+
+#.  Evaluate. ::
+        
+        2 + (fun whatever -> whatever * whatever) 10
+
+    .. collapse:: Answer: 102.
+
+Higher-order functions
+======================
+
+Putting functions in the environment ("in the bubble") is nothing special. 
+
+
+Exercises
+---------
+
+11. Parenthesise and evaluate. Add parentheses when you need to. ::
+     
+        let f = (fun x -> x * 2) in f 3
+
+     .. collapse::
+
+        * Make a bubble, write ``f = fun x -> x * 2`` in the corner of it.
+        * Replace ``f`` by ``(fun x -> x * 2)`` (add parentheses!)
+          
+          Now you have ``(fun x -> x * 2) 3``
+
+        * Make a bubble with ``x = 3``
+        * Simplify ``x * 2`` to 6.
+          
+#.  Parenthesise and evaluate. ::
+    
+        let f = (fun x -> x * 2) in f (f 3)
+
+    .. collapse::
+
+        Same, but you have to replace ``f`` twice, and you get an application twice. The result is 12.
+
+Named functions
+===============
+
+Instead of ::
+
+   let f = (fun x -> x * 2) in f 3
+
+we can write ::
+
+   let f x = x * 2 in f 3
+
+which means exactly the same. When you draw the bubble, write ::
+
+    f = fun x -> x * 2
+
+in the bubble.
 
 Exercises
 ---------
 
 
-As before.
+13. Parenthesise and evaluate. Add parentheses when you need to. ::
+     
+        let f x = x * 2 in f 3
 
+    .. collapse::
 
+        As before.
+
+        * Make a bubble, write ``f = fun x -> x * 2`` in the corner of it.
+        * Replace ``f`` by ``(fun x -> x * 2)`` (add parentheses!)
+          
+          Now you have ``(fun x -> x * 2) 3``
+
+        * Make a bubble with ``x = 3``
+        * Simplify ``x * 2`` to 6.
+          
+#.  Parenthesise and evaluate. ::
+    
+        let f x = x * 2 in f (f 3)
+
+    .. collapse::
+
+        Same, but you have to replace ``f`` twice, and you get an application twice. The result is 12.
+
+#.  Parenthesise and evaluate. ::
+        
+        let f x = x * 2 in f x
+
+    .. collapse::
+
+        * Draw the bubble with ``f = fun x -> x * 2``.
+        * ``x`` is not in a bubble, so we cannot simplify it. Error!
 
 
 #.  . ::
