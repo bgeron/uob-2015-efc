@@ -393,10 +393,15 @@
 </li>
 </ul>
 </div></details></li>
-<li><p class="first">Parenthesise and evaluate.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">f</span> <span class="mi">3</span><span class="o">)</span>
-</pre></div>
-</div>
+<li><dl class="first docutils">
+<dt>Parenthesise and evaluate. ::</dt>
+<dd><dl class="first last docutils">
+<dt>::</dt>
+<dd><p class="first last">let f x = x * 2 in f (f 3)</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <details>
 <summary>
 (answer goes here)</summary><div>
@@ -414,7 +419,7 @@
 <li><code class="docutils literal"><span class="pre">x</span></code> is not in a bubble, so we cannot simplify it. Error!</li>
 </ul>
 </div></details></li>
-<li><p class="first">.</p>
+<li><p class="first">Evaluate.</p>
 <div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="k">in</span> <span class="k">let</span> <span class="n">g</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">g</span> <span class="mi">4</span><span class="o">)</span>
 </pre></div>
 </div>
@@ -424,37 +429,7 @@
 <p>21</p>
 <p>This was from the lecture: <a class="reference external" href="http://bit.ly/focs04a">http://bit.ly/focs04a</a></p>
 </div></details></li>
-<li><p class="first">.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
-</pre></div>
-</div>
-<details>
-<summary>
-(answer goes here)</summary><div>
-<p>The answer is the same as the next exercise. I just renamed the variables and swapped the <code class="docutils literal"><span class="pre">let</span></code>s.</p>
-<p>Let&#8217;s do it in steps. First, I&#8217;ll lay out the code differently.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
-<span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
-<span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
-</pre></div>
-</div>
-<p>Then I&#8217;ll reorder the lets.</p>
-<blockquote>
-<div><p>let h x = x + x
-let f g = g (g 1) in
-in f h</p>
-</div></blockquote>
-<p>Then I&#8217;ll rename the variables.</p>
-<blockquote>
-<div><p>let f x = x + x
-let g h = h (h 1) in
-in g f</p>
-</div></blockquote>
-<p>Now it should be obvious.</p>
-<p>.</p>
-<p>You cannot always reorder the lets. Can you give an example?</p>
-</div></details></li>
-<li><p class="first">.</p>
+<li><p class="first">Evaluate.</p>
 <div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="k">let</span> <span class="n">g</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="n">g</span> <span class="n">f</span>
 </pre></div>
 </div>
@@ -467,7 +442,67 @@ in g f</p>
 <span class="n">apply_twice_to_one</span> <span class="n">double</span>
 </pre></div>
 </div>
+<p>The answer is 4:</p>
+<ul>
+<li><p class="first">Write a bubble <code class="docutils literal"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">fun</span> <span class="pre">x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">x</span></code></p>
+</li>
+<li><p class="first">Write a bubble <code class="docutils literal"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">fun</span> <span class="pre">h</span> <span class="pre">-&gt;</span> <span class="pre">h</span> <span class="pre">(h</span> <span class="pre">1)</span></code></p>
+</li>
+<li><p class="first">Substitute <code class="docutils literal"><span class="pre">g</span></code> to get</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(</span><span class="k">fun</span> <span class="n">h</span> <span class="o">-&gt;</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">))</span> <span class="n">f</span>
+</pre></div>
+</div>
+<p>inside the two bubbles</p>
+</li>
+<li><p class="first">Substitute <code class="docutils literal"><span class="pre">f</span></code> to get</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(</span><span class="k">fun</span> <span class="n">h</span> <span class="o">-&gt;</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">))</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>inside the two bubbles</p>
+</li>
+<li><p class="first">Write another bubble <code class="docutils literal"><span class="pre">h</span> <span class="pre">=</span> <span class="pre">fun</span> <span class="pre">x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">x</span></code>; inside it <code class="docutils literal"><span class="pre">h</span> <span class="pre">(h</span> <span class="pre">1)</span></code></p>
+</li>
+<li><p class="first">Fill in <code class="docutils literal"><span class="pre">h</span></code> in the inside</p>
+</li>
+<li><p class="first">In the brackets, make a bubble with <code class="docutils literal"><span class="pre">let</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">1</span></code>; the bubble contains <code class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">x</span></code>. Simplifies to <code class="docutils literal"><span class="pre">2</span></code>. Remove the <code class="docutils literal"><span class="pre">x</span></code> bubble.</p>
+</li>
+<li><p class="first">You have <code class="docutils literal"><span class="pre">h</span> <span class="pre">2</span></code> left. Make a bubble with <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">2</span></code> and <code class="docutils literal"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">x</span></code> inside it. This simplifies to 4.</p>
+</li>
+<li><p class="first">Remove the <code class="docutils literal"><span class="pre">h</span></code> bubble, the <code class="docutils literal"><span class="pre">g</span></code> bubble, and the <code class="docutils literal"><span class="pre">f</span></code> bubble.</p>
+</li>
+</ul>
+<p>The answer is 4.</p>
 <p>This was from the lecture: <a class="reference external" href="http://bit.ly/focs04b">http://bit.ly/focs04b</a></p>
+</div></details></li>
+<li><p class="first">Evaluate.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
+</pre></div>
+</div>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>The answer is the same as the previous exercise. I just renamed the variables and swapped the <code class="docutils literal"><span class="pre">let</span></code>s.</p>
+<p>Let&#8217;s do it in steps. First, I&#8217;ll lay out the code differently.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
+<span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+<span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
+</pre></div>
+</div>
+<p>Then I&#8217;ll reorder the lets.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+<span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
+<span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
+</pre></div>
+</div>
+<p>Then I&#8217;ll rename the variables.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+<span class="k">let</span> <span class="n">g</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
+<span class="k">in</span> <span class="n">g</span> <span class="n">f</span>
+</pre></div>
+</div>
+<p>Now the correspondence should be obvious.</p>
+<p>.</p>
+<p>You cannot always reorder the lets. Can you give an example?</p>
 </div></details></li>
 </ol>
 </div>
