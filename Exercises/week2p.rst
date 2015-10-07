@@ -347,12 +347,12 @@ Exercises
         * Simplify ``x * 2`` to 6.
           
 #.  Parenthesise and evaluate. ::
-    
+     ::
         let f x = x * 2 in f (f 3)
 
     .. collapse::
 
-        Same, but you have to replace ``f`` twice, and you get an application twice. The result is 12.
+        Same, but you have to replace ``f`` twice, and you get an application twice. The result is 12. ::
 
 #.  Parenthesise and evaluate. ::
         
@@ -363,8 +363,7 @@ Exercises
         * Draw the bubble with ``f = fun x -> x * 2``.
         * ``x`` is not in a bubble, so we cannot simplify it. Error!
 
-
-#.  . ::
+#.  Evaluate. ::
 
        let f x = 3 * x in let g x = 3 + x in f (g 4)
 
@@ -374,39 +373,7 @@ Exercises
 
         This was from the lecture: http://bit.ly/focs04a
 
-#.  . ::
-
-        let f g = g (g 1) in let h x = x + x in f h
-
-    .. collapse::
-
-        The answer is the same as the next exercise. I just renamed the variables and swapped the ``let``\ s.
-
-        Let's do it in steps. First, I'll lay out the code differently. ::
-
-            let f g = g (g 1) in
-            let h x = x + x
-            in f h
-
-        Then I'll reorder the lets.
-
-            let h x = x + x
-            let f g = g (g 1) in
-            in f h
-
-        Then I'll rename the variables.
-
-            let f x = x + x
-            let g h = h (h 1) in
-            in g f
-
-        Now it should be obvious.
-
-        .
-
-        You cannot always reorder the lets. Can you give an example?
-
-#.  . ::
+#.  Evaluate. ::
 
         let f x = x + x in let g h = h (h 1) in g f
 
@@ -418,8 +385,65 @@ Exercises
             let apply_twice_to_one h = h (h 1) in
             apply_twice_to_one double
 
+        The answer is 4:
+
+        * Write a bubble ``f = fun x -> x + x``
+        * Write a bubble ``g = fun h -> h (h 1)``
+        * Substitute ``g`` to get ::
+            
+            (fun h -> h (h 1)) f
+
+          inside the two bubbles
+
+        * Substitute ``f`` to get ::
+            
+            (fun h -> h (h 1)) (fun x -> x + x)
+
+
+          inside the two bubbles
+
+        * Write another bubble ``h = fun x -> x + x``; inside it ``h (h 1)``
+        * Fill in ``h`` in the inside
+        * In the brackets, make a bubble with ``let x = 1``; the bubble contains ``x + x``. Simplifies to ``2``. Remove the ``x`` bubble.
+        * You have ``h 2`` left. Make a bubble with ``x = 2`` and ``x + x`` inside it. This simplifies to 4.
+        * Remove the ``h`` bubble, the ``g`` bubble, and the ``f`` bubble.
+
+        The answer is 4.
+
 
         This was from the lecture: http://bit.ly/focs04b
+
+#.  Evaluate. ::
+
+        let f g = g (g 1) in let h x = x + x in f h
+
+    .. collapse::
+
+        The answer is the same as the previous exercise. I just renamed the variables and swapped the ``let``\ s.
+
+        Let's do it in steps. First, I'll lay out the code differently. ::
+
+            let f g = g (g 1) in
+            let h x = x + x
+            in f h
+
+        Then I'll reorder the lets. ::
+
+            let h x = x + x
+            let f g = g (g 1) in
+            in f h
+
+        Then I'll rename the variables. ::
+
+            let f x = x + x
+            let g h = h (h 1) in
+            in g f
+
+        Now the correspondence should be obvious.
+
+        .
+
+        You cannot always reorder the lets. Can you give an example?
 
 Quiz
 ====
