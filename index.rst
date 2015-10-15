@@ -2,9 +2,10 @@
 UoB 2015 EFC auxiliary exercises
 ================================
 
-http://efc.2015.uob.bram.xyz/
+:url: http://efc.2015.uob.bram.xyz/
 
-http://bit.ly/focs-aux
+:url: http://bit.ly/focs-aux
+:main page: https://canvas.bham.ac.uk/courses/15627
 
 These are some auxiliary exercises for the programming tutorials.
 
@@ -12,7 +13,7 @@ These are some auxiliary exercises for the programming tutorials.
 .. rubric:: Exercises
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :glob:
 
     Exercises/*
@@ -21,7 +22,7 @@ These are some auxiliary exercises for the programming tutorials.
 Contact
 -------
 
-Email:
+Bram's email:
 	efc @ my first name .xyz
   
 
