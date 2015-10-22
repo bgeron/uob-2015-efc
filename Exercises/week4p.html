@@ -156,7 +156,18 @@ val [[3; 4]; [5; 6]] : int list list
 <details>
 <summary>
 (answer goes here)</summary><div>
-<p>This is invalid syntax.</p>
+<p>This is invalid syntax for a value.</p>
+<p>However, OCaml does give a result. This is because <code class="docutils literal"><span class="pre">;</span></code> also has a different meaning, which you might learn about later; it is not important now.</p>
+<p>You should see this as an invalid value for now.</p>
+<p>OCaml says this:</p>
+<div class="highlight-python"><div class="highlight"><pre>utop # 3; 4;;
+Characters 0-1:
+Warning 10: this expression should have type unit.
+Characters 0-1:
+Warning 10: this expression should have type unit.
+- : int = 4
+</pre></div>
+</div>
 </div></details></li>
 <li><ol class="first arabic simple" start="3">
 <li></li>
@@ -176,7 +187,7 @@ val [[3; 4]; [5; 6]] : int list list
 <details>
 <summary>
 (answer goes here)</summary><div>
-<p>Invalid syntax.</p>
+<p>Invalid syntax. (However, see question 12.)</p>
 </div></details></li>
 <li><p class="first">[3, 4; 5]</p>
 <details>
