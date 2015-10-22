@@ -352,7 +352,7 @@ Exercises
 
     .. collapse::
 
-        Same, but you have to replace ``f`` twice, and you get an application twice. The result is 12. ::
+        Same, but you have to replace ``f`` twice, and you get an application twice. The result is 12.
 
 #.  Parenthesise and evaluate. ::
         
