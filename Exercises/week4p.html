@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Week 4 programming: Tuples and lists: values and types &mdash; UoB 2015 EFC auxiliary exercises</title>
+    
+    <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/collapse-details-polyfill.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '-',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/jquery.details.min.js"></script>
+    <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
+    <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
+    <link rel="prev" title="(Week 3 tutorial programming exercises: see unassessed exercises in Canvas)" href="week3p.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="week3p.html" title="(Week 3 tutorial programming exercises: see unassessed exercises in Canvas)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UoB 2015 EFC auxiliary exercises</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-4-programming-tuples-and-lists-values-and-types">
+<h1>Week 4 programming: Tuples and lists: values and types<a class="headerlink" href="#week-4-programming-tuples-and-lists-values-and-types" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Subsite home page:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><a class="reference external" href="http://bit.ly/focs-aux">http://bit.ly/focs-aux</a></td>
+</tr>
+</tbody>
+</table>
+<p>This week, we practiced values and types of tuples. Next week, I plan to do exercises on calculating with lists.</p>
+<p>On this page, I first explain again what tuples and lists are. Then I give a list of exercises, in roughly ascending difficulty. It is roughly what we did in the tutorial.</p>
+<p>Please do make liberal use of utop to verify what you think, and just to play around.</p>
+<p>Finally, I give a few examples of when you might use certain types.</p>
+<hr class="docutils" />
+<p>If you print this page, you get a nice blank space where you can write down your answer. If you view this page online, you can click on the grey boxes to see the answers.</p>
+<div class="section" id="tuples-and-lists">
+<h2>Tuples and lists<a class="headerlink" href="#tuples-and-lists" title="Permalink to this headline">¶</a></h2>
+<p>Tuples and lists are two ways to group data together. Tuples group a fixed number of things that can be of any type; lists group <em>any</em> number of things of the same type.</p>
+<p>Tuples are indicated with a comma <code class="docutils literal"><span class="pre">,</span></code>, for instance <code class="docutils literal"><span class="pre">3,4</span></code>. People often write parentheses around them: <code class="docutils literal"><span class="pre">(3,</span> <span class="pre">4)</span></code>. The type of this is <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code>: &#8220;an <code class="docutils literal"><span class="pre">int</span></code> together with another <code class="docutils literal"><span class="pre">int</span></code>&#8221;.</p>
+<p>We sometimes say that <code class="docutils literal"><span class="pre">()</span></code> is the empty tuple. Its type is <code class="docutils literal"><span class="pre">unit</span></code>, and it is the only value of that type.</p>
+<p>Lists are indicated with <code class="docutils literal"><span class="pre">[</span></code> and <code class="docutils literal"><span class="pre">]</span></code>; they can contain 0 values (like <code class="docutils literal"><span class="pre">[]</span></code>), 1 value (like <code class="docutils literal"><span class="pre">[3]</span></code>), or many values separated by semicolons, like <code class="docutils literal"><span class="pre">[3;</span> <span class="pre">4;</span> <span class="pre">5]</span></code>. It is an error to use semicolons outside of <code class="docutils literal"><span class="pre">[]</span></code>.</p>
+<p>When the values inside the list are of some type <code class="docutils literal"><span class="pre">A</span></code>, the list is of type <code class="docutils literal"><span class="pre">A</span> <span class="pre">list</span></code>. So,</p>
+<div class="highlight-python"><div class="highlight"><pre>val 3 : int
+val [3; 4] : int list
+val [[3; 4]; [5; 6]] : int list list
+</pre></div>
+</div>
+<p>The empty list can be seen as a list of <em>any</em> type. Ocaml writes this as <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code>. Here, <code class="docutils literal"><span class="pre">'a</span></code> stands for &#8220;any type&#8221;.</p>
+<hr class="docutils" />
+<p>In this exercise set, we will use numbers of type <code class="docutils literal"><span class="pre">int</span></code>, strings of type <code class="docutils literal"><span class="pre">string</span></code>, tuples, and lists.</p>
+</div>
+<div class="section" id="exercise">
+<h2>Exercise.<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<p>Are these correct values? When they are, what is their type?</p>
+<ol class="arabic">
+<li><p class="first">3</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>This is an <code class="docutils literal"><span class="pre">int</span></code>.</p>
+</div></details></li>
+<li><p class="first">&#8220;3&#8221;</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>This is a <code class="docutils literal"><span class="pre">string</span></code>. (OCaml will say <code class="docutils literal"><span class="pre">bytes</span></code>.)</p>
+</div></details></li>
+<li><p class="first">[3]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>; it contains one value (<code class="docutils literal"><span class="pre">3</span></code>) of type <code class="docutils literal"><span class="pre">int</span></code>.</p>
+</div></details></li>
+<li><p class="first">[&#8220;a&#8221;]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>; it contains one value (<code class="docutils literal"><span class="pre">&quot;a&quot;</span></code>) of type <code class="docutils literal"><span class="pre">string</span></code>.</p>
+</div></details></li>
+<li><p class="first">(3, 4)</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code>; it contains two values which happen to be of the same type.</p>
+</div></details></li>
+<li><p class="first">(3, &#8220;a&#8221;)</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">string</span></code>; it contains two values.</p>
+</div></details></li>
+<li><p class="first">[3; 4]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>. It contains two values, <code class="docutils literal"><span class="pre">3</span></code> and <code class="docutils literal"><span class="pre">4</span></code>. Note that <code class="docutils literal"><span class="pre">int</span></code> appears only once in the type because the things in a list must be of the same type; you cannot have a list of <code class="docutils literal"><span class="pre">int</span></code>s and <code class="docutils literal"><span class="pre">string</span></code>s.</p>
+</div></details></li>
+<li><p class="first">[3; 4; 5]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>.</p>
+</div></details></li>
+<li><p class="first">[]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>The type can be <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code> or <code class="docutils literal"><span class="pre">string</span> <span class="pre">list</span></code>. The elements might also be <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>s themselves, in which case this is an <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span> <span class="pre">list</span></code>. In general, we&#8217;ll say it&#8217;s an <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code>, which means that it can become a list of any list-type.</p>
+</div></details></li>
+<li><p class="first">[[3; 4]]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>3 and 4 are <code class="docutils literal"><span class="pre">int</span></code>s, so <code class="docutils literal"><span class="pre">[3;</span> <span class="pre">4]</span></code> is an <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code> and contains 2 values. <code class="docutils literal"><span class="pre">[[3;</span> <span class="pre">4]]</span></code> is a list that contains only one thing, namely the list <code class="docutils literal"><span class="pre">[3;</span> <span class="pre">4]</span></code>. The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span> <span class="pre">list</span></code>.</p>
+</div></details></li>
+<li><p class="first">3, 4</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>This is a tuple of an int and an int, so <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code>.</p>
+</div></details></li>
+<li><p class="first">3; 4</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>This is invalid syntax.</p>
+</div></details></li>
+<li><ol class="first arabic simple" start="3">
+<li></li>
+</ol>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>This is the same as <code class="docutils literal"><span class="pre">3</span></code>, just an <code class="docutils literal"><span class="pre">int</span></code>.</p>
+</div></details></li>
+<li><p class="first">(3, 4)</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>Same as <code class="docutils literal"><span class="pre">3,</span> <span class="pre">4</span></code>, this is of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code>.</p>
+</div></details></li>
+<li><p class="first">(3; 4)</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>Invalid syntax.</p>
+</div></details></li>
+<li><p class="first">[3, 4; 5]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>This would be a list of two things. We have <code class="docutils literal"><span class="pre">3,</span> <span class="pre">4</span></code> of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code> and <code class="docutils literal"><span class="pre">5</span></code> of type <code class="docutils literal"><span class="pre">int</span></code>. The types of the elements of the list are not the same, so this is not a valid list.</p>
+<p>OCaml will say this:</p>
+<div class="highlight-python"><div class="highlight"><pre>utop # [3, 4; 5];;
+Error: This expression has type int but
+an expression was expected of type
+         int * int
+</pre></div>
+</div>
+</div></details></li>
+<li><p class="first">[3, 4; 5, 6]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>This is a list of two things, namely <code class="docutils literal"><span class="pre">3,</span> <span class="pre">4</span></code> and <code class="docutils literal"><span class="pre">5,</span> <span class="pre">6</span></code>, both of which are a pair of ints, so an <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code>. The list is of type <code class="docutils literal"><span class="pre">(int</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span></code>.</p>
+</div></details></li>
+<li><p class="first">[[]]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>We saw that <code class="docutils literal"><span class="pre">[]</span></code> is of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code>. Now <code class="docutils literal"><span class="pre">[[]]</span></code> is a list with that one thing in it, so it is of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span> <span class="pre">list</span></code>.</p>
+</div></details></li>
+<li><p class="first">[], [3]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>This is a tuple of two things, namely <code class="docutils literal"><span class="pre">[]</span></code> (of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code>) and <code class="docutils literal"><span class="pre">[3]</span></code> (of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>). Therefore, this is of type <code class="docutils literal"><span class="pre">('a</span> <span class="pre">list)</span> <span class="pre">*</span> <span class="pre">(int</span> <span class="pre">list)</span></code>.</p>
+</div></details></li>
+<li><p class="first">[[&#8220;3&#8221;]; [3]]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>This would be a list of two things. Remember that in lists, the type of all elements must be the same. Now <code class="docutils literal"><span class="pre">[&quot;3&quot;]</span></code> is a <code class="docutils literal"><span class="pre">string</span> <span class="pre">list</span></code>, and <code class="docutils literal"><span class="pre">[3]</span></code> is an <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>, so this is a type error.</p>
+<p>The error that OCaml gives is:</p>
+<div class="highlight-python"><div class="highlight"><pre>utop # [[&quot;3&quot;]; [3]];;
+Error: This expression has type int but an expression
+was expected of type bytes
+</pre></div>
+</div>
+</div></details></li>
+<li><p class="first">([3, 4], 5)</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>First, look at <code class="docutils literal"><span class="pre">3,</span> <span class="pre">4</span></code>. Comma means it&#8217;s a tuple, namely a <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code>.</p>
+<p>Then square brackets makes a list, and there are no semicolons to separate the elements, so it&#8217;s like <code class="docutils literal"><span class="pre">[42]</span></code>: just one element. Value <code class="docutils literal"><span class="pre">[3,</span> <span class="pre">4]</span></code> is of type <code class="docutils literal"><span class="pre">(int</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span></code>.</p>
+<p>Then, look at <code class="docutils literal"><span class="pre">[3,</span> <span class="pre">4],</span> <span class="pre">5</span></code>. The comma means it&#8217;s a pair: the first element is of type <code class="docutils literal"><span class="pre">(int</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span></code> and the second of type <code class="docutils literal"><span class="pre">int</span></code>. So this is an <code class="docutils literal"><span class="pre">(int</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span> <span class="pre">*</span> <span class="pre">int</span></code>.</p>
+<p>Parentheses don&#8217;t change the type. (Remember that <code class="docutils literal"><span class="pre">(3)</span></code> = <code class="docutils literal"><span class="pre">3</span></code> is of type <code class="docutils literal"><span class="pre">int</span></code>.)</p>
+</div></details></li>
+<li><p class="first">([3, 4]; 5)</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>There is a semicolon without square brackets, so this is invalid syntax.</p>
+<p>However, OCaml does give a result:</p>
+<div class="highlight-python"><div class="highlight"><pre>utop # ([3, 4]; 5);;
+Characters 1-7:
+Warning 10: this expression should have type unit.
+Characters 1-7:
+Warning 10: this expression should have type unit.
+- : int = 5
+</pre></div>
+</div>
+<p>This is because <code class="docutils literal"><span class="pre">;</span></code> also has a different meaning, which you might learn about later; it is not important now.</p>
+<p>You should see this as an invalid value for now.</p>
+</div></details></li>
+<li><p class="first">([3; 4]; 5)</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>Same as last question: there are no square brackets so the semicolon does not make a value.</p>
+</div></details></li>
+<li><p class="first">([3; 4], 5)</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>Comma, so this is a tuple of two elements: <code class="docutils literal"><span class="pre">[3;</span> <span class="pre">4]</span></code> of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code> and 5 of type <code class="docutils literal"><span class="pre">int</span></code>. The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span> <span class="pre">*</span> <span class="pre">int</span></code>.</p>
+</div></details></li>
+<li><p class="first">[[]; [3]]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>Here, we have a list of two things, <code class="docutils literal"><span class="pre">[]</span></code> (of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code>) and <code class="docutils literal"><span class="pre">[3]</span></code> (of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>). You might think that you cannot combine those things together. However, <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code> means that it can become a list of any type, and OCaml sees that here we want to make <code class="docutils literal"><span class="pre">[]</span></code> an <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>, which is possible. The type of <code class="docutils literal"><span class="pre">[[];</span> <span class="pre">[3]]</span></code> is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span> <span class="pre">list</span></code>.</p>
+</div></details></li>
+<li><p class="first">[[], [3]]</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>This is a slightly mean question. Comma means make a tuple of two elements: <code class="docutils literal"><span class="pre">[]</span></code> of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code> and <code class="docutils literal"><span class="pre">[3]</span></code> of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>. Tuples can hold values of different types, so we don&#8217;t need to change the <code class="docutils literal"><span class="pre">'a</span></code> into anything: <code class="docutils literal"><span class="pre">[],</span> <span class="pre">[3]</span></code> is of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span> <span class="pre">*</span> <span class="pre">int</span> <span class="pre">list</span></code>.</p>
+<p>Similarly to <code class="docutils literal"><span class="pre">[3]</span></code>, we have a list of one thing because there are no semicolons in the <code class="docutils literal"><span class="pre">[</span> <span class="pre">]</span></code>. So this is of type <code class="docutils literal"><span class="pre">('a</span> <span class="pre">list</span> <span class="pre">*</span> <span class="pre">int</span> <span class="pre">list)</span> <span class="pre">list</span></code>.</p>
+</div></details></li>
+</ol>
+</div>
+<div class="section" id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s look at some types that are useful. Let&#8217;s say that we want to make a phone book, that is, store names and numbers. Say that the number of Bram is 123, and the number of Sina is 234.</p>
+<p>We can lay this out in two ways: we can make the pairs <code class="docutils literal"><span class="pre">(&quot;Bram&quot;,</span> <span class="pre">123)</span></code> and <code class="docutils literal"><span class="pre">(&quot;Sina&quot;,</span> <span class="pre">234)</span></code>, and put them in a list:</p>
+<div class="highlight-python"><div class="highlight"><pre>[(&quot;Bram&quot;, 123); (&quot;Sina&quot;, 234)] : (string * int) list
+</pre></div>
+</div>
+<p>We can also make a list of names <code class="docutils literal"><span class="pre">[&quot;Bram&quot;;</span> <span class="pre">&quot;Sina&quot;]</span></code> and <code class="docutils literal"><span class="pre">[123;</span> <span class="pre">234]</span></code> and put them together:</p>
+<div class="highlight-python"><div class="highlight"><pre>([&quot;Bram&quot;; &quot;Sina&quot;], [123; 234]) : string list * int list
+</pre></div>
+</div>
+<p>In practice, the former layout is often handier.</p>
+<hr class="docutils" />
+<p>An application like <a class="reference external" href="https://contacts.google.com/">Google Contacts</a> (to which your smartphone phonebook might be synchronised if you use Android) contains many phone books, so they might store a value of type <code class="docutils literal"><span class="pre">(string</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span> <span class="pre">list</span></code>.</p>
+<p>On the other hand, for every phonebook they also have the name of the phonebook owner. So they might bundle together Dan&#8217;s name with his phonebook:</p>
+<div class="highlight-python"><div class="highlight"><pre>(&quot;Dan&quot;, [(&quot;Bram&quot;, 123); (&quot;Sina&quot;, 234)]) : string * (string * int) list
+</pre></div>
+</div>
+<p>There are many choices you can make about how to structure your data (tuples, lists, tuples of lists, lists of tuples, ...) and what is handiest depends on the situation.</p>
+<p>Later in this module or your studies you might learn ways to give names to such structures, so that it&#8217;s easier to see what you&#8217;re doing :)</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 4 programming: Tuples and lists: values and types</a><ul>
+<li><a class="reference internal" href="#tuples-and-lists">Tuples and lists</a></li>
+<li><a class="reference internal" href="#exercise">Exercise.</a></li>
+<li><a class="reference internal" href="#applications">Applications</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="week3p.html" title="previous chapter">(Week 3 tutorial programming exercises: see unassessed exercises in Canvas)</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Exercises/week4p.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="week3p.html" title="(Week 3 tutorial programming exercises: see unassessed exercises in Canvas)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UoB 2015 EFC auxiliary exercises</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
