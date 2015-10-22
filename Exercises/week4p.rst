@@ -115,7 +115,22 @@ Are these correct values? When they are, what is their type?
 
     .. collapse::
 
-        This is invalid syntax.
+        This is invalid syntax for a value.
+
+        However, OCaml does give a result. This is because ``;`` also has a different meaning, which you might learn about later; it is not important now.
+
+        You should see this as an invalid value for now.
+
+        OCaml says this::
+
+            utop # 3; 4;;
+            Characters 0-1:
+            Warning 10: this expression should have type unit.
+            Characters 0-1:
+            Warning 10: this expression should have type unit.
+            - : int = 4
+
+
 
 #.  (3)
 
@@ -133,7 +148,7 @@ Are these correct values? When they are, what is their type?
 
     .. collapse::
 
-        Invalid syntax.
+        Invalid syntax. (However, see question 12.)
 
 #.  [3, 4; 5]
 
