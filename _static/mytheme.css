@@ -365,6 +365,12 @@ div.skip-xxlarge:before, div.skip-xxlarge:after {
 	text-align: center;
 }
 
+/* More space around <code>, which corresponds to `` */
+
+code {
+	padding: 3px;
+}
+
 /* Patch Alabaster v0.7.6's inability to
  * distinguish nested lists in narrow screens.
  * 

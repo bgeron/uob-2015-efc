@@ -86,73 +86,73 @@ val [[3; 4]; [5; 6]] : int list list
 <h2>Exercise.<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p>Are these correct values? When they are, what is their type?</p>
 <ol class="arabic">
-<li><p class="first">3</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">3</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>This is an <code class="docutils literal"><span class="pre">int</span></code>.</p>
 </div></details></li>
-<li><p class="first">&#8220;3&#8221;</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">&quot;3&quot;</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>This is a <code class="docutils literal"><span class="pre">string</span></code>. (OCaml will say <code class="docutils literal"><span class="pre">bytes</span></code>.)</p>
 </div></details></li>
-<li><p class="first">[3]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[3]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>; it contains one value (<code class="docutils literal"><span class="pre">3</span></code>) of type <code class="docutils literal"><span class="pre">int</span></code>.</p>
 </div></details></li>
-<li><p class="first">[&#8220;a&#8221;]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[&quot;a&quot;]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>; it contains one value (<code class="docutils literal"><span class="pre">&quot;a&quot;</span></code>) of type <code class="docutils literal"><span class="pre">string</span></code>.</p>
 </div></details></li>
-<li><p class="first">(3, 4)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">(3,</span> <span class="pre">4)</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code>; it contains two values which happen to be of the same type.</p>
 </div></details></li>
-<li><p class="first">(3, &#8220;a&#8221;)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">(3,</span> <span class="pre">&quot;a&quot;)</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">string</span></code>; it contains two values.</p>
 </div></details></li>
-<li><p class="first">[3; 4]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[3;</span> <span class="pre">4]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>. It contains two values, <code class="docutils literal"><span class="pre">3</span></code> and <code class="docutils literal"><span class="pre">4</span></code>. Note that <code class="docutils literal"><span class="pre">int</span></code> appears only once in the type because the things in a list must be of the same type; you cannot have a list of <code class="docutils literal"><span class="pre">int</span></code>s and <code class="docutils literal"><span class="pre">string</span></code>s.</p>
 </div></details></li>
-<li><p class="first">[3; 4; 5]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[3;</span> <span class="pre">4;</span> <span class="pre">5]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>.</p>
 </div></details></li>
-<li><p class="first">[]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>The type can be <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code> or <code class="docutils literal"><span class="pre">string</span> <span class="pre">list</span></code>. The elements might also be <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>s themselves, in which case this is an <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span> <span class="pre">list</span></code>. In general, we&#8217;ll say it&#8217;s an <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code>, which means that it can become a list of any list-type.</p>
 </div></details></li>
-<li><p class="first">[[3; 4]]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[[3;</span> <span class="pre">4]]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>3 and 4 are <code class="docutils literal"><span class="pre">int</span></code>s, so <code class="docutils literal"><span class="pre">[3;</span> <span class="pre">4]</span></code> is an <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code> and contains 2 values. <code class="docutils literal"><span class="pre">[[3;</span> <span class="pre">4]]</span></code> is a list that contains only one thing, namely the list <code class="docutils literal"><span class="pre">[3;</span> <span class="pre">4]</span></code>. The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span> <span class="pre">list</span></code>.</p>
 </div></details></li>
-<li><p class="first">3, 4</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">3,</span> <span class="pre">4</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>This is a tuple of an int and an int, so <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code>.</p>
 </div></details></li>
-<li><p class="first">3; 4</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">3;</span> <span class="pre">4</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
@@ -169,27 +169,25 @@ Warning 10: this expression should have type unit.
 </pre></div>
 </div>
 </div></details></li>
-<li><ol class="first arabic simple" start="3">
-<li></li>
-</ol>
+<li><p class="first"><code class="docutils literal"><span class="pre">(3)</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>This is the same as <code class="docutils literal"><span class="pre">3</span></code>, just an <code class="docutils literal"><span class="pre">int</span></code>.</p>
 </div></details></li>
-<li><p class="first">(3, 4)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">(3,</span> <span class="pre">4)</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>Same as <code class="docutils literal"><span class="pre">3,</span> <span class="pre">4</span></code>, this is of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code>.</p>
 </div></details></li>
-<li><p class="first">(3; 4)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">(3;</span> <span class="pre">4)</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>Invalid syntax. (However, see question 12.)</p>
 </div></details></li>
-<li><p class="first">[3, 4; 5]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[3,</span> <span class="pre">4;</span> <span class="pre">5]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
@@ -202,25 +200,25 @@ an expression was expected of type
 </pre></div>
 </div>
 </div></details></li>
-<li><p class="first">[3, 4; 5, 6]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[3,</span> <span class="pre">4;</span> <span class="pre">5,</span> <span class="pre">6]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>This is a list of two things, namely <code class="docutils literal"><span class="pre">3,</span> <span class="pre">4</span></code> and <code class="docutils literal"><span class="pre">5,</span> <span class="pre">6</span></code>, both of which are a pair of ints, so an <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code>. The list is of type <code class="docutils literal"><span class="pre">(int</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span></code>.</p>
 </div></details></li>
-<li><p class="first">[[]]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[[]]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>We saw that <code class="docutils literal"><span class="pre">[]</span></code> is of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code>. Now <code class="docutils literal"><span class="pre">[[]]</span></code> is a list with that one thing in it, so it is of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span> <span class="pre">list</span></code>.</p>
 </div></details></li>
-<li><p class="first">[], [3]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[],</span> <span class="pre">[3]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>This is a tuple of two things, namely <code class="docutils literal"><span class="pre">[]</span></code> (of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code>) and <code class="docutils literal"><span class="pre">[3]</span></code> (of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>). Therefore, this is of type <code class="docutils literal"><span class="pre">('a</span> <span class="pre">list)</span> <span class="pre">*</span> <span class="pre">(int</span> <span class="pre">list)</span></code>.</p>
 </div></details></li>
-<li><p class="first">[[&#8220;3&#8221;]; [3]]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[[&quot;3&quot;];</span> <span class="pre">[3]]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
@@ -232,7 +230,7 @@ was expected of type bytes
 </pre></div>
 </div>
 </div></details></li>
-<li><p class="first">([3, 4], 5)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">([3,</span> <span class="pre">4],</span> <span class="pre">5)</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
@@ -241,7 +239,7 @@ was expected of type bytes
 <p>Then, look at <code class="docutils literal"><span class="pre">[3,</span> <span class="pre">4],</span> <span class="pre">5</span></code>. The comma means it&#8217;s a pair: the first element is of type <code class="docutils literal"><span class="pre">(int</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span></code> and the second of type <code class="docutils literal"><span class="pre">int</span></code>. So this is an <code class="docutils literal"><span class="pre">(int</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span> <span class="pre">*</span> <span class="pre">int</span></code>.</p>
 <p>Parentheses don&#8217;t change the type. (Remember that <code class="docutils literal"><span class="pre">(3)</span></code> = <code class="docutils literal"><span class="pre">3</span></code> is of type <code class="docutils literal"><span class="pre">int</span></code>.)</p>
 </div></details></li>
-<li><p class="first">([3, 4]; 5)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">([3,</span> <span class="pre">4];</span> <span class="pre">5)</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
@@ -258,25 +256,25 @@ Warning 10: this expression should have type unit.
 <p>This is because <code class="docutils literal"><span class="pre">;</span></code> also has a different meaning, which you might learn about later; it is not important now.</p>
 <p>You should see this as an invalid value for now.</p>
 </div></details></li>
-<li><p class="first">([3; 4]; 5)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">([3;</span> <span class="pre">4];</span> <span class="pre">5)</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>Same as last question: there are no square brackets so the semicolon does not make a value.</p>
 </div></details></li>
-<li><p class="first">([3; 4], 5)</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">([3;</span> <span class="pre">4],</span> <span class="pre">5)</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>Comma, so this is a tuple of two elements: <code class="docutils literal"><span class="pre">[3;</span> <span class="pre">4]</span></code> of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code> and 5 of type <code class="docutils literal"><span class="pre">int</span></code>. The type is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span> <span class="pre">*</span> <span class="pre">int</span></code>.</p>
 </div></details></li>
-<li><p class="first">[[]; [3]]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[[];</span> <span class="pre">[3]]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>Here, we have a list of two things, <code class="docutils literal"><span class="pre">[]</span></code> (of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code>) and <code class="docutils literal"><span class="pre">[3]</span></code> (of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>). You might think that you cannot combine those things together. However, <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code> means that it can become a list of any type, and OCaml sees that here we want to make <code class="docutils literal"><span class="pre">[]</span></code> an <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>, which is possible. The type of <code class="docutils literal"><span class="pre">[[];</span> <span class="pre">[3]]</span></code> is <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span> <span class="pre">list</span></code>.</p>
 </div></details></li>
-<li><p class="first">[[], [3]]</p>
+<li><p class="first"><code class="docutils literal"><span class="pre">[[],</span> <span class="pre">[3]]</span></code></p>
 <details>
 <summary>
 (answer goes here)</summary><div>
