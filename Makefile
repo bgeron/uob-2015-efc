@@ -60,7 +60,7 @@ render-update: render-setup
 	cd $(RENDER)/dest && git pull -q
 
 	cd $(RENDER)/src  && rm -rf *
-	cd $(RENDER)/src  && git reset --hard
+	cd $(RENDER)/src  && git reset --hard -q
 
 render-ensure-changes:
 	@cd $(RENDER)/dest && (if git merge -q --ff-only origin/master 2>/dev/null; \
@@ -73,6 +73,7 @@ render-ensure-changes:
 
 render: render-update render-ensure-changes
 
+	@echo
 	@echo "* I will now build commit ${find-src-commit}:"
 	@echo
 	@cd $(RENDER)/src  && git log -n 1 --format=short master | cat
@@ -96,6 +97,7 @@ render: render-update render-ensure-changes
 	@echo "* These changes you made (if any) are not included in the latest build."
 	@echo
 	@git diff ${find-src-commit} | diffstat
+	@echo
 
 	git fetch $(RENDER)/dest +gh-pages:gh-pages
 
