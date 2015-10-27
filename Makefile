@@ -71,9 +71,7 @@ render-ensure-changes:
 		false; \
 	fi )
 
-
-
-render-build: render-update render-ensure-changes
+render: render-update render-ensure-changes
 
 	@echo "* I will now build commit ${find-src-commit}:"
 	@echo
