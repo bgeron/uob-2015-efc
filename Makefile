@@ -29,7 +29,7 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 default: html reload-silent
 
 reload-silent:
-	@test -L reload-trigger && date > reload-trigger
+	@test ! -L reload-trigger || date > reload-trigger
 
 pages: html
 
