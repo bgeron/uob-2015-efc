@@ -1,0 +1,21 @@
+Make some files
+
+- SSH to Wallace
+
+- cd uob-2015-efc
+- git pull
+
+To preview:
+
+- make
+- Look in the _build/html directory
+
+When you're sure of your changes:
+
+- git add <new file 1> <new file 2>...
+- git commit -am 'some descriptive message'
+- make render
+- make publish
+
+
+If something fails, running git pull again might make it work.
