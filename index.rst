@@ -9,7 +9,7 @@ UoB 2015 EFC auxiliary exercises
 
 .. skip:: big
 
-These are some auxiliary exercises for the programming and reasoning tutorials:
+These are some auxiliary exercises and notes for the programming and reasoning tutorials:
 
 .. toctree::
     :maxdepth: 1
