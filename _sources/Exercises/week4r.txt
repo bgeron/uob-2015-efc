@@ -7,12 +7,14 @@ This is a *test*.
 
 maths 1:
 
-.. math:: e^{i \pi} + 1 = 0
+.. math:: e^{i \pi} + 1 + 3 = 3 
 
 maths 2:
 
 .. math::
 
     e^{i \pi}
+	dsfu fd
+	
 	+ 1
 	= 0
