@@ -17,6 +17,14 @@ These are some auxiliary exercises and notes for the programming and reasoning t
 
     Exercises/*
 
+Schedule
+--------
+
+:Remedial programming tutorial:
+	3pm in Aston Webb G33 with Bram
+
+:Remedial reasoning tutorial:
+	4pm in Learning Centre UG05 with Sina
 
 Contact
 -------
