@@ -32,6 +32,7 @@ import alabaster
 extensions = [
     'sphinx.ext.mathjax',
     'collapse',
+    'skip',
 ]
 
 sys.path.append(os.path.abspath("helpers"))

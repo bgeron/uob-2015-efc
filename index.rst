@@ -2,15 +2,14 @@
 UoB 2015 EFC auxiliary exercises
 ================================
 
-:url: http://efc.2015.uob.bram.xyz/
+:this page: http://efc.2015.uob.bram.xyz/
+:this page: http://bit.ly/focs-aux
+:module: https://canvas.bham.ac.uk/courses/15627
+:submission instructions: https://github.com/Duta/focs-2015-16/blob/master/README.md
 
-:url: http://bit.ly/focs-aux
-:main page: https://canvas.bham.ac.uk/courses/15627
+.. skip:: big
 
-These are some auxiliary exercises for the programming tutorials.
-
-
-.. rubric:: Exercises
+These are some auxiliary exercises for the programming and reasoning tutorials:
 
 .. toctree::
     :maxdepth: 1
@@ -24,6 +23,9 @@ Contact
 
 Bram's email:
 	efc @ my first name .xyz
+
+Sina's email:
+	sxh  *???* @ cs . bham . ac . uk, where *???* = six hundred seventeen
   
 
 
