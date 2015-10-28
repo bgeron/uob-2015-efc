@@ -36,4 +36,9 @@ Sina's email:
 	sxh  *???* @ cs . bham . ac . uk, where *???* = six hundred seventeen
   
 
+.. skip:: big
 
+P.S. If you're so inclined, feel free to clone or fork this repository on GitHub_.
+
+
+.. _GitHub: https://github.com/bgeron/uob-2015-efc
