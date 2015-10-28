@@ -132,7 +132,7 @@ We did some exercises without ``option``. I have here filled in our solutions.
               | [] -> failwith "last"
               | x::xs -> last (tl l)
 
-        We simplify this in two ways. Firstly, in the last case, we already have ``tl l`` in a variable, namely ``xs`. ::
+        We simplify this in two ways. Firstly, in the last case, we already have ``tl l`` in a variable, namely ``xs``. ::
 
             let rec last l = match l with
               | [x; y] -> y
@@ -163,11 +163,11 @@ We did some exercises without ``option``. I have here filled in our solutions.
 
         Solution::
 
-        let rec pen l = match l with
-          | [] -> failwith "pen empty"
-          | [a] -> failwith "pen of one element"
-          | [a; b] -> a
-          | x::xs -> pen xs ;;
+            let rec pen l = match l with
+              | [] -> failwith "pen empty"
+              | [a] -> failwith "pen of one element"
+              | [a; b] -> a
+              | x::xs -> pen xs ;;
 
 
 #.  Make a function ``pens`` that finds the last two elements of a list and puts them in a pair.
