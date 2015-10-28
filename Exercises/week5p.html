@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>(Week 5 programming: link to the list exercises) &mdash; UoB 2015 EFC auxiliary exercises</title>
+    <title>Week 5 programming: lists &mdash; UoB 2015 EFC auxiliary exercises</title>
     
     <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -49,8 +49,115 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="week-5-programming-link-to-the-list-exercises">
-<h1>(Week 5 programming: link to the list exercises)<a class="headerlink" href="#week-5-programming-link-to-the-list-exercises" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="week-5-programming-lists">
+<h1>Week 5 programming: lists<a class="headerlink" href="#week-5-programming-lists" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Subsite home page:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><a class="reference external" href="http://bit.ly/focs-aux">http://bit.ly/focs-aux</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="a-head-and-tail-first-and-second">
+<h2>A: Head and tail, first and second<a class="headerlink" href="#a-head-and-tail-first-and-second" title="Permalink to this headline">¶</a></h2>
+<p>You can get the head and the tail of a list with functions <code class="docutils literal"><span class="pre">hd</span></code> and <code class="docutils literal"><span class="pre">tl</span></code>.</p>
+<p>In OCaml/utop, you first have to type</p>
+<div class="highlight-python"><div class="highlight"><pre>open List;;
+</pre></div>
+</div>
+<p>to get access to these functions.</p>
+<p>You can get the first and the second part of a pair with the functions <code class="docutils literal"><span class="pre">fst</span></code> and <code class="docutils literal"><span class="pre">snd</span></code>. <em>This only works</em> for 2-tuples (e.g. <code class="docutils literal"><span class="pre">(3,</span> <span class="pre">&quot;abc&quot;)</span></code>), not smaller tuples (like <code class="docutils literal"><span class="pre">()</span></code>, <code class="docutils literal"><span class="pre">(2,</span> <span class="pre">3,</span> <span class="pre">4)</span></code>, ...) .</p>
+<div class="skip-big">
+</div><ul class="simple">
+<li>Can you find the head and the tail of the <a class="reference internal" href="week4p.html"><em>terms from last week</em></a>, if they exist?</li>
+<li>Can you find the first and the second component of any pairs in those terms?</li>
+</ul>
+<p>Check your answers with <code class="docutils literal"><span class="pre">ocaml</span></code>/<code class="docutils literal"><span class="pre">utop</span></code>.</p>
+</div>
+<div class="section" id="b-cons-exercises">
+<h2>B: Cons exercises<a class="headerlink" href="#b-cons-exercises" title="Permalink to this headline">¶</a></h2>
+<p>Which of these terms is valid? If it is valid, what is its value, and what is its type?</p>
+<p>Check your answers with <code class="docutils literal"><span class="pre">ocaml</span></code>/<code class="docutils literal"><span class="pre">utop</span></code>. I have left room to write below, but this time you cannot click to see the solution.</p>
+<ol class="arabic">
+<li><p class="first"><code class="docutils literal"><span class="pre">3</span> <span class="pre">::</span> <span class="pre">[]</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">3</span> <span class="pre">::</span> <span class="pre">4</span> <span class="pre">::</span> <span class="pre">[]</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">3</span> <span class="pre">::</span> <span class="pre">[4]</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">[3]</span> <span class="pre">::</span> <span class="pre">[]</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">[3]</span> <span class="pre">::</span> <span class="pre">4</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">[]</span> <span class="pre">::</span> <span class="pre">[]</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">[]</span> <span class="pre">::</span> <span class="pre">[[]]</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">[[]]</span> <span class="pre">::</span> <span class="pre">[]</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">[[]]</span> <span class="pre">::</span> <span class="pre">[[]]</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">[]</span> <span class="pre">::</span> <span class="pre">[],</span> <span class="pre">[]</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">[]</span> <span class="pre">::</span> <span class="pre">[];</span> <span class="pre">[]</span></code></p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+<li><p class="first"><code class="docutils literal"><span class="pre">[[]</span> <span class="pre">::</span> <span class="pre">[];</span> <span class="pre">[]]</span></code></p>
+<p>(Note: this is very different!)</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<p>.</p>
+</div></details></li>
+</ol>
+</div>
+<div class="section" id="c-list-exercises">
+<h2>C: List exercises<a class="headerlink" href="#c-list-exercises" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://ocaml.org/learn/tutorials/99problems.html">https://ocaml.org/learn/tutorials/99problems.html</a> (solutions are provided)</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -60,6 +167,32 @@
 </tr>
 </tbody>
 </table>
+<p>Additional hints given on Canvas:</p>
+<blockquote>
+<div><p>Some of the question use the OCaml <code class="docutils literal"><span class="pre">option</span></code> type. This type is used to return a special value (<code class="docutils literal"><span class="pre">None</span></code>) when a function cannot be computed, instead of throwing an exception. For example, the standard <code class="docutils literal"><span class="pre">hd</span></code> function is:</p>
+<div class="highlight-python"><div class="highlight"><pre>let hd = function
+  | [] -&gt; failwith &quot;hd&quot;
+  | x :: _ -&gt; x
+</pre></div>
+</div>
+<p>and has type</p>
+<div class="highlight-python"><div class="highlight"><pre>val hd : &#39;a list -&gt; &#39;a = &lt;fun&gt;
+</pre></div>
+</div>
+<p>If you want to avoid throwing a failure the alternative is this:</p>
+<div class="highlight-python"><div class="highlight"><pre>let hd = function
+  | [] -&gt; None
+  | x :: _ -&gt; Some x
+</pre></div>
+</div>
+<p>and has type</p>
+<div class="highlight-python"><div class="highlight"><pre>val hd : &#39;a list -&gt; &#39;a option = &lt;fun&gt;
+</pre></div>
+</div>
+<p>For the purpose of this assignment you can ignore the <code class="docutils literal"><span class="pre">option</span></code> type and use <code class="docutils literal"><span class="pre">failwith</span></code> instead of <code class="docutils literal"><span class="pre">None</span></code>.</p>
+<p>For a longer discussion of option types read this article: <a class="reference external" href="https://blogs.janestreet.com/making-something-out-of-nothing-or-why-none-is-better-than-nan-and-null/">https://blogs.janestreet.com/making-something-out-of-nothing-or-why-none-is-better-than-nan-and-null/</a></p>
+</div></blockquote>
+</div>
 </div>
 
 
@@ -67,7 +200,17 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 5 programming: lists</a><ul>
+<li><a class="reference internal" href="#a-head-and-tail-first-and-second">A: Head and tail, first and second</a></li>
+<li><a class="reference internal" href="#b-cons-exercises">B: Cons exercises</a></li>
+<li><a class="reference internal" href="#c-list-exercises">C: List exercises</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
