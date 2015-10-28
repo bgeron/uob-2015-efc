@@ -43,6 +43,8 @@ The empty list can be seen as a list of *any* type. Ocaml writes this as ``'a li
 
 In this exercise set, we will use numbers of type ``int``, strings of type ``string``, tuples, and lists.
 
+.. _examples-of-collapse:
+
 Exercise.
 =========
 

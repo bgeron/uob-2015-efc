@@ -309,6 +309,8 @@ Exercises
 
         Same, but you have to replace ``f`` twice, and you get an application twice. The result is 12.
 
+.. _named-function-explanation:
+
 Named functions
 ===============
 
