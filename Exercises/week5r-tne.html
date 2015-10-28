@@ -1,0 +1,259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Week 5 reasoning: explanation for tne &mdash; UoB 2015 EFC auxiliary exercises</title>
+    
+    <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/collapse-details-polyfill.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '-',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/jquery.details.min.js"></script>
+    <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
+    <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
+    <link rel="prev" title="Week 5 programming: lists" href="week5p.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="week5p.html" title="Week 5 programming: lists"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UoB 2015 EFC auxiliary exercises</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-5-reasoning-explanation-for-tne">
+<h1>Week 5 reasoning: explanation for <code class="docutils literal"><span class="pre">tne</span></code><a class="headerlink" href="#week-5-reasoning-explanation-for-tne" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Subsite home page:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><a class="reference external" href="http://bit.ly/focs-aux">http://bit.ly/focs-aux</a></td>
+</tr>
+</tbody>
+</table>
+<p>This page explains how to solve exercise 4.3. The question was as follows:</p>
+<blockquote class="pull-quote">
+<div><p>Implement an OCaml function called <code class="docutils literal"><span class="pre">tne</span></code> of type <code class="docutils literal"><span class="pre">((('a</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'c)</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'c</span></code>.</p>
+<p>Important: You may only use function definition (<code class="docutils literal"><span class="pre">let</span></code>) and function application.</p>
+</div></blockquote>
+<p>The solution is given <a class="reference external" href="https://github.com/Duta/focs-2015-16/blob/master/solutions/week-4/exercise-3/wk4ex3.ml">on GitHub</a>, but on this page we show how in detail you can get that answer.</p>
+<div class="section" id="a-simpler-exercise">
+<h2>A simpler exercise<a class="headerlink" href="#a-simpler-exercise" title="Permalink to this headline">¶</a></h2>
+<p>Exercise 4.0 was this:</p>
+<blockquote class="pull-quote">
+<div>Write a function <code class="docutils literal"><span class="pre">dni</span></code> of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">(('a</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span></code>.</div></blockquote>
+<p>Let us do this first.</p>
+<p>Note that</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="o">((</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>is the same type as</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span>
+</pre></div>
+</div>
+<p>namely the type of functions that accept a value of type <code class="docutils literal"><span class="pre">'a</span></code>, a value of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'b</span></code>, and return a value of type <code class="docutils literal"><span class="pre">'b</span></code>. We start making a function the usual way:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">dni</span> <span class="n">x</span> <span class="n">f</span> <span class="o">=</span> <span class="o">???</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<p>Here <code class="docutils literal"><span class="pre">x</span></code> will be the first argument, and <code class="docutils literal"><span class="pre">f</span></code> will be the second argument, so the types of <code class="docutils literal"><span class="pre">x</span></code> and <code class="docutils literal"><span class="pre">f</span></code> are</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">x</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span>
+<span class="n">f</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p>Remember that this means that <code class="docutils literal"><span class="pre">f</span></code> is a function that turns something of type <code class="docutils literal"><span class="pre">'a</span></code> into something of type <code class="docutils literal"><span class="pre">'b</span></code>. To say the same with different words: it accepts a value of type <code class="docutils literal"><span class="pre">'a</span></code> and returns something of type <code class="docutils literal"><span class="pre">'b</span></code>.</p>
+<p>Now in the question marks, we need to make something of type <code class="docutils literal"><span class="pre">'b</span></code>. How do we do this? Well, we can feed <code class="docutils literal"><span class="pre">x</span></code> into <code class="docutils literal"><span class="pre">f</span></code>, because <code class="docutils literal"><span class="pre">x</span></code> is of type <code class="docutils literal"><span class="pre">'a</span></code>; we just saw that the result will be of type <code class="docutils literal"><span class="pre">'b</span></code>. The way you apply a function to an argument in OCaml is:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">f</span> <span class="n">x</span>
+</pre></div>
+</div>
+<p>So if we fill this in in the question marks, we get a definition for <code class="docutils literal"><span class="pre">dni</span></code>:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">dni</span> <span class="n">x</span> <span class="n">f</span> <span class="o">=</span> <span class="n">f</span> <span class="n">x</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<p>Now let&#8217;s analyse the type of the value <code class="docutils literal"><span class="pre">dni</span></code> that we just created. It takes an <code class="docutils literal"><span class="pre">'a</span></code> argument and an <code class="docutils literal"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'b</span></code> argument, and it returns a <code class="docutils literal"><span class="pre">'b</span></code>. That means that its type is</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span>
+</pre></div>
+</div>
+<p>Please now enter the definition of <code class="docutils literal"><span class="pre">dni</span></code> in OCaml or utop, to convince yourself. Entering values in OCaml/utop is a great way to see if you understand OCaml correctly.</p>
+</div>
+<div class="section" id="another-simple-exercise">
+<h2>Another simple exercise<a class="headerlink" href="#another-simple-exercise" title="Permalink to this headline">¶</a></h2>
+<p>On the whiteboard today, I did a similar exercise, which will help us greatly.</p>
+<blockquote class="pull-quote">
+<div>Assume that there is some <code class="docutils literal"><span class="pre">z</span></code> of type <code class="docutils literal"><span class="pre">'a</span></code>. Make a function <code class="docutils literal"><span class="pre">g</span></code> of type <code class="docutils literal"><span class="pre">('a</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'b</span></code>.</div></blockquote>
+<p>You see from the type that it takes one argument, so let&#8217;s start the usual way:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">g</span> <span class="n">f</span> <span class="o">=</span> <span class="o">???</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<p>Argument <code class="docutils literal"><span class="pre">g</span></code> will be of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'b</span></code>. That is, it turns <code class="docutils literal"><span class="pre">'a</span></code>s into <code class="docutils literal"><span class="pre">'b</span></code>s. So we feed it <code class="docutils literal"><span class="pre">z</span></code>:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">f</span> <span class="n">z</span>
+</pre></div>
+</div>
+<p>This is of type <code class="docutils literal"><span class="pre">'b</span></code>, which is what we needed to make. The solution is:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">g</span> <span class="n">f</span> <span class="o">=</span> <span class="n">f</span> <span class="n">z</span> <span class="o">;;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-real-exercise">
+<h2>The real exercise<a class="headerlink" href="#the-real-exercise" title="Permalink to this headline">¶</a></h2>
+<blockquote class="pull-quote">
+<div>Implement an OCaml function called <code class="docutils literal"><span class="pre">tne</span></code> of type <code class="docutils literal"><span class="pre">((('a</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'c)</span> <span class="pre">-&gt;</span> <span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'c</span></code>.</div></blockquote>
+<p>Let&#8217;s start the usual way. We won&#8217;t need recursion.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">tne</span> <span class="n">h</span> <span class="n">z</span> <span class="o">=</span> <span class="o">???</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<p>where</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">h</span> <span class="o">:</span> <span class="o">((</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">c</span>
+<span class="n">z</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>and we have to make something of type</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">&#39;</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>(Note that we have &#8216;received&#8217; our <code class="docutils literal"><span class="pre">z</span></code> from the previous part!)</p>
+<p>This is not very nice. We have to make something, but we don&#8217;t even know what its type is: we might have to make a string, a bool, or an int!</p>
+<p>Luckily, we have a machine for producing a <code class="docutils literal"><span class="pre">'c</span></code>; it&#8217;s called <code class="docutils literal"><span class="pre">h</span></code>. But first we have to give <code class="docutils literal"><span class="pre">h</span></code> its argument, which must be of type <code class="docutils literal"><span class="pre">('a</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'b</span></code>. Jolly, how could we ever obtain such a thing?</p>
+<div class="skip-big">
+</div><p>Of course, we just made it in the previous part: it&#8217;s called <code class="docutils literal"><span class="pre">g</span></code>. So the solution is:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">tne</span> <span class="n">h</span> <span class="n">z</span> <span class="o">=</span> <span class="n">h</span> <span class="n">g</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<div class="skip-big">
+</div><p>Actually, there&#8217;s a bit of a problem. OCaml will not accept this, because it cannot comprehend that <code class="docutils literal"><span class="pre">z</span></code> in the definition of <code class="docutils literal"><span class="pre">g</span></code> is the same <code class="docutils literal"><span class="pre">z</span></code> as in the definition of <code class="docutils literal"><span class="pre">tne</span></code>. If you first define <code class="docutils literal"><span class="pre">g</span></code> as above, it will tell you that it doesn&#8217;t know <code class="docutils literal"><span class="pre">z</span></code>; if you first try to define <code class="docutils literal"><span class="pre">tne</span></code>, it will tell you it doesn&#8217;t know <code class="docutils literal"><span class="pre">g</span></code>.</p>
+<p>We now realise that we are constantly using the <a class="reference internal" href="week2p.html#named-function-explanation"><span>named function</span></a> abbreviation from week 2. (Click the link if you want a quick refresher.) In the previous exercise, we wrote</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">g</span> <span class="n">f</span> <span class="o">=</span> <span class="n">f</span> <span class="n">z</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<p>but we could have written just as well</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">g</span> <span class="o">=</span> <span class="k">fun</span> <span class="n">f</span> <span class="o">-&gt;</span> <span class="n">f</span> <span class="n">z</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<p>And we can use this to fix our definition for <code class="docutils literal"><span class="pre">tne</span></code>! We don&#8217;t use <code class="docutils literal"><span class="pre">g</span></code> but its expansion.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">tne</span> <span class="n">h</span> <span class="n">z</span> <span class="o">=</span> <span class="n">h</span> <span class="o">(</span><span class="k">fun</span> <span class="n">f</span> <span class="o">-&gt;</span> <span class="n">f</span> <span class="n">z</span><span class="o">)</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<p>This works: OCaml sees that the <code class="docutils literal"><span class="pre">z</span></code> on the right comes from the <code class="docutils literal"><span class="pre">z</span></code> argument on the left.</p>
+<div class="skip-big">
+</div><p>Now let&#8217;s look at what the type is of this.</p>
+<ul>
+<li><p class="first">We saw previously that if <code class="docutils literal"><span class="pre">f</span></code> is of type <code class="docutils literal"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'b</span></code>, then <code class="docutils literal"><span class="pre">f</span> <span class="pre">z</span></code> is of type <code class="docutils literal"><span class="pre">'b</span></code>.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">(fun</span> <span class="pre">f</span> <span class="pre">-&gt;</span> <span class="pre">f</span> <span class="pre">z)</span></code> takes a <code class="docutils literal"><span class="pre">'a</span> <span class="pre">-&gt;</span> <span class="pre">'b</span></code> and produces a <code class="docutils literal"><span class="pre">'b</span></code>, therefore <code class="docutils literal"><span class="pre">(fun</span> <span class="pre">f</span> <span class="pre">-&gt;</span> <span class="pre">f</span> <span class="pre">z)</span></code> is of type <code class="docutils literal"><span class="pre">('a</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'b</span></code>.</p>
+</li>
+<li><p class="first">We assumed that <code class="docutils literal"><span class="pre">h</span></code> is of type <code class="docutils literal"><span class="pre">(('a</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'c</span></code>. Then we give <code class="docutils literal"><span class="pre">h</span></code> just the right type of input! We see that <code class="docutils literal"><span class="pre">h</span> <span class="pre">(fun</span> <span class="pre">f</span> <span class="pre">-&gt;</span> <span class="pre">f</span> <span class="pre">z)</span></code> is of type <code class="docutils literal"><span class="pre">'c</span></code>.</p>
+</li>
+<li><p class="first"><code class="docutils literal"><span class="pre">tne</span></code> takes two arguments, namely something of type <code class="docutils literal"><span class="pre">(('a</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'b)</span> <span class="pre">-&gt;</span> <span class="pre">'c</span></code> and something of type <code class="docutils literal"><span class="pre">'a</span></code>, and we saw that it produces a <code class="docutils literal"><span class="pre">'c</span></code>. Therefore, the type of <code class="docutils literal"><span class="pre">tne</span></code> is</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(((</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">c</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">c</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Indeed, OCaml calculates exactly this when you enter the definition of <code class="docutils literal"><span class="pre">tne</span></code> in it..</p>
+</div>
+<div class="section" id="epilogue">
+<h2>Epilogue<a class="headerlink" href="#epilogue" title="Permalink to this headline">¶</a></h2>
+<p>This stuff might look nasty to young eyes.</p>
+<p>Why did we do this? We want you to be rockstar programmers.</p>
+<p>Many programmers just tie together frameworks and libraries to build applications, and they need to understand only simple (&#8220;first-order&#8221;) functions for this. (Libraries are often written using &#8220;higher-order&#8221; functions, which is the opposite of first-order.) Those programmers build things that impress many people and have great societal impact. But every so often, they want to go beyond the range of apps that people have envisioned before, and the libraries they need will not exist. In fact, very often libraries exist that do what you want, except for something small that&#8217;s missing, or maybe there&#8217;s a small bug in the library. You can only understand those libraries, let alone improve on them, if you understand the techniques needed to build the library.</p>
+<p>In fact, <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/raw/master/Exercises/week5r-tne.rst">this very site you are on</a> was written using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>, which was created for something completely else: to make a <a class="reference external" href="https://docs.python.org/3/">documentation site</a> for the programming language Python. I was lucky enough that Sphinx already supported nice code highlighting, that is: I type OCaml and Sphinx automatically adds the fancy colours you see everywhere that make the code easy to read. However, the documentors of Python never needed <a class="reference internal" href="week4p.html#examples-of-collapse"><span>silly boxes that you can click to show a solution</span></a> (<a class="reference external" href="https://github.com/bgeron/uob-2015-efc/raw/master/Exercises/week4p.rst">src</a>); why would they? So I <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/blob/master/helpers/collapse.py">added</a> <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/blob/master/_static/collapse-details-polyfill.css">those</a> to Sphinx <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/blob/master/_static/collapse-details-polyfill.js">myself</a>.</p>
+<p>It&#8217;s great feeling able to make anything. I don&#8217;t settle for less. Neither should you, and you don&#8217;t have to.</p>
+<p>Keep pushing yourself.</p>
+<p>And keep asking questions.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 5 reasoning: explanation for <code class="docutils literal"><span class="pre">tne</span></code></a><ul>
+<li><a class="reference internal" href="#a-simpler-exercise">A simpler exercise</a></li>
+<li><a class="reference internal" href="#another-simple-exercise">Another simple exercise</a></li>
+<li><a class="reference internal" href="#the-real-exercise">The real exercise</a></li>
+<li><a class="reference internal" href="#epilogue">Epilogue</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="week5p.html" title="previous chapter">Week 5 programming: lists</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Exercises/week5r-tne.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="week5p.html" title="Week 5 programming: lists"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">UoB 2015 EFC auxiliary exercises</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>

@@ -77,9 +77,9 @@
 <p>We sometimes say that <code class="docutils literal"><span class="pre">()</span></code> is the empty tuple. Its type is <code class="docutils literal"><span class="pre">unit</span></code>, and it is the only value of that type.</p>
 <p>Lists are indicated with <code class="docutils literal"><span class="pre">[</span></code> and <code class="docutils literal"><span class="pre">]</span></code>; they can contain 0 values (like <code class="docutils literal"><span class="pre">[]</span></code>), 1 value (like <code class="docutils literal"><span class="pre">[3]</span></code>), or many values separated by semicolons, like <code class="docutils literal"><span class="pre">[3;</span> <span class="pre">4;</span> <span class="pre">5]</span></code>. It is an error to use semicolons outside of <code class="docutils literal"><span class="pre">[]</span></code>.</p>
 <p>When the values inside the list are of some type <code class="docutils literal"><span class="pre">A</span></code>, the list is of type <code class="docutils literal"><span class="pre">A</span> <span class="pre">list</span></code>. So,</p>
-<div class="highlight-python"><div class="highlight"><pre>val 3 : int
-val [3; 4] : int list
-val [[3; 4]; [5; 6]] : int list list
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">val</span> <span class="mi">3</span> <span class="o">:</span> <span class="kt">int</span>
+<span class="k">val</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span> <span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span>
+<span class="k">val</span> <span class="o">[[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">];</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">]]</span> <span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span> <span class="kt">list</span>
 </pre></div>
 </div>
 <p>The empty list can be seen as a list of <em>any</em> type. Ocaml writes this as <code class="docutils literal"><span class="pre">'a</span> <span class="pre">list</span></code>. Here, <code class="docutils literal"><span class="pre">'a</span></code> stands for &#8220;any type&#8221;.</p>
@@ -87,7 +87,7 @@ val [[3; 4]; [5; 6]] : int list list
 <p>In this exercise set, we will use numbers of type <code class="docutils literal"><span class="pre">int</span></code>, strings of type <code class="docutils literal"><span class="pre">string</span></code>, tuples, and lists.</p>
 </div>
 <div class="section" id="exercise">
-<h2>Exercise.<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
+<span id="examples-of-collapse"></span><h2>Exercise.<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <p>Are these correct values? When they are, what is their type?</p>
 <ol class="arabic">
 <li><p class="first"><code class="docutils literal"><span class="pre">3</span></code></p>
@@ -164,12 +164,12 @@ val [[3; 4]; [5; 6]] : int list list
 <p>However, OCaml does give a result. This is because <code class="docutils literal"><span class="pre">;</span></code> also has a different meaning, which you might learn about later; it is not important now.</p>
 <p>You should see this as an invalid value for now.</p>
 <p>OCaml says this:</p>
-<div class="highlight-python"><div class="highlight"><pre>utop # 3; 4;;
-Characters 0-1:
-Warning 10: this expression should have type unit.
-Characters 0-1:
-Warning 10: this expression should have type unit.
-- : int = 4
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">utop</span> <span class="o">#</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">;;</span>
+<span class="nc">Characters</span> <span class="mi">0</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span>
+<span class="nc">Warning</span> <span class="mi">10</span><span class="o">:</span> <span class="n">this</span> <span class="n">expression</span> <span class="n">should</span> <span class="n">have</span> <span class="k">type</span> <span class="kt">unit</span><span class="o">.</span>
+<span class="nc">Characters</span> <span class="mi">0</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span>
+<span class="nc">Warning</span> <span class="mi">10</span><span class="o">:</span> <span class="n">this</span> <span class="n">expression</span> <span class="n">should</span> <span class="n">have</span> <span class="k">type</span> <span class="kt">unit</span><span class="o">.</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">4</span>
 </pre></div>
 </div>
 </div></details></li>
@@ -197,10 +197,10 @@ Warning 10: this expression should have type unit.
 (answer goes here)</summary><div>
 <p>This would be a list of two things. We have <code class="docutils literal"><span class="pre">3,</span> <span class="pre">4</span></code> of type <code class="docutils literal"><span class="pre">int</span> <span class="pre">*</span> <span class="pre">int</span></code> and <code class="docutils literal"><span class="pre">5</span></code> of type <code class="docutils literal"><span class="pre">int</span></code>. The types of the elements of the list are not the same, so this is not a valid list.</p>
 <p>OCaml will say this:</p>
-<div class="highlight-python"><div class="highlight"><pre>utop # [3, 4; 5];;
-Error: This expression has type int but
-an expression was expected of type
-         int * int
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">utop</span> <span class="o">#</span> <span class="o">[</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">];;</span>
+<span class="nc">Error</span><span class="o">:</span> <span class="nc">This</span> <span class="n">expression</span> <span class="n">has</span> <span class="k">type</span> <span class="kt">int</span> <span class="n">but</span>
+<span class="n">an</span> <span class="n">expression</span> <span class="n">was</span> <span class="n">expected</span> <span class="k">of</span> <span class="k">type</span>
+         <span class="kt">int</span> <span class="o">*</span> <span class="kt">int</span>
 </pre></div>
 </div>
 </div></details></li>
@@ -228,9 +228,9 @@ an expression was expected of type
 (answer goes here)</summary><div>
 <p>This would be a list of two things. Remember that in lists, the type of all elements must be the same. Now <code class="docutils literal"><span class="pre">[&quot;3&quot;]</span></code> is a <code class="docutils literal"><span class="pre">string</span> <span class="pre">list</span></code>, and <code class="docutils literal"><span class="pre">[3]</span></code> is an <code class="docutils literal"><span class="pre">int</span> <span class="pre">list</span></code>, so this is a type error.</p>
 <p>The error that OCaml gives is:</p>
-<div class="highlight-python"><div class="highlight"><pre>utop # [[&quot;3&quot;]; [3]];;
-Error: This expression has type int but an expression
-was expected of type bytes
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">utop</span> <span class="o">#</span> <span class="o">[[</span><span class="s2">&quot;3&quot;</span><span class="o">];</span> <span class="o">[</span><span class="mi">3</span><span class="o">]];;</span>
+<span class="nc">Error</span><span class="o">:</span> <span class="nc">This</span> <span class="n">expression</span> <span class="n">has</span> <span class="k">type</span> <span class="kt">int</span> <span class="n">but</span> <span class="n">an</span> <span class="n">expression</span>
+<span class="n">was</span> <span class="n">expected</span> <span class="k">of</span> <span class="k">type</span> <span class="n">bytes</span>
 </pre></div>
 </div>
 </div></details></li>
@@ -249,12 +249,12 @@ was expected of type bytes
 (answer goes here)</summary><div>
 <p>There is a semicolon without square brackets, so this is invalid syntax.</p>
 <p>However, OCaml does give a result:</p>
-<div class="highlight-python"><div class="highlight"><pre>utop # ([3, 4]; 5);;
-Characters 1-7:
-Warning 10: this expression should have type unit.
-Characters 1-7:
-Warning 10: this expression should have type unit.
-- : int = 5
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">utop</span> <span class="o">#</span> <span class="o">([</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">];</span> <span class="mi">5</span><span class="o">);;</span>
+<span class="nc">Characters</span> <span class="mi">1</span><span class="o">-</span><span class="mi">7</span><span class="o">:</span>
+<span class="nc">Warning</span> <span class="mi">10</span><span class="o">:</span> <span class="n">this</span> <span class="n">expression</span> <span class="n">should</span> <span class="n">have</span> <span class="k">type</span> <span class="kt">unit</span><span class="o">.</span>
+<span class="nc">Characters</span> <span class="mi">1</span><span class="o">-</span><span class="mi">7</span><span class="o">:</span>
+<span class="nc">Warning</span> <span class="mi">10</span><span class="o">:</span> <span class="n">this</span> <span class="n">expression</span> <span class="n">should</span> <span class="n">have</span> <span class="k">type</span> <span class="kt">unit</span><span class="o">.</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="o">=</span> <span class="mi">5</span>
 </pre></div>
 </div>
 <p>This is because <code class="docutils literal"><span class="pre">;</span></code> also has a different meaning, which you might learn about later; it is not important now.</p>
@@ -291,18 +291,18 @@ Warning 10: this expression should have type unit.
 <h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
 <p>Let&#8217;s look at some types that are useful. Let&#8217;s say that we want to make a phone book, that is, store names and numbers. Say that the number of Bram is 123, and the number of Sina is 234.</p>
 <p>We can lay this out in two ways: we can make the pairs <code class="docutils literal"><span class="pre">(&quot;Bram&quot;,</span> <span class="pre">123)</span></code> and <code class="docutils literal"><span class="pre">(&quot;Sina&quot;,</span> <span class="pre">234)</span></code>, and put them in a list:</p>
-<div class="highlight-python"><div class="highlight"><pre>[(&quot;Bram&quot;, 123); (&quot;Sina&quot;, 234)] : (string * int) list
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">[(</span><span class="s2">&quot;Bram&quot;</span><span class="o">,</span> <span class="mi">123</span><span class="o">);</span> <span class="o">(</span><span class="s2">&quot;Sina&quot;</span><span class="o">,</span> <span class="mi">234</span><span class="o">)]</span> <span class="o">:</span> <span class="o">(</span><span class="kt">string</span> <span class="o">*</span> <span class="kt">int</span><span class="o">)</span> <span class="kt">list</span>
 </pre></div>
 </div>
 <p>We can also make a list of names <code class="docutils literal"><span class="pre">[&quot;Bram&quot;;</span> <span class="pre">&quot;Sina&quot;]</span></code> and <code class="docutils literal"><span class="pre">[123;</span> <span class="pre">234]</span></code> and put them together:</p>
-<div class="highlight-python"><div class="highlight"><pre>([&quot;Bram&quot;; &quot;Sina&quot;], [123; 234]) : string list * int list
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">([</span><span class="s2">&quot;Bram&quot;</span><span class="o">;</span> <span class="s2">&quot;Sina&quot;</span><span class="o">],</span> <span class="o">[</span><span class="mi">123</span><span class="o">;</span> <span class="mi">234</span><span class="o">])</span> <span class="o">:</span> <span class="kt">string</span> <span class="kt">list</span> <span class="o">*</span> <span class="kt">int</span> <span class="kt">list</span>
 </pre></div>
 </div>
 <p>In practice, the former layout is often handier.</p>
 <hr class="docutils" />
 <p>An application like <a class="reference external" href="https://contacts.google.com/">Google Contacts</a> (to which your smartphone phonebook might be synchronised if you use Android) contains many phone books, so they might store a value of type <code class="docutils literal"><span class="pre">(string</span> <span class="pre">*</span> <span class="pre">int)</span> <span class="pre">list</span> <span class="pre">list</span></code>.</p>
 <p>On the other hand, for every phonebook they also have the name of the phonebook owner. So they might bundle together Dan&#8217;s name with his phonebook:</p>
-<div class="highlight-python"><div class="highlight"><pre>(&quot;Dan&quot;, [(&quot;Bram&quot;, 123); (&quot;Sina&quot;, 234)]) : string * (string * int) list
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(</span><span class="s2">&quot;Dan&quot;</span><span class="o">,</span> <span class="o">[(</span><span class="s2">&quot;Bram&quot;</span><span class="o">,</span> <span class="mi">123</span><span class="o">);</span> <span class="o">(</span><span class="s2">&quot;Sina&quot;</span><span class="o">,</span> <span class="mi">234</span><span class="o">)])</span> <span class="o">:</span> <span class="kt">string</span> <span class="o">*</span> <span class="o">(</span><span class="kt">string</span> <span class="o">*</span> <span class="kt">int</span><span class="o">)</span> <span class="kt">list</span>
 </pre></div>
 </div>
 <p>There are many choices you can make about how to structure your data (tuples, lists, tuples of lists, lists of tuples, ...) and what is handiest depends on the situation.</p>

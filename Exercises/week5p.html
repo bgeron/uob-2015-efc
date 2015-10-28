@@ -28,6 +28,7 @@
     <script type="text/javascript" src="../_static/jquery.details.min.js"></script>
     <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
     <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
+    <link rel="next" title="Week 5 reasoning: explanation for tne" href="week5r-tne.html" />
     <link rel="prev" title="(test)" href="week4r.html" /> 
   </head>
   <body role="document">
@@ -37,6 +38,9 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="week5r-tne.html" title="Week 5 reasoning: explanation for tne"
+             accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="week4r.html" title="(test)"
              accesskey="P">previous</a> |</li>
@@ -64,7 +68,7 @@
 <h2>A: Head and tail, first and second<a class="headerlink" href="#a-head-and-tail-first-and-second" title="Permalink to this headline">¶</a></h2>
 <p>You can get the head and the tail of a list with functions <code class="docutils literal"><span class="pre">hd</span></code> and <code class="docutils literal"><span class="pre">tl</span></code>.</p>
 <p>In OCaml/utop, you first have to type</p>
-<div class="highlight-python"><div class="highlight"><pre>open List;;
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">open</span> <span class="nc">List</span><span class="o">;;</span>
 </pre></div>
 </div>
 <p>to get access to these functions.</p>
@@ -114,23 +118,23 @@
 <p>Additional hints given on Canvas:</p>
 <blockquote>
 <div><p>Some of the question use the OCaml <code class="docutils literal"><span class="pre">option</span></code> type. This type is used to return a special value (<code class="docutils literal"><span class="pre">None</span></code>) when a function cannot be computed, instead of throwing an exception. For example, the standard <code class="docutils literal"><span class="pre">hd</span></code> function is:</p>
-<div class="highlight-python"><div class="highlight"><pre>let hd = function
-  | [] -&gt; failwith &quot;hd&quot;
-  | x :: _ -&gt; x
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">hd</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;hd&quot;</span>
+  <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>and has type</p>
-<div class="highlight-python"><div class="highlight"><pre>val hd : &#39;a list -&gt; &#39;a = &lt;fun&gt;
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">val</span> <span class="n">hd</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>If you want to avoid throwing a failure the alternative is this:</p>
-<div class="highlight-python"><div class="highlight"><pre>let hd = function
-  | [] -&gt; None
-  | x :: _ -&gt; Some x
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">hd</span> <span class="o">=</span> <span class="k">function</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="nc">None</span>
+  <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="nc">Some</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>and has type</p>
-<div class="highlight-python"><div class="highlight"><pre>val hd : &#39;a list -&gt; &#39;a option = &lt;fun&gt;
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">val</span> <span class="n">hd</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">option</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>For the purpose of this assignment you can ignore the <code class="docutils literal"><span class="pre">option</span></code> type and use <code class="docutils literal"><span class="pre">failwith</span></code> instead of <code class="docutils literal"><span class="pre">None</span></code>.</p>
@@ -147,9 +151,9 @@
 <p>We did some exercises without <code class="docutils literal"><span class="pre">option</span></code>. I have here filled in our solutions.</p>
 <ol class="arabic">
 <li><p class="first">Make a function <code class="docutils literal"><span class="pre">last</span></code> that finds the last element of a list. We want that:</p>
-<div class="highlight-python"><div class="highlight"><pre>last [3; 5] = 5
-last [3] = 3
-last [] = an error
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">last</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">last</span> <span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">last</span> <span class="bp">[]</span> <span class="o">=</span> <span class="n">an</span> <span class="n">error</span>
 </pre></div>
 </div>
 <p>(Now you can click on the button below; there is an answer.)</p>
@@ -158,45 +162,45 @@ last [] = an error
 (answer goes here)</summary><div>
 <p>We are making a function on lists, so probably we&#8217;ll need recursion. (Use <code class="docutils literal"><span class="pre">let</span> <span class="pre">rec</span></code>.)</p>
 <p>We can make a first attempt by just writing down these cases. Last of a two-element list should return the second element, and so forth. In the &#8220;otherwise&#8221; case (<code class="docutils literal"><span class="pre">_</span></code>), we wish to give an error.</p>
-<div class="highlight-python"><div class="highlight"><pre>let rec last l = match l with
-  | [x; y] -&gt; y
-  | [x] -&gt; x
-  | [] -&gt; failwith &quot;last&quot;
-  | _ -&gt; failwith &quot;dunno&quot;
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">y</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">x</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;last&quot;</span>
+  <span class="o">|</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;dunno&quot;</span>
 </pre></div>
 </div>
 <p>We can make the last case more specific, because the list will not be empty:</p>
-<div class="highlight-python"><div class="highlight"><pre>let rec last l = match l with
-  | [x; y] -&gt; y
-  | [x] -&gt; x
-  | [] -&gt; failwith &quot;last&quot;
-  | x::xs -&gt; failwith &quot;dunno&quot;
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">y</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">x</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;last&quot;</span>
+  <span class="o">|</span> <span class="n">x</span><span class="o">::</span><span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;dunno&quot;</span>
 </pre></div>
 </div>
 <p>We can not list all the possible list length, because a list can be arbitrarily long. So we need to use recursion. Usually, structural recursion is enough.</p>
 <p>What&#8217;s the relation between <code class="docutils literal"><span class="pre">last</span> <span class="pre">[2;</span> <span class="pre">3;</span> <span class="pre">4]</span></code> and <code class="docutils literal"><span class="pre">last</span></code> of its tail, <code class="docutils literal"><span class="pre">last</span> <span class="pre">[3;</span> <span class="pre">4]</span></code>?</p>
 <p>They are equal. So we write:</p>
-<div class="highlight-python"><div class="highlight"><pre>let rec last l = match l with
-  | [x; y] -&gt; y
-  | [x] -&gt; x
-  | [] -&gt; failwith &quot;last&quot;
-  | x::xs -&gt; last (tl l)
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">y</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">x</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;last&quot;</span>
+  <span class="o">|</span> <span class="n">x</span><span class="o">::</span><span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">last</span> <span class="o">(</span><span class="n">tl</span> <span class="n">l</span><span class="o">)</span>
 </pre></div>
 </div>
-<p>We simplify this in two ways. Firstly, in the last case, we already have <code class="docutils literal"><span class="pre">tl</span> <span class="pre">l</span></code> in a variable, namely <a href="#id1"><span class="problematic" id="id2">``</span></a>xs`.</p>
-<div class="highlight-python"><div class="highlight"><pre>let rec last l = match l with
-  | [x; y] -&gt; y
-  | [x] -&gt; x
-  | [] -&gt; failwith &quot;last&quot;
-  | x::xs -&gt; last xs
+<p>We simplify this in two ways. Firstly, in the last case, we already have <code class="docutils literal"><span class="pre">tl</span> <span class="pre">l</span></code> in a variable, namely <code class="docutils literal"><span class="pre">xs</span></code>.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">y</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">x</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;last&quot;</span>
+  <span class="o">|</span> <span class="n">x</span><span class="o">::</span><span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">last</span> <span class="n">xs</span>
 </pre></div>
 </div>
 <p>We also don&#8217;t need to do the special case for two elements.</p>
-<div class="highlight-python"><div class="highlight"><pre>let rec last l = match l with
-  | [x; y] -&gt; y
-  | [x] -&gt; x
-  | [] -&gt; failwith &quot;last&quot;
-  | x::xs -&gt; last xs
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">y</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">x</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;last&quot;</span>
+  <span class="o">|</span> <span class="n">x</span><span class="o">::</span><span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">last</span> <span class="n">xs</span>
 </pre></div>
 </div>
 </div></details></li>
@@ -206,23 +210,20 @@ last [] = an error
 <summary>
 (answer goes here)</summary><div>
 <p>We want</p>
-<div class="highlight-python"><div class="highlight"><pre>pen [] = error
-pen [2; 3; 4] = 3
-pen [2] = error
-pen [2; 3] = 2
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">pen</span> <span class="bp">[]</span> <span class="o">=</span> <span class="n">error</span>
+<span class="n">pen</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">pen</span> <span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">error</span>
+<span class="n">pen</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>Solution:</p>
-<dl class="docutils">
-<dt>let rec pen l = match l with</dt>
-<dd><div class="first last line-block">
-<div class="line">[] -&gt; failwith &#8220;pen empty&#8221;</div>
-<div class="line">[a] -&gt; failwith &#8220;pen of one element&#8221;</div>
-<div class="line">[a; b] -&gt; a</div>
-<div class="line">x::xs -&gt; pen xs ;;</div>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">pen</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;pen empty&quot;</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;pen of one element&quot;</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">a</span><span class="o">;</span> <span class="n">b</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">a</span>
+  <span class="o">|</span> <span class="n">x</span><span class="o">::</span><span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">pen</span> <span class="n">xs</span> <span class="o">;;</span>
+</pre></div>
 </div>
-</dd>
-</dl>
 </div></details></li>
 <li><p class="first">Make a function <code class="docutils literal"><span class="pre">pens</span></code> that finds the last two elements of a list and puts them in a pair.</p>
 <p>Write down some example inputs and outputs like above, then write the solution.</p>
@@ -230,18 +231,18 @@ pen [2; 3] = 2
 <summary>
 (answer goes here)</summary><div>
 <p>We want</p>
-<div class="highlight-python"><div class="highlight"><pre>pens [3; 4] = (3, 4)
-pens [4] = error
-pens [] = error
-pens [2; 3; 4] = (3, 4)
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">pens</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span>
+<span class="n">pens</span> <span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="n">error</span>
+<span class="n">pens</span> <span class="bp">[]</span> <span class="o">=</span> <span class="n">error</span>
+<span class="n">pens</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span>
 </pre></div>
 </div>
 <p>Solution:</p>
-<div class="highlight-python"><div class="highlight"><pre>let rec pens l = match l with
-  | [] -&gt; failwith &quot;pens empty&quot;
-  | [a] -&gt; failwith &quot;pens of one element&quot;
-  | [a; b] -&gt; (a, b)
-  | x::xs -&gt; pens xs ;;
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">pens</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;pens empty&quot;</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;pens of one element&quot;</span>
+  <span class="o">|</span> <span class="o">[</span><span class="n">a</span><span class="o">;</span> <span class="n">b</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span>
+  <span class="o">|</span> <span class="n">x</span><span class="o">::</span><span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">pens</span> <span class="n">xs</span> <span class="o">;;</span>
 </pre></div>
 </div>
 </div></details></li>
@@ -269,6 +270,7 @@ pens [2; 3; 4] = (3, 4)
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
       <li>Previous: <a href="week4r.html" title="previous chapter">(test)</a></li>
+      <li>Next: <a href="week5r-tne.html" title="next chapter">Week 5 reasoning: explanation for <code class="docutils literal"><span class="pre">tne</span></code></a></li>
   </ul></li>
 </ul>
 </div>
@@ -302,6 +304,9 @@ pens [2; 3; 4] = (3, 4)
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
+        <li class="right" >
+          <a href="week5r-tne.html" title="Week 5 reasoning: explanation for tne"
+             >next</a> |</li>
         <li class="right" >
           <a href="week4r.html" title="(test)"
              >previous</a> |</li>
