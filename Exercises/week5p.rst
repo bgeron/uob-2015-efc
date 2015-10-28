@@ -76,12 +76,7 @@ Check your answers with ``ocaml``/``utop``. I have left room to write below, but
 C: List exercises
 =================
 
-
-https://ocaml.org/learn/tutorials/99problems.html (solutions are provided)
-
-:See also: the assignment_ on Canvas
-
-.. _assignment: https://canvas.bham.ac.uk/courses/15627/assignments/46796
+Do the exercises from https://ocaml.org/learn/tutorials/99problems.html; solutions are provided.
 
 
 Additional hints given on Canvas:
@@ -109,3 +104,111 @@ Additional hints given on Canvas:
     For the purpose of this assignment you can ignore the ``option`` type and use ``failwith`` instead of ``None``.
 
     For a longer discussion of option types read this article: https://blogs.janestreet.com/making-something-out-of-nothing-or-why-none-is-better-than-nan-and-null/ 
+
+:See also: the assignment_ on Canvas
+
+.. _assignment: https://canvas.bham.ac.uk/courses/15627/assignments/46796
+
+
+We did some exercises without ``option``. I have here filled in our solutions.
+
+
+#.  Make a function ``last`` that finds the last element of a list. We want that::
+    
+        last [3; 5] = 5
+        last [3] = 3
+        last [] = an error
+
+    (Now you can click on the button below; there is an answer.)
+
+    .. collapse::
+
+        We are making a function on lists, so probably we'll need recursion. (Use ``let rec``.)
+
+        We can make a first attempt by just writing down these cases. Last of a two-element list should return the second element, and so forth. In the "otherwise" case (``_``), we wish to give an error. ::
+
+            let rec last l = match l with
+              | [x; y] -> y
+              | [x] -> x
+              | [] -> failwith "last"
+              | _ -> failwith "dunno"
+
+        We can make the last case more specific, because the list will not be empty::
+
+            let rec last l = match l with
+              | [x; y] -> y
+              | [x] -> x
+              | [] -> failwith "last"
+              | x::xs -> failwith "dunno"
+
+        We can not list all the possible list length, because a list can be arbitrarily long. So we need to use recursion. Usually, structural recursion is enough. 
+
+        What's the relation between ``last [2; 3; 4]`` and ``last`` of its tail, ``last [3; 4]``?
+
+        They are equal. So we write::
+
+            let rec last l = match l with
+              | [x; y] -> y
+              | [x] -> x
+              | [] -> failwith "last"
+              | x::xs -> last (tl l)
+
+        We simplify this in two ways. Firstly, in the last case, we already have ``tl l`` in a variable, namely ``xs`. ::
+
+            let rec last l = match l with
+              | [x; y] -> y
+              | [x] -> x
+              | [] -> failwith "last"
+              | x::xs -> last xs
+
+        We also don't need to do the special case for two elements. ::
+
+            let rec last l = match l with
+              | [x; y] -> y
+              | [x] -> x
+              | [] -> failwith "last"
+              | x::xs -> last xs
+
+#.  Make a function ``pen`` that finds the penultimate element of a list.
+    
+    Write down some example inputs and outputs like above, then write the solution.
+
+    .. collapse::
+
+        We want ::
+
+            pen [] = error
+            pen [2; 3; 4] = 3
+            pen [2] = error
+            pen [2; 3] = 2
+
+        Solution::
+
+        let rec pen l = match l with
+          | [] -> failwith "pen empty"
+          | [a] -> failwith "pen of one element"
+          | [a; b] -> a
+          | x::xs -> pen xs ;;
+
+
+#.  Make a function ``pens`` that finds the last two elements of a list and puts them in a pair.
+
+    Write down some example inputs and outputs like above, then write the solution.
+
+    .. collapse::
+
+        We want ::
+
+            pens [3; 4] = (3, 4)
+            pens [4] = error
+            pens [] = error
+            pens [2; 3; 4] = (3, 4)
+
+        Solution::
+
+            let rec pens l = match l with
+              | [] -> failwith "pens empty"
+              | [a] -> failwith "pens of one element"
+              | [a; b] -> (a, b)
+              | x::xs -> pens xs ;;
+
