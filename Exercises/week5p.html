@@ -243,6 +243,25 @@
 </pre></div>
 </div>
 </div></details></li>
+<li><p class="first">Make a function <code class="docutils literal"><span class="pre">at</span></code> that finds the n&#8217;th element of a list. We want:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">at</span> <span class="mi">3</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">8</span><span class="o">]</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">at</span> <span class="mi">3</span> <span class="bp">[]</span> <span class="o">=</span> <span class="n">error</span>
+<span class="n">at</span> <span class="mi">0</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">]</span> <span class="o">=</span> <span class="n">error</span>
+<span class="n">at</span> <span class="o">(-</span><span class="mi">2</span><span class="o">)</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">]</span> <span class="o">=</span> <span class="n">error</span>
+<span class="n">at</span> <span class="mi">1</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">]</span> <span class="o">=</span> <span class="mi">4</span>
+</pre></div>
+</div>
+<p>Note that usually when programming, we count from 0 because it tends to make things easier. For some mysterious reason, the exercise designers have chosen to count from 1 here.</p>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">at</span> <span class="n">k</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;at&quot;</span>
+<span class="o">|</span> <span class="n">x</span><span class="o">::</span><span class="n">xs</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="k">then</span> <span class="n">failwith</span> <span class="s2">&quot;at&quot;</span> <span class="k">else</span> <span class="k">if</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">then</span> <span class="n">x</span> <span class="k">else</span> <span class="n">at</span> <span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="n">xs</span><span class="o">;;</span>
+</pre></div>
+</div>
+<p>(Note that I forgot to write the <code class="docutils literal"><span class="pre">if</span> <span class="pre">k</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">then</span> <span class="pre">x</span> <span class="pre">else</span></code> in the tutorial, which some students helpfully pointed out.)</p>
+</div></details></li>
 </ol>
 </div>
 </div>

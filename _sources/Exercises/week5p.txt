@@ -191,3 +191,22 @@ We did some exercises without ``option``. I have here filled in our solutions.
               | [a; b] -> (a, b)
               | x::xs -> pens xs ;;
 
+#.  Make a function ``at`` that finds the n'th element of a list. We want::
+    
+        at 3 [4; 5; 6; 7; 8] = 8
+        at 3 [] = error
+        at 0 [4; 5; 6] = error
+        at (-2) [4; 5; 6] = error
+        at 1 [4; 5; 6] = 4
+
+    Note that usually when programming, we count from 0 because it tends to make things easier. For some mysterious reason, the exercise designers have chosen to count from 1 here.
+
+    .. collapse::
+
+        ::
+
+            let rec at k l = match l with
+            | [] -> failwith "at"
+            | x::xs -> if k < 1 then failwith "at" else if k = 1 then x else at (k-1) xs;;
+
+        (Note that I forgot to write the ``if k = 1 then x else`` in the tutorial, which some students helpfully pointed out.)
