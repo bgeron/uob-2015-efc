@@ -3,6 +3,9 @@
 Week 5 programming: lists
 *************************
 
+.. highlight:: ocaml
+.. default-role:: code
+
 :Subsite home page: http://bit.ly/focs-aux
 
 

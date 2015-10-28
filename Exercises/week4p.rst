@@ -3,6 +3,9 @@
 Week 4 programming: Tuples and lists: values and types
 ******************************************************
 
+.. highlight:: ocaml
+.. default-role:: code
+
 :Subsite home page: http://bit.ly/focs-aux
 
 This week, we practiced values and types of tuples. Next week, I plan to do exercises on calculating with lists.
