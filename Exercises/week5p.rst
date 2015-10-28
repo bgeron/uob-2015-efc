@@ -32,46 +32,22 @@ B: Cons exercises
 
 Which of these terms is valid? If it is valid, what is its value, and what is its type?
 
-Check your answers with ``ocaml``/``utop``. I have left room to write below, but this time you cannot click to see the solution.
+Check your answers with ``ocaml``/``utop``. 
 
 #. ``3 :: []``
-
-   .. collapse:: .
 #. ``3 :: 4 :: []``
-
-   .. collapse:: .
 #. ``3 :: [4]``
-
-   .. collapse:: .
 #. ``[3] :: []``
-
-   .. collapse:: .
 #. ``[3] :: 4``
-
-   .. collapse:: .
 #. ``[] :: []``
-
-   .. collapse:: .
 #. ``[] :: [[]]``
-
-   .. collapse:: .
 #. ``[[]] :: []``
-
-   .. collapse:: .
 #. ``[[]] :: [[]]``
-
-   .. collapse:: .
 #. ``[] :: [], []``
-
-   .. collapse:: .
 #. ``[] :: []; []``
-
-   .. collapse:: .
 #. ``[[] :: []; []]``
    
    (Note: this is very different!)
-
-   .. collapse:: .
 
 C: List exercises
 =================
