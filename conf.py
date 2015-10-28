@@ -128,7 +128,7 @@ html_theme_path = ['helpers', alabaster.get_path()]
 html_title = "UoB 2015 EFC auxiliary exercises"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-#html_short_title = None
+html_short_title = "List of extra exercises"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -168,7 +168,7 @@ html_static_path = ['_static']
 #html_domain_indices = True
 
 # If false, no index is generated.
-#html_use_index = True
+html_use_index = False
 
 # If true, the index is split into individual pages for each letter.
 #html_split_index = False
