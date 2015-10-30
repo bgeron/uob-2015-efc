@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types &mdash; UoB 2015 EFC auxiliary exercises</title>
+    
+    <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/collapse-details-polyfill.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '-',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/jquery.details.min.js"></script>
+    <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
+    <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
+    <link rel="next" title="Week 5 reasoning: explanation for tne (exercise 4.3)" href="week5r-tne.html" />
+    <link rel="prev" title="Week 5 programming: lists" href="week5p.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="week5r-tne.html" title="Week 5 reasoning: explanation for tne (exercise 4.3)"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="week5p.html" title="Week 5 programming: lists"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-5-reasoning-part-2-explanation-for-currying-bool-bool-and-sum-types">
+<h1>Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types<a class="headerlink" href="#week-5-reasoning-part-2-explanation-for-currying-bool-bool-and-sum-types" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Subsite home page:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><a class="reference external" href="http://bit.ly/focs-aux">http://bit.ly/focs-aux</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="isomorphisms">
+<h2>Isomorphisms:<a class="headerlink" href="#isomorphisms" title="Permalink to this headline">¶</a></h2>
+<p>Suppose <code class="docutils literal"><span class="pre">f</span></code> is a way to assign a term <code class="docutils literal"><span class="pre">b</span></code> in <code class="docutils literal"><span class="pre">'b</span></code> for each term <code class="docutils literal"><span class="pre">a</span></code> in <code class="docutils literal"><span class="pre">'a</span></code>, and <code class="docutils literal"><span class="pre">g</span></code> is a function that assigns to every term <code class="docutils literal"><span class="pre">b</span></code> in <code class="docutils literal"><span class="pre">'b</span></code> a term <code class="docutils literal"><span class="pre">a</span></code> in <code class="docutils literal"><span class="pre">'a</span></code>.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">f</span><span class="o">:</span> <span class="o">`</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="o">`</span><span class="n">b</span>
+<span class="n">g</span><span class="o">:</span> <span class="o">`</span><span class="n">b</span> <span class="o">-&gt;</span> <span class="o">`</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>Think of <code class="docutils literal"><span class="pre">f</span></code> and <code class="docutils literal"><span class="pre">g</span></code> as processes. If we have the following conditions then we say <code class="docutils literal"><span class="pre">f</span></code> and <code class="docutils literal"><span class="pre">g</span></code> are inverses of each other and as a result type <code class="docutils literal"><span class="pre">'a</span></code> and <code class="docutils literal"><span class="pre">'b</span></code> are ismorphic.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">f</span><span class="o">.</span><span class="n">g</span> <span class="o">=</span> <span class="n">id_</span><span class="o">`</span><span class="n">b</span>
+<span class="n">g</span><span class="o">.</span><span class="n">f</span> <span class="o">=</span> <span class="n">id_</span><span class="o">`</span><span class="n">a</span>
+</pre></div>
+</div>
+<p>The first condition indicates that <code class="docutils literal"><span class="pre">g</span></code> is a section and <code class="docutils literal"><span class="pre">f</span></code> is a retraction.
+If both f and g are sections and retractions then they must be inverses of each other.</p>
+<p>Note that composition of functions is defiend as follows:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">g</span><span class="o">.</span><span class="n">f</span> <span class="o">==</span> <span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">g</span> <span class="o">(</span><span class="n">f</span> <span class="n">x</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>And identity function is defiend as</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">id</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="curry-and-uncurry">
+<h2>Curry and uncurry:<a class="headerlink" href="#curry-and-uncurry" title="Permalink to this headline">¶</a></h2>
+<p>This is how we write the code for curry and uncurry functions:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre>   <span class="k">let</span> <span class="n">curry</span> <span class="o">(</span><span class="n">f</span><span class="o">:</span> <span class="o">((</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-</span> <span class="o">&gt;</span> <span class="k">&#39;</span><span class="n">c</span><span class="o">))</span> <span class="o">=</span>
+       <span class="k">fun</span> <span class="o">(</span><span class="n">a</span><span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span><span class="o">)</span> <span class="o">-&gt;</span>
+           <span class="k">fun</span> <span class="o">(</span><span class="n">b</span><span class="o">:</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span>
+               <span class="n">f</span><span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span> <span class="o">;;</span>
+
+
+   <span class="k">let</span> <span class="n">uncurry</span> <span class="o">(</span><span class="n">f</span><span class="o">:</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">c</span><span class="o">)</span> <span class="o">=</span>
+       <span class="k">fun</span> <span class="o">((</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span> <span class="o">:</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">))-&gt;</span> <span class="n">f</span> <span class="n">a</span> <span class="n">b</span> <span class="o">;;</span>
+
+
+<span class="n">check</span> <span class="n">that</span> <span class="o">::</span>
+
+   <span class="n">curry</span><span class="o">(</span><span class="n">uncurry</span> <span class="n">f</span><span class="o">)</span> <span class="o">=</span> <span class="n">id</span> <span class="n">at</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">c</span>
+   <span class="n">uncurry</span><span class="o">(</span><span class="n">curry</span> <span class="n">f</span><span class="o">)</span> <span class="o">=</span> <span class="n">id</span> <span class="n">at</span> <span class="o">(</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>A good analogy between currying and uncurrying and a law of numerical exponentials:
+Remember this is only an anology and it&#8217;s not a valid O&#8217;Caml code:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">curry</span>  <span class="o">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="o">)</span> <span class="o">**</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="o">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span><span class="o">)</span>
+<span class="n">uncurry</span> <span class="mi">2</span> <span class="o">**</span> <span class="o">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span><span class="o">)</span> <span class="o">=</span> <span class="o">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="o">)</span> <span class="o">**</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>The upshot of this is that currying and uncurrying establish an isomorphism between following types:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">*</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">-</span> <span class="o">&gt;</span> <span class="k">&#39;</span><span class="n">c</span> <span class="ow">and</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">b</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sum-type">
+<h2>Sum type:<a class="headerlink" href="#sum-type" title="Permalink to this headline">¶</a></h2>
+<p>As in mathematics for any two sets we have union of those two sets, in types we have a corresponding notion. It&#8217;s called sum types:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">type</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span><span class="o">,</span> <span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="n">sum</span> <span class="o">=</span>
+    <span class="o">|</span><span class="n">left</span> <span class="k">of</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span><span class="o">)</span>
+    <span class="o">|</span><span class="n">right</span> <span class="k">of</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">b</span><span class="o">)</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<p>There are two functions from product type to sum type:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="nc">ProductToSum1</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span> <span class="o">=</span> <span class="nc">Left</span> <span class="n">a</span> <span class="o">;;</span>
+<span class="nc">ProductToSum2</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span><span class="n">b</span><span class="o">)</span> <span class="o">=</span> <span class="nc">Right</span> <span class="n">b</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<p>Convince yourself that there can not be an isomorphism between sum type and product type.</p>
+</div>
+<div class="section" id="another-isomorphism">
+<h2>Another Isomorphism<a class="headerlink" href="#another-isomorphism" title="Permalink to this headline">¶</a></h2>
+<p>There is an isomorphism between the types <code class="docutils literal"><span class="pre">(bool</span> <span class="pre">-&gt;</span> <span class="pre">bool)</span></code> and <code class="docutils literal"><span class="pre">bool*bool</span></code>.</p>
+<p>In order to establish this ismorphism we need to implement a pair of functions which are inverse of each others; we call them enc and dec for encoding and decoding respectively.</p>
+<p>let&#8217;s see how we can define the decoding fnction. First, we should specify the type of decoding function:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">dec</span><span class="o">:</span> <span class="o">(</span><span class="kt">bool</span> <span class="o">-&gt;</span> <span class="kt">bool</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="kt">bool</span><span class="o">*</span><span class="kt">bool</span>
+</pre></div>
+</div>
+<p>And the function itself is defined as</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">dec</span><span class="o">:</span> <span class="o">(</span><span class="kt">bool</span> <span class="o">-&gt;</span> <span class="kt">bool</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="kt">bool</span><span class="o">*</span><span class="kt">bool</span> <span class="o">=</span>
+<span class="k">fun</span> <span class="o">(</span><span class="n">f</span><span class="o">:</span> <span class="kt">bool</span> <span class="o">-&gt;</span> <span class="kt">bool</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">f</span><span class="o">(</span><span class="bp">false</span><span class="o">),</span><span class="n">f</span><span class="o">(</span><span class="bp">true</span><span class="o">))</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<blockquote class="pull-quote">
+<div>How about the inverse?</div></blockquote>
+<p>Just by virtue of being the inverse of <code class="docutils literal"><span class="pre">dec</span></code>, the function <code class="docutils literal"><span class="pre">enc</span></code> can be uniquely defined.
+It means that starting from a pair <code class="docutils literal"><span class="pre">(a,b)</span></code> of type <code class="docutils literal"><span class="pre">bool*bool</span></code>, we  should have <code class="docutils literal"><span class="pre">dec(enc(a,b))</span> <span class="pre">=</span> <span class="pre">(a,b)</span></code>.
+So, what could <code class="docutils literal"><span class="pre">enc(a,b)</span></code> be?
+As it should be obviosu to you by now, it is the function <code class="docutils literal"><span class="pre">f</span></code> such that <code class="docutils literal"><span class="pre">f(flase)</span> <span class="pre">=</span> <span class="pre">a</span></code> and <code class="docutils literal"><span class="pre">f(true)</span> <span class="pre">=</span> <span class="pre">b</span></code></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types</a><ul>
+<li><a class="reference internal" href="#isomorphisms">Isomorphisms:</a></li>
+<li><a class="reference internal" href="#curry-and-uncurry">Curry and uncurry:</a></li>
+<li><a class="reference internal" href="#sum-type">Sum type:</a></li>
+<li><a class="reference internal" href="#another-isomorphism">Another Isomorphism</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="week5p.html" title="previous chapter">Week 5 programming: lists</a></li>
+      <li>Next: <a href="week5r-tne.html" title="next chapter">Week 5 reasoning: explanation for <code class="docutils literal"><span class="pre">tne</span></code> (exercise 4.3)</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Exercises/week5r-curry.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="week5r-tne.html" title="Week 5 reasoning: explanation for tne (exercise 4.3)"
+             >next</a></li>
+        <li class="right" >
+          <a href="week5p.html" title="Week 5 programming: lists"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
