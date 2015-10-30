@@ -1,6 +1,6 @@
-********************************************************
+*****************************************************************************
 Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types
-********************************************************
+*****************************************************************************
 
 .. highlight:: ocaml
 .. default-role:: code
@@ -10,7 +10,7 @@ Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types
 
 
 Isomorphisms:
-==================
+=============
 
 Suppose ``f`` is a way to assign a term ``b`` in ``'b`` for each term ``a`` in ``'a``, and ``g`` is a function that assigns to every term ``b`` in ``'b`` a term ``a`` in ``'a``. :: 
 
@@ -113,7 +113,7 @@ Convince yourself that there can not be an isomorphism between sum type and prod
 
 
 Another Isomorphism
-===============================================================
+===================
 
 There is an isomorphism between the types ``(bool -> bool)`` and ``bool*bool``. 
 
