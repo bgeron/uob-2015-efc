@@ -5,4 +5,4 @@ default:
 render:
 	make -C .. render
 publish:
-	make -C .. publis#h
+	make -C .. publish
