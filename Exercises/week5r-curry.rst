@@ -70,8 +70,8 @@ This is how we write the code for curry and uncurry functions::
 A good analogy between currying and uncurrying and a law of numerical exponentials:
 Remember this is only an anology and it's not a valid O'Caml code:: 
 
-    curry  (2 ** 3) ** 5 = 2 ** (3 * 5)
-    uncurry 2 ** (3 * 5) = (2 ** 3) ** 5
+    uncurry (2 ** 3) ** 5 = 2 ** (3 * 5)
+    curry   2 ** (3 * 5) = (2 ** 3) ** 5
 
 
 
