@@ -29,21 +29,30 @@ RENDER = _build/commit-render
 # This is called on every use. 
 find-src-commit = $(shell cd $(RENDER)/src && git rev-parse master)
 find-dest-tree = $(shell cd $(RENDER)/src && git rev-parse master)
+verify-ghpages-exists-cmd = git show-ref --verify -q refs/heads/gh-pages
 
 .PHONY: \
-	default render-setup render-update render-ensure-changes render-build \
-	reload-silent help clean html html-silent dirhtml singlehtml \
-	pickle json epub text changes linkcheck xml pseudoxml
+	changes clean default dirhtml epub fresh help html html-silent json linkcheck pickle preview pseudoxml publish reload-silent render render-ensure-changes render-setup render-update singlehtml text xml
 
 
 default: html reload-silent
+preview: html reload-silent
+
+clean:
+	rm -rf $(BUILDDIR)/*
+	@$(verify-ghpages-exists-cmd) && (git branch -d gh-pages >/dev/null 2>/dev/null || (echo; echo "* Discarding some renders that we made."; echo; git branch -D gh-pages)); true
+
+fresh: clean
+	git pull --no-edit
+
+
 
 # We use the .git/config files as a tag to see if the directories
 # have been set up correctly.
 
 $(RENDER)/src/.git/config $(RENDER)/dest/.git/config: 
 	# Check that gh-pages exists in the current directory, otherwise make it.
-	git show-ref --verify -q refs/heads/gh-pages || git branch gh-pages remotes/origin/gh-pages
+	$(verify-ghpages-exists-cmd) || git branch --track gh-pages remotes/origin/gh-pages
 
 	rm -rf $(RENDER)
 
@@ -131,9 +140,6 @@ help:
 	@echo "  pseudoxml  to make pseudoxml-XML files for display purposes"
 	@echo "  linkcheck  to check all external links for integrity"
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
-
-clean:
-	rm -rf $(BUILDDIR)/*
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html

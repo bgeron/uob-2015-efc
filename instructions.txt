@@ -3,11 +3,12 @@ Make some files
 - SSH to Wallace
 
 - cd uob-2015-efc
-- git pull
+
+- make fresh
 
 To preview:
 
-- make
+- make (or make preview)
 - Look in the _build/html directory
 
 When you're sure of your changes:
@@ -18,4 +19,4 @@ When you're sure of your changes:
 - make publish
 
 
-If something fails, running git pull again might make it work.
+If something fails, running 'make fresh' again might make it work.
