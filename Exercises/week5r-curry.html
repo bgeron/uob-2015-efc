@@ -105,8 +105,8 @@ If both f and g are sections and retractions then they must be inverses of each 
 </div>
 <p>A good analogy between currying and uncurrying and a law of numerical exponentials:
 Remember this is only an anology and it&#8217;s not a valid O&#8217;Caml code:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">curry</span>  <span class="o">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="o">)</span> <span class="o">**</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="o">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span><span class="o">)</span>
-<span class="n">uncurry</span> <span class="mi">2</span> <span class="o">**</span> <span class="o">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span><span class="o">)</span> <span class="o">=</span> <span class="o">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="o">)</span> <span class="o">**</span> <span class="mi">5</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">uncurry</span> <span class="o">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="o">)</span> <span class="o">**</span> <span class="mi">5</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">**</span> <span class="o">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span><span class="o">)</span>
+<span class="n">curry</span>   <span class="mi">2</span> <span class="o">**</span> <span class="o">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span><span class="o">)</span> <span class="o">=</span> <span class="o">(</span><span class="mi">2</span> <span class="o">**</span> <span class="mi">3</span><span class="o">)</span> <span class="o">**</span> <span class="mi">5</span>
 </pre></div>
 </div>
 <p>The upshot of this is that currying and uncurrying establish an isomorphism between following types:</p>
