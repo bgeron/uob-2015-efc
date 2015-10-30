@@ -6,3 +6,5 @@ render:
 	make -C .. render
 publish:
 	make -C .. publish
+clean:
+	make -C .. clean
