@@ -1,3 +1,8 @@
 default:
 
 	make -C .. default
+
+render:
+	make -C .. render
+publish:
+	make -C .. publis#h
