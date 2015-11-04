@@ -3,6 +3,8 @@
 Week 6: graphs
 **************
 
+:Subsite home page: http://bit.ly/focs-aux
+
 General strategy
 ================
 
