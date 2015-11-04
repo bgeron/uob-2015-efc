@@ -1,0 +1,53 @@
+# Generate image with:
+#
+#     neato -Tpng -o week6-graph.png week6-graph.dot
+
+graph {
+	graph [dpi=150]
+	edge [len=1.8]
+
+	A [label="A goes to S,T,Z"]
+	B [label="B goes to G,P,U,F"]
+	C [label="C goes to R,D,P"]
+	D [label="D goes to C,M"]
+	E [label="E goes to H"]
+	F [label="F goes to B,S"]
+	G [label="G goes to B"]
+	H [label="H goes to E,U"]
+	I [label="I goes to N,V"]
+	L [label="L goes to M,T"]
+	M [label="M goes to L,D"]
+	N [label="N goes to I"]
+	O [label="O goes to Z,S"]
+	P [label="P goes to B,C,R"]
+	R [label="R goes to C,P,S"]
+	S [label="S goes to A,R,F,O"]
+	T [label="T goes to A,L"]
+	U [label="U goes to B,H,V"]
+	V [label="V goes to U,I"]
+	Z [label="Z goes to A,O"]
+
+	A -- S
+	A -- T
+	A -- Z
+	B -- G
+	B -- P
+	B -- U
+	C -- R
+	D -- C
+	F -- B
+	H -- E
+	I -- N
+	L -- M
+	M -- D
+	O -- Z
+	P -- C
+	R -- P
+	R -- S
+	S -- F
+	S -- O
+	T -- L
+	U -- H
+	U -- V
+	V -- I
+}
