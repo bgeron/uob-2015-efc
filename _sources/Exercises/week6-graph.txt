@@ -3,6 +3,8 @@
 Week 6: graphs
 **************
 
+.. highlight:: ocaml
+
 :Subsite home page: http://bit.ly/focs-aux
 
 General strategy
@@ -10,7 +12,7 @@ General strategy
 
 *(This is not really code, nor pseudocode.)*
 
-*This is a description of what the algorithm does. This description is closer than the textual algorithm given in the lecture at 08:00 .*	
+*This is a description of what the algorithm does. This description is closer than the textual algorithm given in the lecture at 08:00 .*   
 
 Initialise the search tree using the initial state of the problem.
 
@@ -25,8 +27,8 @@ Note: depending on the expansion, goal, and strategy, there are **two** reasons 
 
 .. collapse::
 
-	1. If we don't filter out visited nodes, it's easy to get in an infinite loop.
-	2. If we filter out visited nodes, but there are infinitely many possible nodes, then we can get in an infinite loop.
+    1. If we don't filter out visited nodes, it's easy to get in an infinite loop.
+    2. If we filter out visited nodes, but there are infinitely many possible nodes, then we can get in an infinite loop.
 
 .. NOTE to Bram: slightly different from the algorithm shown, but matches the implementation.
 
@@ -36,13 +38,25 @@ Version 1
 =========
 
 .. literalinclude:: week6-graphlec-v1.ml
-	:language: ocaml
+    :language: ocaml
 
 Version 2
 =========
 
 .. literalinclude:: week6-graphlec.ml
-	:language: ocaml
+    :language: ocaml
+
+Simplification of ``expand``
+============================
+
+As discussed in the tutorial. ::
+
+    let rec expand node edges = match edges with
+      | [] -> []
+      | (n1, n2, _) :: edges ->
+              if n1 = node then n2 :: expand node edges
+              else if n2 = node then n1 :: expand node edges
+              else expand node edges
 
 
 Things to explain
@@ -56,4 +70,4 @@ Visualisation of data from the graph
 ====================================
 
 .. image:: week6-graph.png
-	:width: 100%
+    :width: 100%

@@ -213,6 +213,18 @@
 </pre></div>
 </div>
 </div>
+<div class="section" id="simplification-of-expand">
+<h2>Simplification of <code class="docutils literal"><span class="pre">expand</span></code><a class="headerlink" href="#simplification-of-expand" title="Permalink to this headline">¶</a></h2>
+<p>As discussed in the tutorial.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">expand</span> <span class="n">node</span> <span class="n">edges</span> <span class="o">=</span> <span class="k">match</span> <span class="n">edges</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span>
+  <span class="o">|</span> <span class="o">(</span><span class="n">n1</span><span class="o">,</span> <span class="n">n2</span><span class="o">,</span> <span class="o">_)</span> <span class="o">::</span> <span class="n">edges</span> <span class="o">-&gt;</span>
+          <span class="k">if</span> <span class="n">n1</span> <span class="o">=</span> <span class="n">node</span> <span class="k">then</span> <span class="n">n2</span> <span class="o">::</span> <span class="n">expand</span> <span class="n">node</span> <span class="n">edges</span>
+          <span class="k">else</span> <span class="k">if</span> <span class="n">n2</span> <span class="o">=</span> <span class="n">node</span> <span class="k">then</span> <span class="n">n1</span> <span class="o">::</span> <span class="n">expand</span> <span class="n">node</span> <span class="n">edges</span>
+          <span class="k">else</span> <span class="n">expand</span> <span class="n">node</span> <span class="n">edges</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="things-to-explain">
 <h2>Things to explain<a class="headerlink" href="#things-to-explain" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -239,6 +251,7 @@
 <li><a class="reference internal" href="#general-strategy">General strategy</a></li>
 <li><a class="reference internal" href="#version-1">Version 1</a></li>
 <li><a class="reference internal" href="#version-2">Version 2</a></li>
+<li><a class="reference internal" href="#simplification-of-expand">Simplification of <code class="docutils literal"><span class="pre">expand</span></code></a></li>
 <li><a class="reference internal" href="#things-to-explain">Things to explain</a></li>
 <li><a class="reference internal" href="#visualisation-of-data-from-the-graph">Visualisation of data from the graph</a></li>
 </ul>
