@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Week 7: tail recursion &mdash; UoB 2015 EFC auxiliary exercises</title>
+    
+    <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/collapse-details-polyfill.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '-',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/jquery.details.min.js"></script>
+    <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
+    <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
+    <link rel="prev" title="(Week 6: List exercises)" href="week6-list.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="week6-list.html" title="(Week 6: List exercises)"
+             accesskey="P">previous</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-7-tail-recursion">
+<h1>Week 7: tail recursion<a class="headerlink" href="#week-7-tail-recursion" title="Permalink to this headline">¶</a></h1>
+<p>We first recapped what tail recursion is.</p>
+<p>Then we recapped how to do <code class="docutils literal"><span class="pre">sum</span></code> tail-recursively, namely by writing a function <code class="docutils literal"><span class="pre">sum'</span></code> that accumulates the &#8220;sum so far&#8221;: <code class="docutils literal"><span class="pre">sum'</span> <span class="pre">xs</span> <span class="pre">n</span> <span class="pre">=</span> <span class="pre">n</span> <span class="pre">+</span> <span class="pre">sum</span> <span class="pre">xs</span></code>.</p>
+<p>Then we recapped how to do <code class="docutils literal"><span class="pre">rev</span></code> tail-recursively, namely by writing a function <code class="docutils literal"><span class="pre">revap</span></code> that accumulates the &#8220;rev so far&#8221;: <code class="docutils literal"><span class="pre">revap</span> <span class="pre">xs</span> <span class="pre">ys</span> <span class="pre">=</span> <span class="pre">rev</span> <span class="pre">xs</span> <span class="pre">&#64;</span> <span class="pre">ys</span></code>.</p>
+<p>Then we did <code class="docutils literal"><span class="pre">duplicates</span></code>.</p>
+<p>Dan wrote this on Facebook:</p>
+<blockquote>
+<div><p>A follow-on to Bram&#8217;s tutorial where he started to discuss the dup function (which duplicates all elements in a list as in <code class="docutils literal"><span class="pre">dup</span> <span class="pre">[1;2;3]</span> <span class="pre">=</span> <span class="pre">[1;1;2;2;3;3]</span></code>) and its tail-recursive implementation. Note that in a tail-recursive implementation the &#8216;accumulator&#8217; where you store the result will grow to the left and the &#8216;obvious&#8217; implementation of dup will end up with the list in reverse order:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">dup&#39;</span> <span class="n">xxs</span> <span class="o">=</span> <span class="k">function</span>
+<span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">xxs</span>
+<span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">dup&#39;</span> <span class="o">(</span><span class="n">x</span> <span class="o">::</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xxs</span><span class="o">)</span> <span class="n">xs</span>
+    <span class="o">#</span> <span class="n">dup&#39;</span> <span class="bp">[]</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">]</span> <span class="o">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">1</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>The obvious solution is to simply reverse the list produced by dup&#8217;:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">dup</span> <span class="n">xs</span> <span class="o">=</span> <span class="n">xs</span> <span class="o">|&gt;</span> <span class="n">dup&#39;</span> <span class="bp">[]</span> <span class="o">|&gt;</span> <span class="nn">List</span><span class="p">.</span><span class="n">rev</span>
+<span class="o">#</span> <span class="n">dup</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">4</span><span class="o">]</span> <span class="o">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>This may seem like wasteful and inefficient but remember that reversing a list, also a tail-recursive operation, is in fact very fast and dup will be quite efficient. Not as efficient as the non-tail-recursive implementation:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">dupn</span> <span class="o">=</span> <span class="k">function</span>
+    <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span>
+<span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">::</span> <span class="n">x</span> <span class="o">::</span> <span class="n">dupn</span> <span class="n">xs</span>
+</pre></div>
+</div>
+<p>But in the same ballpark, with the advantage of tail recursion!</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="c">(* benchmarking *)</span>
+<span class="k">let</span> <span class="k">rec</span> <span class="n">mkrlist</span> <span class="n">xs</span> <span class="o">=</span> <span class="k">function</span>
+<span class="o">|</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="n">xs</span>
+<span class="o">|</span> <span class="n">n</span> <span class="o">-&gt;</span> <span class="n">mkrlist</span> <span class="o">(</span><span class="nn">Random</span><span class="p">.</span><span class="n">bits</span> <span class="bp">()</span> <span class="o">::</span> <span class="n">xs</span><span class="o">)</span> <span class="o">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span>
+<span class="k">let</span> <span class="n">bm</span> <span class="n">f</span> <span class="n">n</span> <span class="o">=</span>
+<span class="k">let</span> <span class="n">l</span> <span class="o">=</span> <span class="n">mkrlist</span> <span class="bp">[]</span> <span class="n">n</span> <span class="k">in</span>
+<span class="k">let</span> <span class="n">t0</span> <span class="o">=</span> <span class="nn">Sys</span><span class="p">.</span><span class="n">time</span> <span class="bp">()</span> <span class="k">in</span>
+<span class="k">let</span> <span class="o">_</span> <span class="o">=</span> <span class="n">f</span> <span class="n">l</span> <span class="k">in</span>
+<span class="k">let</span> <span class="n">t1</span> <span class="o">=</span> <span class="nn">Sys</span><span class="p">.</span><span class="n">time</span> <span class="bp">()</span> <span class="k">in</span>
+<span class="n">print_float</span> <span class="o">(</span><span class="n">t1</span> <span class="o">-.</span> <span class="n">t0</span><span class="o">);</span> <span class="n">print_newline</span> <span class="bp">()</span>
+<span class="o">#</span> <span class="n">bm</span> <span class="n">dupn</span> <span class="mi">100000</span><span class="o">;;</span>
+<span class="mi">0</span><span class="o">.</span><span class="mi">028933</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">unit</span> <span class="o">=</span> <span class="bp">()</span>
+<span class="o">#</span> <span class="n">bm</span> <span class="n">dup</span> <span class="mi">100000</span><span class="o">;;</span>
+<span class="mi">0</span><span class="o">.</span><span class="mi">037415</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">unit</span> <span class="o">=</span> <span class="bp">()</span>
+<span class="o">#</span> <span class="n">bm</span> <span class="n">dupn</span> <span class="mi">1000000</span><span class="o">;;</span>
+<span class="nc">Stack</span> <span class="n">overflow</span> <span class="n">during</span> <span class="n">evaluation</span> <span class="o">(</span><span class="n">looping</span> <span class="n">recursion</span><span class="o">?).</span>
+<span class="o">#</span> <span class="n">bm</span> <span class="n">dup</span> <span class="mi">1000000</span><span class="o">;;</span>
+<span class="mi">0</span><span class="o">.</span><span class="mi">299246</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">unit</span> <span class="o">=</span> <span class="bp">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Bram added:</p>
+<blockquote>
+<div><p>Great explanation, thanks!</p>
+<p>To do it equation-style, <code class="docutils literal"><span class="pre">dup'</span></code> is doing</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">dup&#39;</span> <span class="n">xxs</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">rev</span> <span class="o">(</span><span class="n">dup</span> <span class="n">ys</span><span class="o">)</span> <span class="o">@</span> <span class="n">xxs</span>
+</pre></div>
+</div>
+<p>and an example equation we have is</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">dup&#39;</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">]</span>
+<span class="o">=</span> <span class="n">rev</span> <span class="o">(</span><span class="n">dup</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">])</span> <span class="o">@</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+<span class="o">=</span> <span class="n">rev</span> <span class="o">(</span><span class="mi">4</span> <span class="o">::</span> <span class="mi">4</span> <span class="o">::</span> <span class="n">dup</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">])</span> <span class="o">@</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+<span class="o">=</span> <span class="n">rev</span> <span class="o">([</span><span class="mi">4</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span> <span class="o">@</span> <span class="n">dup</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">])</span> <span class="o">@</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+<span class="o">=</span> <span class="n">rev</span> <span class="o">(</span><span class="n">dup</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">])</span> <span class="o">@</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span> <span class="o">@</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+<span class="o">=</span> <span class="n">rev</span> <span class="o">(</span><span class="n">dup</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">])</span> <span class="o">@</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span>
+<span class="o">=</span> <span class="n">rev</span> <span class="o">(</span><span class="n">dup</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">])</span> <span class="o">@</span> <span class="o">(</span><span class="mi">4</span> <span class="o">::</span> <span class="mi">4</span> <span class="o">::</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">])</span>
+<span class="o">=</span> <span class="n">dup&#39;</span> <span class="o">(</span><span class="mi">4</span> <span class="o">::</span> <span class="mi">4</span> <span class="o">::</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">])</span> <span class="o">[</span><span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>so we know</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">dup&#39;</span> <span class="n">xxs</span> <span class="o">(</span><span class="n">y</span><span class="o">::</span><span class="n">ys</span><span class="o">)</span> <span class="o">=</span> <span class="n">dup&#39;</span> <span class="o">(</span><span class="n">y</span> <span class="o">::</span> <span class="n">y</span> <span class="o">::</span> <span class="n">xxs</span><span class="o">)</span> <span class="n">ys</span>
+</pre></div>
+</div>
+<p>and this is how Dan made the tail-recursive implementation of <code class="docutils literal"><span class="pre">dup'</span></code>. To find <code class="docutils literal"><span class="pre">dup</span> <span class="pre">xs</span></code> for any <code class="docutils literal"><span class="pre">xs</span></code>, just compute <code class="docutils literal"><span class="pre">rev</span> <span class="pre">(dup</span> <span class="pre">xs)</span> <span class="pre">&#64;</span> <span class="pre">[]</span></code> which is just <code class="docutils literal"><span class="pre">rev</span> <span class="pre">(dup</span> <span class="pre">xs)</span></code>, and re-reverse the result.</p>
+<p>As with sum and rev in the tutorial, we first make a more complicated version (<code class="docutils literal"><span class="pre">sum'</span></code>, <code class="docutils literal"><span class="pre">revap</span></code>, <code class="docutils literal"><span class="pre">dup'</span></code>) so we can make an efficient version of the simple thing (<code class="docutils literal"><span class="pre">sum</span></code>, <code class="docutils literal"><span class="pre">rev</span></code>, <code class="docutils literal"><span class="pre">dup</span></code>).</p>
+<p>Note: the arguments are in a different order than in the actual tutorial, I think.</p>
+</div></blockquote>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="week6-list.html" title="previous chapter">(Week 6: List exercises)</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Exercises/week7-tailrecursion.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="week6-list.html" title="(Week 6: List exercises)"
+             >previous</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
