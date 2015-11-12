@@ -1,6 +1,7 @@
-********************************************************
+
+********************************************************************
 Week 7: Explanation for exercise 6.1 (Symmetric Difference of Lists)
-********************************************************
+********************************************************************
 
 .. highlight:: ocaml
 .. default-role:: code
@@ -32,7 +33,7 @@ We do this exercise in three steps:
 
 
 First step:
-==========
+===========
 
 First we define a function called subdif that takes a list and an entry and returns a list with all elements different than the given entry ::
 
@@ -107,7 +108,7 @@ Final step:
 
 
 
-Now finally we can define symmetric difference function ``diff`` ::
+Now finally we can define symmetric difference function ``diff``.
 
 
 It has the type ::
