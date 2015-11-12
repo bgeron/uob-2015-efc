@@ -43,7 +43,7 @@ clean:
 	@$(verify-ghpages-exists-cmd) && (git branch -d gh-pages >/dev/null 2>/dev/null || (echo; echo "* Discarding some renders that we made."; echo; git branch -D gh-pages)); true
 
 fresh: clean
-	git pull --no-edit
+	git pull
 
 
 
