@@ -13,7 +13,7 @@ To preview:
 
 When you're sure of your changes:
 
-- git add <new file 1> <new file 2>...
+- git add newfile1
 - git commit -am 'some descriptive message'
 - make render
 - make publish
