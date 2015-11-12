@@ -8,3 +8,5 @@ publish:
 	make -C .. publish
 clean:
 	make -C .. clean
+fresh:
+	make -C .. fresh
