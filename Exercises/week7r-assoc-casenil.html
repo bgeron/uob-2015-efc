@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Week 7: Proof of Ecercise 7.3. Casenil Part (Induction Base) &mdash; UoB 2015 EFC auxiliary exercises</title>
+    
+    <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/collapse-details-polyfill.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '-',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/jquery.details.min.js"></script>
+    <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
+    <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
+    <link rel="next" title="Week 7: Explanation for exercise 6.1 (Symmetric Difference of Lists)" href="week7r-symmdiff.html" />
+    <link rel="prev" title="Week 7: tail recursion" href="week7-tailrecursion.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="week7r-symmdiff.html" title="Week 7: Explanation for exercise 6.1 (Symmetric Difference of Lists)"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="week7-tailrecursion.html" title="Week 7: tail recursion"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-7-proof-of-ecercise-7-3-casenil-part-induction-base">
+<h1>Week 7: Proof of Ecercise 7.3. Casenil Part (Induction Base)<a class="headerlink" href="#week-7-proof-of-ecercise-7-3-casenil-part-induction-base" title="Permalink to this headline">¶</a></h1>
+<p>Signatures:</p>
+<div class="highlight-python"><div class="highlight"><pre>app  : _a list -&gt; _a list -&gt; _a list ;
+</pre></div>
+</div>
+<p>Definitions:</p>
+<div class="highlight-python"><div class="highlight"><pre>[app nil] : forall xs : _a list .
+            app [] xs = xs : _a list ;
+[app xs]  : forall xs : _a list . forall x : _a . forall ys : _a list .
+            app (x::xs) ys = x :: app xs ys : _a list ;
+</pre></div>
+</div>
+<p>Theorem [Lemma]:</p>
+<div class="highlight-python"><div class="highlight"><pre>Statement: forall xs: _a list . forall ys : _a list . forall zs: _a list .
+app (app xs ys) zs = app xs (app ys zs)     : _a list
+    Proof:
+    by induction on list:
+
+
+    case nil:
+        assume ys : _a list .
+            assume zs : _a list .
+            we know [prem 1] : app [] ys = ys : _a list
+               because [app nil] with (ys).
+
+            we know [prem 2] : app [] (app ys zs) = (app ys zs) : _a list
+       because [app nil] with (app ys zs).
+
+    we know [step 1] : app (app [] ys) zs = app ys zs : _a list
+           because equality on ([prem 1]).
+
+    we know [step 2] : app (app [] ys) zs = app [] (app ys zs): _a list
+       because equality on ([step 1];[prem 2]).
+
+            by [step 2]
+
+    case (x::xs) : [IH] .
+    TODO
+QED.
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="week7-tailrecursion.html" title="previous chapter">Week 7: tail recursion</a></li>
+      <li>Next: <a href="week7r-symmdiff.html" title="next chapter">Week 7: Explanation for exercise 6.1 (Symmetric Difference of Lists)</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Exercises/week7r-assoc-casenil.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="week7r-symmdiff.html" title="Week 7: Explanation for exercise 6.1 (Symmetric Difference of Lists)"
+             >next</a></li>
+        <li class="right" >
+          <a href="week7-tailrecursion.html" title="Week 7: tail recursion"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
