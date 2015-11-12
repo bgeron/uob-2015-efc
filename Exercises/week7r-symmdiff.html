@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Week 7: Explanation for exercise 6.1 (Symmetric Difference of Lists) &mdash; UoB 2015 EFC auxiliary exercises</title>
+    
+    <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/collapse-details-polyfill.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '-',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/jquery.details.min.js"></script>
+    <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
+    <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
+    <link rel="prev" title="Week 7: tail recursion" href="week7-tailrecursion.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="week7-tailrecursion.html" title="Week 7: tail recursion"
+             accesskey="P">previous</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-7-explanation-for-exercise-6-1-symmetric-difference-of-lists">
+<h1>Week 7: Explanation for exercise 6.1 (Symmetric Difference of Lists)<a class="headerlink" href="#week-7-explanation-for-exercise-6-1-symmetric-difference-of-lists" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">Subsite home page:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body"><a class="reference external" href="http://bit.ly/focs-aux">http://bit.ly/focs-aux</a></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="exercise-6-1">
+<h2>Exercise 6.1<a class="headerlink" href="#exercise-6-1" title="Permalink to this headline">¶</a></h2>
+<p>Implement the function <code class="docutils literal"><span class="pre">diff</span></code> which computes the symmetric difference of two lists, which means collecting all of the elements that appear only in one of the lists. The order of the remaining elements should stay unchanged.
+Remember we are interested in collecting elements that appear exactly in one of the lists. In particular, elements that appear in both lists <code class="docutils literal"><span class="pre">l1</span></code> and <code class="docutils literal"><span class="pre">l2</span></code> should not be in <code class="docutils literal"><span class="pre">diff</span> <span class="pre">l1</span> <span class="pre">l2</span></code> .</p>
+<p>Example:</p>
+<p><code class="docutils literal"><span class="pre">l1</span> <span class="pre">=</span> <span class="pre">[1;2;3;2;3]</span></code></p>
+<p><code class="docutils literal"><span class="pre">l2</span> <span class="pre">=</span> <span class="pre">[3;4;3]</span></code></p>
+<p><code class="docutils literal"><span class="pre">diff</span> <span class="pre">l1</span> <span class="pre">l2</span> <span class="pre">=</span> <span class="pre">[1;2;2;4]</span></code></p>
+<p>We do this exercise in three steps:</p>
+</div>
+<div class="section" id="first-step">
+<h2>First step:<a class="headerlink" href="#first-step" title="Permalink to this headline">¶</a></h2>
+<p>First we define a function called subdif that takes a list and an entry and returns a list with all elements different than the given entry</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">subdif</span><span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span>
+</pre></div>
+</div>
+<p>Let&#8217;s see how subdif works</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">subdif</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">]</span> <span class="mi">3</span> <span class="o">=</span>
+<span class="mi">1</span> <span class="o">::</span> <span class="n">subdif</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">]</span> <span class="mi">3</span> <span class="o">=</span>
+<span class="mi">1</span> <span class="o">::</span> <span class="mi">2</span> <span class="o">::</span> <span class="n">subdif</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">]</span> <span class="mi">3</span> <span class="o">=</span>
+<span class="mi">1</span> <span class="o">::</span> <span class="mi">2</span> <span class="o">::</span> <span class="n">subdif</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">]</span> <span class="mi">3</span> <span class="o">=</span>
+<span class="mi">1</span> <span class="o">::</span> <span class="mi">2</span> <span class="o">::</span> <span class="mi">2</span> <span class="o">::</span> <span class="n">subdif</span> <span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="mi">3</span> <span class="o">=</span>
+<span class="mi">1</span> <span class="o">::</span> <span class="mi">2</span> <span class="o">::</span> <span class="mi">2</span> <span class="o">::</span> <span class="bp">[]</span> <span class="o">=</span>
+<span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">2</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>And this is how we define the function <code class="docutils literal"><span class="pre">subdif</span></code></p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="nc">Let</span> <span class="k">rec</span> <span class="n">subdif</span> <span class="n">l</span> <span class="n">ent</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+                      <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span>
+                      <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">ent</span><span class="o">)</span> <span class="k">then</span> <span class="n">subdif</span> <span class="n">xs</span> <span class="n">ent</span>
+                        <span class="k">else</span> <span class="n">x</span> <span class="o">::</span> <span class="n">subdif</span> <span class="n">xs</span> <span class="n">ent</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="second-step">
+<h2>Second step:<a class="headerlink" href="#second-step" title="Permalink to this headline">¶</a></h2>
+<p>In the second step, we define another function which we call <code class="docutils literal"><span class="pre">prediff</span></code>.
+We expect this function to take two lists <code class="docutils literal"><span class="pre">l1</span></code> and <code class="docutils literal"><span class="pre">l2</span></code> and return all of elements in <code class="docutils literal"><span class="pre">l1</span></code> which are not in <code class="docutils literal"><span class="pre">l2</span></code>.
+Note that this function is not symmetric with respect to the two lists <code class="docutils literal"><span class="pre">l1</span></code> and <code class="docutils literal"><span class="pre">l2</span></code>. So, this cannot be our final answer.</p>
+<p>The type of this function would then be</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">predif</span><span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span> <span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span>
+</pre></div>
+</div>
+<p>And the function itself is</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="nc">Let</span> <span class="k">rec</span> <span class="n">predif</span> <span class="n">l1</span> <span class="n">l2</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l2</span> <span class="k">with</span>
+                   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">l1</span>
+                   <span class="o">|</span> <span class="n">x</span> <span class="o">::</span><span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">predif</span> <span class="o">(</span><span class="n">subdif</span> <span class="n">l1</span> <span class="n">x</span><span class="o">)</span> <span class="n">xs</span> <span class="o">;;</span>
+</pre></div>
+</div>
+<p>Now let&#8217;s look at some computation done with the function we just defined</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">predif</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">]</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span><span class="mi">4</span><span class="o">;</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span>
+<span class="n">predif</span> <span class="o">(</span><span class="n">subdif</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">]</span> <span class="mi">3</span><span class="o">)</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span>
+<span class="n">predif</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">2</span><span class="o">]</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span>
+<span class="n">predif</span> <span class="o">(</span><span class="n">subdif</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">2</span><span class="o">]</span> <span class="mi">4</span><span class="o">)</span> <span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span>
+<span class="n">predif</span> <span class="o">([</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">2</span><span class="o">])</span> <span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span>
+<span class="n">predif</span> <span class="o">(</span><span class="n">subdif</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">2</span><span class="o">]</span> <span class="mi">3</span><span class="o">)</span> <span class="bp">[]</span> <span class="o">=</span>
+<span class="n">predif</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">2</span><span class="o">]</span> <span class="bp">[]</span> <span class="o">=</span>
+<span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">2</span><span class="o">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="final-step">
+<h2>Final step:<a class="headerlink" href="#final-step" title="Permalink to this headline">¶</a></h2>
+<p>Now finally we can define symmetric difference function <code class="docutils literal"><span class="pre">diff</span></code></p>
+<p>It has the type</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">diff</span><span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span>
+</pre></div>
+</div>
+<p>And the function itself</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="nc">Let</span> <span class="k">rec</span> <span class="n">subdif</span> <span class="n">l</span> <span class="n">ent</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+                    <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span>
+                    <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span>
+                      <span class="k">if</span> <span class="o">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">ent</span><span class="o">)</span> <span class="k">then</span> <span class="n">subdif</span> <span class="n">xs</span> <span class="n">ent</span>
+                      <span class="k">else</span> <span class="n">x</span> <span class="o">::</span> <span class="n">subdif</span> <span class="n">xs</span> <span class="n">ent</span>
+
+
+<span class="nc">Let</span> <span class="k">rec</span> <span class="n">predif</span> <span class="n">l1</span> <span class="n">l2</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l2</span> <span class="k">with</span>
+                    <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">l1</span>
+                    <span class="o">|</span> <span class="n">x</span> <span class="o">::</span><span class="n">xs</span> <span class="o">-&gt;</span> <span class="n">predif</span> <span class="o">(</span><span class="n">subdif</span> <span class="n">l1</span> <span class="n">x</span><span class="o">)</span> <span class="n">xs</span>
+
+
+
+<span class="nc">Let</span> <span class="k">rec</span> <span class="n">diff</span> <span class="n">l1</span> <span class="n">l2</span> <span class="o">=</span> <span class="n">append</span> <span class="o">(</span><span class="n">predif</span> <span class="n">l1</span> <span class="n">l2</span><span class="o">)</span> <span class="o">(</span><span class="n">predif</span> <span class="n">l2</span> <span class="n">l1</span><span class="o">)</span> <span class="o">;;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="a-set-theoretical-remark">
+<h2>A set theoretical remark:<a class="headerlink" href="#a-set-theoretical-remark" title="Permalink to this headline">¶</a></h2>
+<p>It&#8217;s hard to not notice that our definition of symmetric difference of lists is analogous to of symmetric difference of sets, except that the case of sets is even simpler because we don&#8217;t care about maintaining the order while we are taking the difference.</p>
+<p>In other words, since sets do not have order structure, there is nothing to be checked about order preservation.</p>
+<p>For symmetric difference of sets look at:  <a class="reference external" href="https://en.wikipedia.org/wiki/Symmetric_difference">https://en.wikipedia.org/wiki/Symmetric_difference</a></p>
+</div>
+<div class="section" id="a-different-and-shorter-solution">
+<h2>A different and shorter solution:<a class="headerlink" href="#a-different-and-shorter-solution" title="Permalink to this headline">¶</a></h2>
+<p>Remark: There is a library function val filter which you might find useful in order to come up with another solution for this exercise:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">val</span> <span class="n">filter</span> <span class="o">:</span> <span class="o">(</span><span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">bool</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">filter</span> <span class="pre">p</span> <span class="pre">l</span></code> returns all the elements of the list <code class="docutils literal"><span class="pre">l</span></code> that satisfy the predicate <code class="docutils literal"><span class="pre">p</span></code>. The order of the elements in the input list is preserved.</p>
+<p>The following function computes symmetric difference</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">predif</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">filter</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">not</span> <span class="o">(</span><span class="n">mem</span> <span class="n">x</span> <span class="n">ys</span><span class="o">))</span> <span class="n">xs</span>
+</pre></div>
+</div>
+<p>where</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">val</span> <span class="n">mem</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="kt">bool</span>
+<span class="n">mem</span> <span class="n">a</span> <span class="n">l</span> <span class="n">is</span> <span class="bp">true</span> <span class="k">if</span> <span class="ow">and</span> <span class="n">only</span> <span class="k">if</span> <span class="n">a</span> <span class="n">is</span> <span class="n">equal</span> <span class="k">to</span> <span class="n">an</span> <span class="n">element</span> <span class="k">of</span> <span class="n">l</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 7: Explanation for exercise 6.1 (Symmetric Difference of Lists)</a><ul>
+<li><a class="reference internal" href="#exercise-6-1">Exercise 6.1</a></li>
+<li><a class="reference internal" href="#first-step">First step:</a></li>
+<li><a class="reference internal" href="#second-step">Second step:</a></li>
+<li><a class="reference internal" href="#final-step">Final step:</a></li>
+<li><a class="reference internal" href="#a-set-theoretical-remark">A set theoretical remark:</a></li>
+<li><a class="reference internal" href="#a-different-and-shorter-solution">A different and shorter solution:</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="week7-tailrecursion.html" title="previous chapter">Week 7: tail recursion</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Exercises/week7r-symmdiff.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="week7-tailrecursion.html" title="Week 7: tail recursion"
+             >previous</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
