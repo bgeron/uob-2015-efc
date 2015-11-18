@@ -106,6 +106,7 @@ render: render-update render-ensure-changes
 	@echo "* These changes you made (if any) are not included in the latest build."
 	@echo
 	@git diff ${find-src-commit} | diffstat
+	@git st -su
 	@echo
 
 	git fetch $(RENDER)/dest +gh-pages:gh-pages
