@@ -49,7 +49,7 @@ Question:
         # split [1;2;3;3;2;2;1;1];;
         - : int list list = [[1]; [2]; [3; 3]; [2; 2]; [1; 1]]
 
-We found this in the tutorial:
+We found this in the tutorial::
 
     let rec split l = match l with
           | [] -> []
