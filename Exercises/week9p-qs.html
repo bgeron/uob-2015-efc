@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Week 9: programming assignments from week 8 &mdash; UoB 2015 EFC auxiliary exercises</title>
+    
+    <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/collapse-details-polyfill.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '-',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../_static/jquery.details.min.js"></script>
+    <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
+    <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
+    <link rel="prev" title="Week 8: Full Proof of Associativity:" href="week8r-asoc-rev.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="week8r-asoc-rev.html" title="Week 8: Full Proof of Associativity:"
+             accesskey="P">previous</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="week-9-programming-assignments-from-week-8">
+<h1>Week 9: programming assignments from week 8<a class="headerlink" href="#week-9-programming-assignments-from-week-8" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="q8-1">
+<h2>Q8.1<a class="headerlink" href="#q8-1" title="Permalink to this headline">¶</a></h2>
+<p>Question:</p>
+<blockquote class="pull-quote">
+<div><p>Write an OCaml function that will substitute all occurrences of an element in a list by a different element. The argument will have small-to-moderate size and performance considerations are not critical.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">#</span> <span class="n">replace</span><span class="o">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
+<span class="o">#</span> <span class="n">replace</span> <span class="mi">2</span> <span class="mi">0</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">4</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">1</span><span class="o">];;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">0</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">0</span><span class="o">;</span> <span class="mi">1</span><span class="o">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>We found this in the tutorial:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">replace</span> <span class="n">a</span> <span class="n">b</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span>
+  <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="n">a</span>
+               <span class="k">then</span> <span class="n">b</span> <span class="o">::</span> <span class="o">(</span><span class="n">replace</span> <span class="n">a</span> <span class="n">b</span> <span class="n">xs</span><span class="o">)</span>
+               <span class="k">else</span> <span class="n">x</span> <span class="o">::</span> <span class="o">(</span><span class="n">replace</span> <span class="n">a</span> <span class="n">b</span> <span class="n">xs</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>Model solution: <a class="reference external" href="https://github.com/Duta/focs-2015-16/blob/master/solutions/week-8/exercise-1/wk8ex1.ml">https://github.com/Duta/focs-2015-16/blob/master/solutions/week-8/exercise-1/wk8ex1.ml</a></p>
+</div>
+<div class="section" id="q8-2">
+<h2>Q8.2<a class="headerlink" href="#q8-2" title="Permalink to this headline">¶</a></h2>
+<p>Question:</p>
+<blockquote class="pull-quote">
+<div><p>Write an OCaml function that splits a list into list segments containing only identical elements. The function must work on small-to-moderate size lists. Performance of implementation is not critical.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">#</span> <span class="n">split</span><span class="o">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
+<span class="o">#</span> <span class="n">split</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">4</span><span class="o">;</span><span class="mi">4</span><span class="o">;</span><span class="mi">5</span><span class="o">;</span><span class="mi">6</span><span class="o">];;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">[[</span><span class="mi">1</span><span class="o">];</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">2</span><span class="o">];</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">3</span><span class="o">];</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">4</span><span class="o">];</span> <span class="o">[</span><span class="mi">5</span><span class="o">];</span> <span class="o">[</span><span class="mi">6</span><span class="o">]]</span>
+<span class="o">#</span> <span class="n">split</span> <span class="bp">[]</span><span class="o">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="kt">list</span> <span class="o">=</span> <span class="bp">[]</span>
+<span class="o">#</span> <span class="n">split</span> <span class="o">[</span><span class="mi">1</span><span class="o">];;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">[[</span><span class="mi">1</span><span class="o">]]</span>
+<span class="o">#</span> <span class="n">split</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">1</span><span class="o">;</span><span class="mi">1</span><span class="o">];;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">[[</span><span class="mi">1</span><span class="o">];</span> <span class="o">[</span><span class="mi">2</span><span class="o">];</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">3</span><span class="o">];</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">2</span><span class="o">];</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">1</span><span class="o">]]</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>We found this in the tutorial:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>let rec split l = match l with</dt>
+<dd><div class="first last line-block">
+<div class="line">[] -&gt; []</div>
+<div class="line">x :: xs -&gt; let ys = split xs in
+match ys with
+| [] -&gt; [[x]]
+| z :: zs -&gt; if x = List.hd z then (x :: z) :: zs
+             else [x] :: ys
+         ;;</div>
+</div>
+</dd>
+</dl>
+</div></blockquote>
+<p>Model solution: <a class="reference external" href="https://github.com/Duta/focs-2015-16/tree/master/solutions/week-8/exercise-2">https://github.com/Duta/focs-2015-16/tree/master/solutions/week-8/exercise-2</a></p>
+</div>
+<div class="section" id="q8-3a">
+<h2>Q8.3a<a class="headerlink" href="#q8-3a" title="Permalink to this headline">¶</a></h2>
+<p>Question:</p>
+<blockquote class="pull-quote">
+<div><p>You are given two lists that have as elements either integers or characters. The characters stand for variables of unknown values. You need to solve the following puzzle: Is there a way to give values to variables so that the two lists are equal?</p>
+<p>For example [x, 1, x] and [3, y, 3] is solvable for x = 3 and y = 1 whereas [x, x, 0] and [1, 2, z] is not solvable.</p>
+<p>Your task is to write an OCaml function that checks whether a puzzle is solvable or not.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">type</span> <span class="n">puzzle</span> <span class="o">=</span> <span class="nc">K</span> <span class="k">of</span> <span class="kt">int</span> <span class="o">|</span> <span class="nc">U</span> <span class="k">of</span> <span class="kt">char</span>
+
+<span class="o">#</span> <span class="n">solvable</span><span class="o">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="n">puzzle</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="n">puzzle</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
+
+<span class="o">#</span> <span class="n">solvable</span> <span class="o">[</span><span class="nc">U</span> <span class="sc">&#39;x&#39;</span><span class="o">;</span> <span class="nc">K</span> <span class="mi">1</span><span class="o">;</span> <span class="nc">U</span> <span class="sc">&#39;x&#39;</span><span class="o">]</span> <span class="o">[</span><span class="nc">K</span> <span class="mi">3</span><span class="o">;</span> <span class="nc">U</span> <span class="sc">&#39;y&#39;</span><span class="o">;</span> <span class="nc">K</span> <span class="mi">3</span><span class="o">]</span> <span class="o">;;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">bool</span> <span class="o">=</span> <span class="bp">true</span>
+<span class="o">#</span> <span class="n">solvable</span> <span class="o">[</span><span class="nc">U</span> <span class="sc">&#39;x&#39;</span><span class="o">;</span> <span class="nc">U</span> <span class="sc">&#39;x&#39;</span><span class="o">;</span> <span class="nc">K</span> <span class="mi">0</span><span class="o">]</span> <span class="o">[</span><span class="nc">K</span> <span class="mi">1</span><span class="o">;</span> <span class="nc">K</span> <span class="mi">2</span><span class="o">;</span> <span class="nc">U</span> <span class="sc">&#39;z&#39;</span><span class="o">];;</span>
+<span class="o">-</span> <span class="o">:</span> <span class="kt">bool</span> <span class="o">=</span> <span class="bp">false</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Model solution: <a class="reference external" href="https://github.com/Duta/focs-2015-16/tree/master/solutions/week-8/exercise-3a">https://github.com/Duta/focs-2015-16/tree/master/solutions/week-8/exercise-3a</a></p>
+<hr class="docutils" />
+<p><strong>In the below solutions, I have fixed a bug since the tutorial.</strong></p>
+<p>We found this in the tutorial:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">true</span>
+  <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="bp">false</span>
+  <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">false</span>
+  <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span>
+      <span class="k">match</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span> <span class="k">with</span>
+       <span class="o">|</span> <span class="nc">K</span> <span class="n">b&#39;</span><span class="o">,</span> <span class="nc">K</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">b&#39;</span> <span class="o">=</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">solvable</span> <span class="n">bs</span> <span class="n">cs</span><span class="o">)</span>
+       <span class="o">|</span> <span class="nc">U</span> <span class="n">b&#39;</span><span class="o">,</span> <span class="nc">K</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="n">solvable</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="o">(</span><span class="nc">K</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="n">bs</span><span class="o">)</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="o">(</span><span class="nc">K</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="n">cs</span><span class="o">)</span>
+       <span class="o">|</span> <span class="nc">K</span> <span class="n">b&#39;</span><span class="o">,</span> <span class="nc">U</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="n">solvable</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="o">(</span><span class="nc">K</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">bs</span><span class="o">)</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="o">(</span><span class="nc">K</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">cs</span><span class="o">)</span>
+       <span class="o">|</span> <span class="nc">U</span> <span class="n">b&#39;</span><span class="o">,</span> <span class="nc">U</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="n">solvable</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="o">(</span><span class="nc">U</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="n">bs</span><span class="o">)</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="o">(</span><span class="nc">U</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="n">cs</span><span class="o">);;</span>
+</pre></div>
+</div>
+<p>Alternatively, this:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">true</span>
+  <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="bp">false</span>
+  <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">false</span>
+  <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span>
+      <span class="k">match</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span> <span class="k">with</span>
+       <span class="o">|</span> <span class="nc">K</span> <span class="n">b&#39;</span><span class="o">,</span> <span class="nc">K</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">b&#39;</span> <span class="o">=</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">solvable</span> <span class="n">bs</span> <span class="n">cs</span><span class="o">)</span>
+       <span class="o">|</span> <span class="nc">U</span> <span class="n">b&#39;</span><span class="o">,</span> <span class="nc">K</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="n">solvable</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">c</span> <span class="n">bs</span><span class="o">)</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">c</span> <span class="n">cs</span><span class="o">)</span>
+       <span class="o">|</span> <span class="nc">K</span> <span class="n">b&#39;</span><span class="o">,</span> <span class="nc">U</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="n">solvable</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="n">b</span> <span class="n">bs</span><span class="o">)</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="n">b</span> <span class="n">cs</span><span class="o">)</span>
+       <span class="o">|</span> <span class="nc">U</span> <span class="n">b&#39;</span><span class="o">,</span> <span class="nc">U</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="n">solvable</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">c</span> <span class="n">bs</span><span class="o">)</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">c</span> <span class="n">cs</span><span class="o">);;</span>
+</pre></div>
+</div>
+<p>Alternatively, this:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">true</span>
+  <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="bp">false</span>
+  <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">false</span>
+  <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span>
+      <span class="k">match</span> <span class="n">b</span><span class="o">,</span> <span class="n">c</span> <span class="k">with</span>
+       <span class="o">|</span> <span class="nc">K</span> <span class="n">b&#39;</span><span class="o">,</span> <span class="nc">K</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">b&#39;</span> <span class="o">=</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">solvable</span> <span class="n">bs</span> <span class="n">cs</span><span class="o">)</span>
+       <span class="o">|</span> <span class="nc">U</span> <span class="n">b&#39;</span><span class="o">,</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="n">solvable</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">c</span> <span class="n">bs</span><span class="o">)</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">c</span> <span class="n">cs</span><span class="o">)</span>
+       <span class="o">|</span> <span class="o">_,</span> <span class="nc">U</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="n">solvable</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="n">b</span> <span class="n">bs</span><span class="o">)</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="n">b</span> <span class="n">cs</span><span class="o">);;</span>
+</pre></div>
+</div>
+<p>In a sense, this is nicer because we have fewer cases. But it&#8217;s a matter of taste.</p>
+<p>Alternatively, this:</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
+  <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">true</span>
+  <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="bp">false</span>
+  <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">false</span>
+  <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span>
+      <span class="k">match</span> <span class="n">b</span> <span class="k">with</span>
+       <span class="o">|</span> <span class="nc">K</span> <span class="n">b&#39;</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="k">match</span> <span class="n">c</span> <span class="k">with</span>
+                  <span class="o">|</span> <span class="nc">U</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="n">solvable</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="o">(</span><span class="nc">K</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">bs</span><span class="o">)</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">c&#39;</span><span class="o">)</span> <span class="o">(</span><span class="nc">K</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">cs</span><span class="o">)</span>
+                  <span class="o">|</span> <span class="nc">K</span> <span class="n">c&#39;</span> <span class="o">-&gt;</span> <span class="n">b&#39;</span> <span class="o">=</span> <span class="n">c&#39;</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">solvable</span> <span class="n">bs</span> <span class="n">cs</span><span class="o">))</span>
+       <span class="o">|</span> <span class="nc">U</span> <span class="n">b&#39;</span> <span class="o">-&gt;</span> <span class="n">solvable</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">c</span> <span class="n">bs</span><span class="o">)</span> <span class="o">(</span><span class="n">replace</span> <span class="o">(</span><span class="nc">U</span> <span class="n">b&#39;</span><span class="o">)</span> <span class="n">c</span> <span class="n">cs</span><span class="o">);;</span>
+</pre></div>
+</div>
+<p>(In the last program, I had to add parentheses around the inner match otherwise OCaml would think that <code class="docutils literal"><span class="pre">|</span> <span class="pre">U</span> <span class="pre">b'</span></code> belonged to the inner match.)</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Week 9: programming assignments from week 8</a><ul>
+<li><a class="reference internal" href="#q8-1">Q8.1</a></li>
+<li><a class="reference internal" href="#q8-2">Q8.2</a></li>
+<li><a class="reference internal" href="#q8-3a">Q8.3a</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="week8r-asoc-rev.html" title="previous chapter">Week 8: Full Proof of Associativity:</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/Exercises/week9p-qs.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="week8r-asoc-rev.html" title="Week 8: Full Proof of Associativity:"
+             >previous</a></li>
+        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
+    </div>
+  </body>
+</html>
