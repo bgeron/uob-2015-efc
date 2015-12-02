@@ -28,18 +28,18 @@
     <script type="text/javascript" src="../_static/jquery.details.min.js"></script>
     <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
     <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
-    <link rel="next" title="Week 6: graphs" href="week6-graph.html" />
-    <link rel="prev" title="Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types" href="week5r-curry.html" /> 
+    <link rel="next" title="Week 6: graphs" href="week06-graph.html" />
+    <link rel="prev" title="Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types" href="week05r-curry.html" /> 
   </head>
   <body role="document">
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="week6-graph.html" title="Week 6: graphs"
+          <a href="week06-graph.html" title="Week 6: graphs"
              accesskey="N">next</a></li>
         <li class="right" >
-          <a href="week5r-curry.html" title="Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types"
+          <a href="week05r-curry.html" title="Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
       </ul>
@@ -150,7 +150,7 @@
 </div>
 <div class="skip-big">
 </div><p>Actually, there&#8217;s a bit of a problem. OCaml will not accept this, because it cannot comprehend that <code class="docutils literal"><span class="pre">z</span></code> in the definition of <code class="docutils literal"><span class="pre">g</span></code> is the same <code class="docutils literal"><span class="pre">z</span></code> as in the definition of <code class="docutils literal"><span class="pre">tne</span></code>. If you first define <code class="docutils literal"><span class="pre">g</span></code> as above, it will tell you that it doesn&#8217;t know <code class="docutils literal"><span class="pre">z</span></code>; if you first try to define <code class="docutils literal"><span class="pre">tne</span></code>, it will tell you it doesn&#8217;t know <code class="docutils literal"><span class="pre">g</span></code>.</p>
-<p>We now realise that we are constantly using the <a class="reference internal" href="week2p.html#named-function-explanation"><span>named function</span></a> abbreviation from week 2. (Click the link if you want a quick refresher.) In the previous exercise, we wrote</p>
+<p>We now realise that we are constantly using the <a class="reference internal" href="week02p.html#named-function-explanation"><span>named function</span></a> abbreviation from week 2. (Click the link if you want a quick refresher.) In the previous exercise, we wrote</p>
 <div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">g</span> <span class="n">f</span> <span class="o">=</span> <span class="n">f</span> <span class="n">z</span> <span class="o">;;</span>
 </pre></div>
 </div>
@@ -185,7 +185,7 @@
 <p>This stuff might look nasty to young eyes.</p>
 <p>Why did we do this? We want you to be rockstar programmers.</p>
 <p>Many programmers just tie together frameworks and libraries to build applications, and they need to understand only simple (&#8220;first-order&#8221;) functions for this. (Libraries are often written using &#8220;higher-order&#8221; functions, which is the opposite of first-order.) Those programmers build things that impress many people and have great societal impact. But every so often, they want to go beyond the range of apps that people have envisioned before, and the libraries they need will not exist. In fact, very often libraries exist that do what you want, except for something small that&#8217;s missing, or maybe there&#8217;s a small bug in the library. You can only understand those libraries, let alone improve on them, if you understand the techniques needed to build the library.</p>
-<p>In fact, <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/raw/master/Exercises/week5r-tne.rst">this very site you are on</a> was written using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>, which was created for something completely else: to make a <a class="reference external" href="https://docs.python.org/3/">documentation site</a> for the programming language Python. I was lucky enough that Sphinx already supported nice code highlighting, that is: I type OCaml and Sphinx automatically adds the fancy colours you see everywhere that make the code easy to read. However, the documentors of Python never needed <a class="reference internal" href="week4p.html#examples-of-collapse"><span>silly boxes that you can click to show a solution</span></a> (<a class="reference external" href="https://github.com/bgeron/uob-2015-efc/raw/master/Exercises/week4p.rst">src</a>); why would they? So I <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/blob/master/helpers/collapse.py">added</a> <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/blob/master/_static/collapse-details-polyfill.css">those</a> to Sphinx <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/blob/master/_static/collapse-details-polyfill.js">myself</a>.</p>
+<p>In fact, <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/raw/master/Exercises/week5r-tne.rst">this very site you are on</a> was written using <a class="reference external" href="http://sphinx-doc.org/">Sphinx</a>, which was created for something completely else: to make a <a class="reference external" href="https://docs.python.org/3/">documentation site</a> for the programming language Python. I was lucky enough that Sphinx already supported nice code highlighting, that is: I type OCaml and Sphinx automatically adds the fancy colours you see everywhere that make the code easy to read. However, the documentors of Python never needed <a class="reference internal" href="week04p.html#examples-of-collapse"><span>silly boxes that you can click to show a solution</span></a> (<a class="reference external" href="https://github.com/bgeron/uob-2015-efc/raw/master/Exercises/week4p.rst">src</a>); why would they? So I <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/blob/master/helpers/collapse.py">added</a> <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/blob/master/_static/collapse-details-polyfill.css">those</a> to Sphinx <a class="reference external" href="https://github.com/bgeron/uob-2015-efc/blob/master/_static/collapse-details-polyfill.js">myself</a>.</p>
 <p>It&#8217;s great feeling able to make anything. I don&#8217;t settle for less. Neither should you, and you don&#8217;t have to.</p>
 <p>Keep pushing yourself.</p>
 <p>And keep asking questions.</p>
@@ -212,15 +212,15 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="week5r-curry.html" title="previous chapter">Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types</a></li>
-      <li>Next: <a href="week6-graph.html" title="next chapter">Week 6: graphs</a></li>
+      <li>Previous: <a href="week05r-curry.html" title="previous chapter">Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types</a></li>
+      <li>Next: <a href="week06-graph.html" title="next chapter">Week 6: graphs</a></li>
   </ul></li>
 </ul>
 </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="../_sources/Exercises/week5r-tne.txt"
+      <li><a href="../_sources/Exercises/week05r-tne.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -245,10 +245,10 @@
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="week6-graph.html" title="Week 6: graphs"
+          <a href="week06-graph.html" title="Week 6: graphs"
              >next</a></li>
         <li class="right" >
-          <a href="week5r-curry.html" title="Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types"
+          <a href="week05r-curry.html" title="Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
       </ul>

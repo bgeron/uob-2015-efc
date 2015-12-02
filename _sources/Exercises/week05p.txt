@@ -24,7 +24,7 @@ You can get the first and the second part of a pair with the functions ``fst`` a
 
 .. skip:: big
 
-* Can you find the head and the tail of the :doc:`terms from last week <week4p>`, if they exist?
+* Can you find the head and the tail of the :doc:`terms from last week <week04p>`, if they exist?
 
 * Can you find the first and the second component of any pairs in those terms?
   
