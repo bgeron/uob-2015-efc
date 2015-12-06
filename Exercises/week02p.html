@@ -330,20 +330,24 @@
 <h3>Exercises<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic" start="11">
 <li><p class="first">Parenthesise and evaluate. Add parentheses when you need to.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre>   <span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span> <span class="n">f</span> <span class="mi">3</span>
-
-<span class="o">..</span> <span class="n">collapse</span><span class="o">::</span>
-
-   <span class="o">*</span> <span class="nc">Make</span> <span class="n">a</span> <span class="n">bubble</span><span class="o">,</span> <span class="n">write</span> <span class="o">``</span><span class="n">f</span> <span class="o">=</span> <span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">``</span> <span class="k">in</span> <span class="n">the</span> <span class="n">corner</span> <span class="k">of</span> <span class="n">it</span><span class="o">.</span>
-   <span class="o">*</span> <span class="nc">Replace</span> <span class="o">``</span><span class="n">f</span><span class="o">``</span> <span class="n">by</span> <span class="o">``(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)``</span> <span class="o">(</span><span class="n">add</span> <span class="n">parentheses</span><span class="o">!)</span>
-
-     <span class="nc">Now</span> <span class="n">you</span> <span class="n">have</span> <span class="o">``(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="mi">3</span><span class="o">``</span>
-
-   <span class="o">*</span> <span class="nc">Make</span> <span class="n">a</span> <span class="n">bubble</span> <span class="k">with</span> <span class="o">``</span><span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">``</span>
-   <span class="o">*</span> <span class="nc">Simplify</span> <span class="o">``</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">``</span> <span class="k">to</span> <span class="mi">6</span><span class="o">.</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span> <span class="n">f</span> <span class="mi">3</span>
 </pre></div>
 </div>
+<details>
+<summary>
+(answer goes here)</summary><div>
+<ul>
+<li><p class="first">Make a bubble, write <code class="docutils literal"><span class="pre">f</span> <span class="pre">=</span> <span class="pre">fun</span> <span class="pre">x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">2</span></code> in the corner of it.</p>
 </li>
+<li><p class="first">Replace <code class="docutils literal"><span class="pre">f</span></code> by <code class="docutils literal"><span class="pre">(fun</span> <span class="pre">x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">2)</span></code> (add parentheses!)</p>
+<p>Now you have <code class="docutils literal"><span class="pre">(fun</span> <span class="pre">x</span> <span class="pre">-&gt;</span> <span class="pre">x</span> <span class="pre">*</span> <span class="pre">2)</span> <span class="pre">3</span></code></p>
+</li>
+<li><p class="first">Make a bubble with <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">3</span></code></p>
+</li>
+<li><p class="first">Simplify <code class="docutils literal"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">2</span></code> to 6.</p>
+</li>
+</ul>
+</div></details></li>
 <li><p class="first">Parenthesise and evaluate.</p>
 <div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">f</span> <span class="mi">3</span><span class="o">)</span>
 </pre></div>
@@ -394,15 +398,10 @@
 </li>
 </ul>
 </div></details></li>
-<li><dl class="first docutils">
-<dt>Parenthesise and evaluate. ::</dt>
-<dd><dl class="first last docutils">
-<dt>::</dt>
-<dd><p class="first last">let f x = x * 2 in f (f 3)</p>
-</dd>
-</dl>
-</dd>
-</dl>
+<li><p class="first">Parenthesise and evaluate.</p>
+<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">f</span> <span class="mi">3</span><span class="o">)</span>
+</pre></div>
+</div>
 <details>
 <summary>
 (answer goes here)</summary><div>

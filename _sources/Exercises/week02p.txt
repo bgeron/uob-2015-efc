@@ -291,7 +291,7 @@ Exercises
      
         let f = (fun x -> x * 2) in f 3
 
-     .. collapse::
+    .. collapse::
 
         * Make a bubble, write ``f = fun x -> x * 2`` in the corner of it.
         * Replace ``f`` by ``(fun x -> x * 2)`` (add parentheses!)
@@ -349,7 +349,7 @@ Exercises
         * Simplify ``x * 2`` to 6.
           
 #.  Parenthesise and evaluate. ::
-     ::
+
         let f x = x * 2 in f (f 3)
 
     .. collapse::
