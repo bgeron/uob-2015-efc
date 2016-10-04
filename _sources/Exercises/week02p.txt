@@ -447,11 +447,3 @@ Exercises
 
         You cannot always reorder the lets. Can you give an example?
 
-Quiz
-====
-
-Please take the quiz: http://bit.ly/focs-aux-survey
-
-.. image:: ../resources/focs-aux-survey.png
-    :scale: 30%
-

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Week 2 tutorial programming exercises: Thinking like OCaml &mdash; UoB 2015 EFC auxiliary exercises</title>
+    <title>Week 2 tutorial programming exercises: Thinking like OCaml &#8212; UoB 2015 EFC auxiliary exercises</title>
     
     <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -29,21 +29,16 @@
     <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
     <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
     <link rel="next" title="(Week 3 tutorial programming exercises: see unassessed exercises in Canvas)" href="week03p.html" />
-    <link rel="prev" title="UoB 2015 EFC auxiliary exercises" href="../index.html" /> 
+    <link rel="prev" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
   </head>
   <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="week03p.html" title="(Week 3 tutorial programming exercises: see unassessed exercises in Canvas)"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="../index.html" title="UoB 2015 EFC auxiliary exercises"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
-      </ul>
-    </div>  
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -75,37 +70,37 @@
 <dl class="docutils">
 <dt>Variables</dt>
 <dd><p class="first">These are &#8220;names&#8221;. Examples:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">x</span><span class="o">,</span> <span class="n">f</span><span class="o">,</span> <span class="n">g</span><span class="o">,</span> <span class="n">three</span><span class="o">,</span> <span class="n">double</span><span class="o">,</span> <span class="n">twice</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">,</span> <span class="n">f</span><span class="o">,</span> <span class="n">g</span><span class="o">,</span> <span class="n">three</span><span class="o">,</span> <span class="n">double</span><span class="o">,</span> <span class="n">twice</span>
 </pre></div>
 </div>
 <p class="last">OCaml can remember a meaning for variables if you use <code class="docutils literal"><span class="pre">let</span></code> (see below).</p>
 </dd>
 <dt>Constants</dt>
 <dd><p class="first">Examples of integer constants:</p>
-<div class="last highlight-ocaml"><div class="highlight"><pre><span class="mi">42</span><span class="o">,</span> <span class="o">-</span><span class="mi">3</span>
+<div class="last highlight-ocaml"><div class="highlight"><pre><span></span><span class="mi">42</span><span class="o">,</span> <span class="o">-</span><span class="mi">3</span>
 </pre></div>
 </div>
 </dd>
 <dt>Arithmetic</dt>
 <dd><p class="first">Nothing surprising.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span>
 <span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span>
 </pre></div>
 </div>
 <p>Like in school, you can write complex expressions, such as</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span>
 </pre></div>
 </div>
 <p>Like in school, this means:</p>
-<div class="last highlight-ocaml"><div class="highlight"><pre><span class="mi">3</span> <span class="o">+</span> <span class="o">(</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span><span class="o">)</span>
+<div class="last highlight-ocaml"><div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">+</span> <span class="o">(</span><span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span><span class="o">)</span>
 </pre></div>
 </div>
 </dd>
 <dt>Defining variables</dt>
-<dd><div class="first highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;;</span>
+<dd><div class="first highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span><span class="o">;;</span>
 </pre></div>
 </div>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">three</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">;;</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">three</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">;;</span>
 </pre></div>
 </div>
 <p>From now on, OCaml knows that <code class="docutils literal"><span class="pre">three</span> <span class="pre">+</span> <span class="pre">three</span></code> = <code class="docutils literal"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">3</span></code> = <code class="docutils literal"><span class="pre">6</span></code>.</p>
@@ -114,11 +109,11 @@
 <dt>Let..in..</dt>
 <dd><p class="first">You can also &#8220;temporarily&#8221; define a variable.</p>
 <p>For instance, let&#8217;s say that <code class="docutils literal"><span class="pre">x</span></code> is not yet defined. Then</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="mi">3</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <p>evaluates to 3, and</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <p>evaluates to 6.</p>
@@ -127,22 +122,22 @@
 <details>
 <summary>
 (answer goes here)</summary><div>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span>
 </pre></div>
 </div>
 </div></details><p>You can temporarily define multiple variables; this is nothing special. Example:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 </pre></div>
 </div>
 <p>Now let&#8217;s add parentheses:</p>
 <details>
 <summary>
 (answer goes here)</summary><div>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">))</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">))</span>
 </pre></div>
 </div>
 </div></details><p>You can combine multiple let..in.. in a different way. Parenthesise:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="n">y</span> <span class="k">in</span> <span class="n">x</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="n">y</span> <span class="k">in</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p><strong>Exercise.</strong> Add parentheses. There is only one way that you can add parentheses, all other ways are invalid OCaml.</p>
@@ -150,7 +145,7 @@
 <details class="last">
 <summary class="last">
 (answer goes here)</summary><div class="last">
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="n">y</span><span class="o">)</span> <span class="k">in</span> <span class="n">x</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="n">y</span><span class="o">)</span> <span class="k">in</span> <span class="n">x</span>
 </pre></div>
 </div>
 </div></details></dd>
@@ -182,7 +177,7 @@
 <li><p class="first">Evaluate all expressions in the previous section.</p>
 </li>
 <li><p class="first">.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">))</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="o">))</span>
 </pre></div>
 </div>
 <details>
@@ -193,7 +188,7 @@
 </ol>
 </div></details></li>
 <li><p class="first">We can use multiple let..in.. in a different way.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="k">in</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">3</span> <span class="k">in</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">y</span> <span class="k">in</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>First, add the right parentheses.</p>
@@ -205,7 +200,7 @@
 <p>Then you can draw a box with <code class="docutils literal"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">6</span></code>. Fill in <code class="docutils literal"><span class="pre">x</span></code>, simplify to 12.</p>
 </div></details></li>
 <li><p class="first">Parenthesise, then solve.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span> <span class="k">in</span> <span class="mi">3</span> <span class="k">in</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span> <span class="k">in</span> <span class="mi">3</span> <span class="k">in</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">4</span> <span class="k">in</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
 </pre></div>
 </div>
 <details>
@@ -222,7 +217,7 @@
 <p>Often, unused variables mean you are doing unnecessary computations. Indeed, we did <code class="docutils literal"><span class="pre">let</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">5</span> <span class="pre">in</span></code> but it was useless.</p>
 </div></details></li>
 <li><p class="first">Parenthesise, then solve.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span> <span class="k">in</span> <span class="mi">3</span> <span class="k">in</span> <span class="n">y</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">5</span> <span class="k">in</span> <span class="mi">3</span> <span class="k">in</span> <span class="n">y</span>
 </pre></div>
 </div>
 <details>
@@ -235,7 +230,7 @@
 </ul>
 </div></details></li>
 <li><p class="first">Parenthesise, then solve.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">in</span> <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">in</span> <span class="n">x</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">in</span> <span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">in</span> <span class="n">x</span>
 </pre></div>
 </div>
 <details>
@@ -244,13 +239,13 @@
 <p>Answer: 3.</p>
 </div></details></li>
 <li><p class="first">Parenthesise, then solve.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">in</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">in</span> <span class="n">y</span> <span class="o">*</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">in</span> <span class="n">y</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">in</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">in</span> <span class="n">y</span> <span class="o">*</span> <span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">in</span> <span class="n">y</span>
 </pre></div>
 </div>
 <details>
 <summary>
 (answer goes here)</summary><div>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">in</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="n">y</span> <span class="o">*</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">in</span> <span class="n">y</span><span class="o">))</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">2</span> <span class="k">in</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="n">y</span> <span class="o">*</span> <span class="o">(</span><span class="k">let</span> <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span> <span class="k">in</span> <span class="n">y</span><span class="o">))</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -272,19 +267,19 @@
 <h2>Anonymous functions<a class="headerlink" href="#anonymous-functions" title="Permalink to this headline">¶</a></h2>
 <p>Anonymous functions (or <em>lambdas</em>) are integral to programming.</p>
 <p>They look like this:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <p>Also very important is <em>function application</em>. For instance,</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span> <span class="mi">4</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span> <span class="mi">4</span>
 </pre></div>
 </div>
 <p>The parentheses always go as far to the right as possible:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">)</span>
 </pre></div>
 </div>
 <p>for the first example, and for the second example</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">))</span> <span class="mi">4</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">))</span> <span class="mi">4</span>
 </pre></div>
 </div>
 <p>Be careful! Space is not just space separating two things, but it has meaning. Space is called <em>application</em>, and you have to simplify when you can.</p>
@@ -293,7 +288,7 @@
 <h3>Exercises<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic" start="8">
 <li><p class="first">Parenthesise and evaluate.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">)</span> <span class="mi">3</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">)</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <details>
@@ -302,7 +297,7 @@
 <p>Answer: 6.</p>
 </div></details></li>
 <li><p class="first">Parenthesise and evaluate.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">)</span> <span class="mi">3</span> <span class="o">+</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="mi">3</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span><span class="o">)</span> <span class="mi">3</span> <span class="o">+</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <p>Note that you will have multiple bubbles here.</p>
@@ -312,7 +307,7 @@
 <p>Answer: 10.</p>
 </div></details></li>
 <li><p class="first">Evaluate.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="mi">2</span> <span class="o">+</span> <span class="o">(</span><span class="k">fun</span> <span class="n">whatever</span> <span class="o">-&gt;</span> <span class="n">whatever</span> <span class="o">*</span> <span class="n">whatever</span><span class="o">)</span> <span class="mi">10</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="mi">2</span> <span class="o">+</span> <span class="o">(</span><span class="k">fun</span> <span class="n">whatever</span> <span class="o">-&gt;</span> <span class="n">whatever</span> <span class="o">*</span> <span class="n">whatever</span><span class="o">)</span> <span class="mi">10</span>
 </pre></div>
 </div>
 <details>
@@ -330,7 +325,7 @@
 <h3>Exercises<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic" start="11">
 <li><p class="first">Parenthesise and evaluate. Add parentheses when you need to.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span> <span class="n">f</span> <span class="mi">3</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span> <span class="n">f</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <details>
@@ -349,7 +344,7 @@
 </ul>
 </div></details></li>
 <li><p class="first">Parenthesise and evaluate.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">f</span> <span class="mi">3</span><span class="o">)</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">f</span> <span class="mi">3</span><span class="o">)</span>
 </pre></div>
 </div>
 <details>
@@ -363,15 +358,15 @@
 <div class="section" id="named-functions">
 <span id="named-function-explanation"></span><h2>Named functions<a class="headerlink" href="#named-functions" title="Permalink to this headline">¶</a></h2>
 <p>Instead of</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span> <span class="n">f</span> <span class="mi">3</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="o">=</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="o">)</span> <span class="k">in</span> <span class="n">f</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <p>we can write</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">in</span> <span class="n">f</span> <span class="mi">3</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">in</span> <span class="n">f</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <p>which means exactly the same. When you draw the bubble, write</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">f</span> <span class="o">=</span> <span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>in the bubble.</p>
@@ -379,7 +374,7 @@
 <h3>Exercises<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic" start="13">
 <li><p class="first">Parenthesise and evaluate. Add parentheses when you need to.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">in</span> <span class="n">f</span> <span class="mi">3</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">in</span> <span class="n">f</span> <span class="mi">3</span>
 </pre></div>
 </div>
 <details>
@@ -399,7 +394,7 @@
 </ul>
 </div></details></li>
 <li><p class="first">Parenthesise and evaluate.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">f</span> <span class="mi">3</span><span class="o">)</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">f</span> <span class="mi">3</span><span class="o">)</span>
 </pre></div>
 </div>
 <details>
@@ -408,7 +403,7 @@
 <p>Same, but you have to replace <code class="docutils literal"><span class="pre">f</span></code> twice, and you get an application twice. The result is 12.</p>
 </div></details></li>
 <li><p class="first">Parenthesise and evaluate.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">in</span> <span class="n">f</span> <span class="n">x</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span> <span class="k">in</span> <span class="n">f</span> <span class="n">x</span>
 </pre></div>
 </div>
 <details>
@@ -420,7 +415,7 @@
 </ul>
 </div></details></li>
 <li><p class="first">Evaluate.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="k">in</span> <span class="k">let</span> <span class="n">g</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">g</span> <span class="mi">4</span><span class="o">)</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">x</span> <span class="k">in</span> <span class="k">let</span> <span class="n">g</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="n">f</span> <span class="o">(</span><span class="n">g</span> <span class="mi">4</span><span class="o">)</span>
 </pre></div>
 </div>
 <details>
@@ -430,14 +425,14 @@
 <p>This was from the lecture: <a class="reference external" href="http://bit.ly/focs04a">http://bit.ly/focs04a</a></p>
 </div></details></li>
 <li><p class="first">Evaluate.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="k">let</span> <span class="n">g</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="n">g</span> <span class="n">f</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="k">let</span> <span class="n">g</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="n">g</span> <span class="n">f</span>
 </pre></div>
 </div>
 <details>
 <summary>
 (answer goes here)</summary><div>
 <p>The exercise is easier when we rename the variables:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">double</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span>
 <span class="k">let</span> <span class="n">apply_twice_to_one</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
 <span class="n">apply_twice_to_one</span> <span class="n">double</span>
 </pre></div>
@@ -449,13 +444,13 @@
 <li><p class="first">Write a bubble <code class="docutils literal"><span class="pre">g</span> <span class="pre">=</span> <span class="pre">fun</span> <span class="pre">h</span> <span class="pre">-&gt;</span> <span class="pre">h</span> <span class="pre">(h</span> <span class="pre">1)</span></code></p>
 </li>
 <li><p class="first">Substitute <code class="docutils literal"><span class="pre">g</span></code> to get</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(</span><span class="k">fun</span> <span class="n">h</span> <span class="o">-&gt;</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">))</span> <span class="n">f</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="o">(</span><span class="k">fun</span> <span class="n">h</span> <span class="o">-&gt;</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">))</span> <span class="n">f</span>
 </pre></div>
 </div>
 <p>inside the two bubbles</p>
 </li>
 <li><p class="first">Substitute <code class="docutils literal"><span class="pre">f</span></code> to get</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">(</span><span class="k">fun</span> <span class="n">h</span> <span class="o">-&gt;</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">))</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="o">(</span><span class="k">fun</span> <span class="n">h</span> <span class="o">-&gt;</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">))</span> <span class="o">(</span><span class="k">fun</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span><span class="o">)</span>
 </pre></div>
 </div>
 <p>inside the two bubbles</p>
@@ -475,7 +470,7 @@
 <p>This was from the lecture: <a class="reference external" href="http://bit.ly/focs04b">http://bit.ly/focs04b</a></p>
 </div></details></li>
 <li><p class="first">Evaluate.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span> <span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span> <span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
 </pre></div>
 </div>
 <details>
@@ -483,19 +478,19 @@
 (answer goes here)</summary><div>
 <p>The answer is the same as the previous exercise. I just renamed the variables and swapped the <code class="docutils literal"><span class="pre">let</span></code>s.</p>
 <p>Let&#8217;s do it in steps. First, I&#8217;ll lay out the code differently.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
 <span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
 <span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
 </pre></div>
 </div>
 <p>Then I&#8217;ll reorder the lets.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">h</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
 <span class="k">let</span> <span class="n">f</span> <span class="n">g</span> <span class="o">=</span> <span class="n">g</span> <span class="o">(</span><span class="n">g</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
 <span class="k">in</span> <span class="n">f</span> <span class="n">h</span>
 </pre></div>
 </div>
 <p>Then I&#8217;ll rename the variables.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">f</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">x</span>
 <span class="k">let</span> <span class="n">g</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span> <span class="o">(</span><span class="n">h</span> <span class="mi">1</span><span class="o">)</span> <span class="k">in</span>
 <span class="k">in</span> <span class="n">g</span> <span class="n">f</span>
 </pre></div>
@@ -506,11 +501,6 @@
 </div></details></li>
 </ol>
 </div>
-</div>
-<div class="section" id="quiz">
-<h2>Quiz<a class="headerlink" href="#quiz" title="Permalink to this headline">¶</a></h2>
-<p>Please take the quiz: <a class="reference external" href="http://bit.ly/focs-aux-survey">http://bit.ly/focs-aux-survey</a></p>
-<a class="reference internal image-reference" href="../_images/focs-aux-survey.png"><img alt="../_images/focs-aux-survey.png" src="../_images/focs-aux-survey.png" style="width: 90.0px; height: 90.0px;" /></a>
 </div>
 </div>
 
@@ -540,7 +530,6 @@
 <li><a class="reference internal" href="#id3">Exercises</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#quiz">Quiz</a></li>
 </ul>
 </li>
 </ul>
@@ -563,35 +552,35 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="week03p.html" title="(Week 3 tutorial programming exercises: see unassessed exercises in Canvas)"
-             >next</a></li>
-        <li class="right" >
-          <a href="../index.html" title="UoB 2015 EFC auxiliary exercises"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
-      </ul>
+    <div class="footer">
+      &copy;2015. Feel free to reuse under CC-BY 4.0.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/Exercises/week02p.txt"
+          rel="nofollow">Page source</a>
     </div>
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
-    </div>
+
+    
+    <a href="https://github.com/bgeron/uob-2015-efc" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
   </body>
 </html>

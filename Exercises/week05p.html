@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Week 5 programming: lists &mdash; UoB 2015 EFC auxiliary exercises</title>
+    <title>Week 5 programming: lists &#8212; UoB 2015 EFC auxiliary exercises</title>
     
     <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -29,21 +29,16 @@
     <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
     <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
     <link rel="next" title="Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types" href="week05r-curry.html" />
-    <link rel="prev" title="Week 4 programming: Tuples and lists: values and types" href="week04p.html" /> 
+    <link rel="prev" title="Week 4 programming: Tuples and lists: values and types" href="week04p.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
   </head>
   <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="week05r-curry.html" title="Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="week04p.html" title="Week 4 programming: Tuples and lists: values and types"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
-      </ul>
-    </div>  
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -65,14 +60,14 @@
 <h2>A: Head and tail, first and second<a class="headerlink" href="#a-head-and-tail-first-and-second" title="Permalink to this headline">¶</a></h2>
 <p>You can get the head and the tail of a list with functions <code class="docutils literal"><span class="pre">hd</span></code> and <code class="docutils literal"><span class="pre">tl</span></code>.</p>
 <p>In OCaml/utop, you first have to type</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">open</span> <span class="nc">List</span><span class="o">;;</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">open</span> <span class="nc">List</span><span class="o">;;</span>
 </pre></div>
 </div>
 <p>to get access to these functions.</p>
 <p>You can get the first and the second part of a pair with the functions <code class="docutils literal"><span class="pre">fst</span></code> and <code class="docutils literal"><span class="pre">snd</span></code>. <em>This only works</em> for 2-tuples (e.g. <code class="docutils literal"><span class="pre">(3,</span> <span class="pre">&quot;abc&quot;)</span></code>), not smaller tuples (like <code class="docutils literal"><span class="pre">()</span></code>, <code class="docutils literal"><span class="pre">(2,</span> <span class="pre">3,</span> <span class="pre">4)</span></code>, ...) .</p>
 <div class="skip-big">
 </div><ul class="simple">
-<li>Can you find the head and the tail of the <a class="reference internal" href="week04p.html"><em>terms from last week</em></a>, if they exist?</li>
+<li>Can you find the head and the tail of the <a class="reference internal" href="week04p.html"><span class="doc">terms from last week</span></a>, if they exist?</li>
 <li>Can you find the first and the second component of any pairs in those terms?</li>
 </ul>
 <p>Check your answers with <code class="docutils literal"><span class="pre">ocaml</span></code>/<code class="docutils literal"><span class="pre">utop</span></code>.</p>
@@ -115,23 +110,23 @@
 <p>Additional hints given on Canvas:</p>
 <blockquote>
 <div><p>Some of the question use the OCaml <code class="docutils literal"><span class="pre">option</span></code> type. This type is used to return a special value (<code class="docutils literal"><span class="pre">None</span></code>) when a function cannot be computed, instead of throwing an exception. For example, the standard <code class="docutils literal"><span class="pre">hd</span></code> function is:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">hd</span> <span class="o">=</span> <span class="k">function</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">hd</span> <span class="o">=</span> <span class="k">function</span>
   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;hd&quot;</span>
   <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>and has type</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">val</span> <span class="n">hd</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">hd</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>If you want to avoid throwing a failure the alternative is this:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="n">hd</span> <span class="o">=</span> <span class="k">function</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="n">hd</span> <span class="o">=</span> <span class="k">function</span>
   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="nc">None</span>
   <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="o">_</span> <span class="o">-&gt;</span> <span class="nc">Some</span> <span class="n">x</span>
 </pre></div>
 </div>
 <p>and has type</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">val</span> <span class="n">hd</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">option</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">val</span> <span class="n">hd</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="n">option</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 <p>For the purpose of this assignment you can ignore the <code class="docutils literal"><span class="pre">option</span></code> type and use <code class="docutils literal"><span class="pre">failwith</span></code> instead of <code class="docutils literal"><span class="pre">None</span></code>.</p>
@@ -148,7 +143,7 @@
 <p>We did some exercises without <code class="docutils literal"><span class="pre">option</span></code>. I have here filled in our solutions.</p>
 <ol class="arabic">
 <li><p class="first">Make a function <code class="docutils literal"><span class="pre">last</span></code> that finds the last element of a list. We want that:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">last</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="mi">5</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="n">last</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">5</span><span class="o">]</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">last</span> <span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">last</span> <span class="bp">[]</span> <span class="o">=</span> <span class="n">an</span> <span class="n">error</span>
 </pre></div>
@@ -159,7 +154,7 @@
 (answer goes here)</summary><div>
 <p>We are making a function on lists, so probably we&#8217;ll need recursion. (Use <code class="docutils literal"><span class="pre">let</span> <span class="pre">rec</span></code>.)</p>
 <p>We can make a first attempt by just writing down these cases. Last of a two-element list should return the second element, and so forth. In the &#8220;otherwise&#8221; case (<code class="docutils literal"><span class="pre">_</span></code>), we wish to give an error.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">y</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">x</span>
   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;last&quot;</span>
@@ -167,7 +162,7 @@
 </pre></div>
 </div>
 <p>We can make the last case more specific, because the list will not be empty:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">y</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">x</span>
   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;last&quot;</span>
@@ -177,7 +172,7 @@
 <p>We can not list all the possible list length, because a list can be arbitrarily long. So we need to use recursion. Usually, structural recursion is enough.</p>
 <p>What&#8217;s the relation between <code class="docutils literal"><span class="pre">last</span> <span class="pre">[2;</span> <span class="pre">3;</span> <span class="pre">4]</span></code> and <code class="docutils literal"><span class="pre">last</span></code> of its tail, <code class="docutils literal"><span class="pre">last</span> <span class="pre">[3;</span> <span class="pre">4]</span></code>?</p>
 <p>They are equal. So we write:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">y</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">x</span>
   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;last&quot;</span>
@@ -185,7 +180,7 @@
 </pre></div>
 </div>
 <p>We simplify this in two ways. Firstly, in the last case, we already have <code class="docutils literal"><span class="pre">tl</span> <span class="pre">l</span></code> in a variable, namely <code class="docutils literal"><span class="pre">xs</span></code>.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">y</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">x</span>
   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;last&quot;</span>
@@ -193,7 +188,7 @@
 </pre></div>
 </div>
 <p>We also don&#8217;t need to do the special case for two elements.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">last</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">;</span> <span class="n">y</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">y</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">x</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">x</span>
   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;last&quot;</span>
@@ -207,14 +202,14 @@
 <summary>
 (answer goes here)</summary><div>
 <p>We want</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">pen</span> <span class="bp">[]</span> <span class="o">=</span> <span class="n">error</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="n">pen</span> <span class="bp">[]</span> <span class="o">=</span> <span class="n">error</span>
 <span class="n">pen</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">pen</span> <span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="n">error</span>
 <span class="n">pen</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
 <p>Solution:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">pen</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">pen</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;pen empty&quot;</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;pen of one element&quot;</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">a</span><span class="o">;</span> <span class="n">b</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">a</span>
@@ -228,14 +223,14 @@
 <summary>
 (answer goes here)</summary><div>
 <p>We want</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">pens</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="n">pens</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span>
 <span class="n">pens</span> <span class="o">[</span><span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="n">error</span>
 <span class="n">pens</span> <span class="bp">[]</span> <span class="o">=</span> <span class="n">error</span>
 <span class="n">pens</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">]</span> <span class="o">=</span> <span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="mi">4</span><span class="o">)</span>
 </pre></div>
 </div>
 <p>Solution:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">pens</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">pens</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;pens empty&quot;</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">a</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;pens of one element&quot;</span>
   <span class="o">|</span> <span class="o">[</span><span class="n">a</span><span class="o">;</span> <span class="n">b</span><span class="o">]</span> <span class="o">-&gt;</span> <span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">b</span><span class="o">)</span>
@@ -244,7 +239,7 @@
 </div>
 </div></details></li>
 <li><p class="first">Make a function <code class="docutils literal"><span class="pre">at</span></code> that finds the n&#8217;th element of a list. We want:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="n">at</span> <span class="mi">3</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">8</span><span class="o">]</span> <span class="o">=</span> <span class="mi">8</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="n">at</span> <span class="mi">3</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">;</span> <span class="mi">7</span><span class="o">;</span> <span class="mi">8</span><span class="o">]</span> <span class="o">=</span> <span class="mi">8</span>
 <span class="n">at</span> <span class="mi">3</span> <span class="bp">[]</span> <span class="o">=</span> <span class="n">error</span>
 <span class="n">at</span> <span class="mi">0</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">]</span> <span class="o">=</span> <span class="n">error</span>
 <span class="n">at</span> <span class="o">(-</span><span class="mi">2</span><span class="o">)</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">5</span><span class="o">;</span> <span class="mi">6</span><span class="o">]</span> <span class="o">=</span> <span class="n">error</span>
@@ -255,7 +250,7 @@
 <details>
 <summary>
 (answer goes here)</summary><div>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">at</span> <span class="n">k</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">at</span> <span class="n">k</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
 <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="n">failwith</span> <span class="s2">&quot;at&quot;</span>
 <span class="o">|</span> <span class="n">x</span><span class="o">::</span><span class="n">xs</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">1</span> <span class="k">then</span> <span class="n">failwith</span> <span class="s2">&quot;at&quot;</span> <span class="k">else</span> <span class="k">if</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">then</span> <span class="n">x</span> <span class="k">else</span> <span class="n">at</span> <span class="o">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="n">xs</span><span class="o">;;</span>
 </pre></div>
@@ -300,35 +295,35 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="week05r-curry.html" title="Week 5 reasoning (Part 2): Explanation for Currying, bool*bool, and Sum Types"
-             >next</a></li>
-        <li class="right" >
-          <a href="week04p.html" title="Week 4 programming: Tuples and lists: values and types"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
-      </ul>
+    <div class="footer">
+      &copy;2015. Feel free to reuse under CC-BY 4.0.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/Exercises/week05p.txt"
+          rel="nofollow">Page source</a>
     </div>
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
-    </div>
+
+    
+    <a href="https://github.com/bgeron/uob-2015-efc" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
   </body>
 </html>

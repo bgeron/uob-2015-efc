@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Week 9: programming assignments from week 8 &mdash; UoB 2015 EFC auxiliary exercises</title>
+    <title>Week 9: programming assignments from week 8 &#8212; UoB 2015 EFC auxiliary exercises</title>
     
     <link rel="stylesheet" href="../_static/mytheme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -29,21 +29,16 @@
     <script type="text/javascript" src="../_static/collapse-details-polyfill.js"></script>
     <link rel="top" title="UoB 2015 EFC auxiliary exercises" href="../index.html" />
     <link rel="next" title="(Week 10 programming: exercises of week 9)" href="week10p.html" />
-    <link rel="prev" title="Week 8: Full Proof of Associativity:" href="week08r-asoc-rev.html" /> 
+    <link rel="prev" title="Week 8: Full Proof of Associativity:" href="week08r-asoc-rev.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
   </head>
   <body role="document">
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="week10p.html" title="(Week 10 programming: exercises of week 9)"
-             accesskey="N">next</a></li>
-        <li class="right" >
-          <a href="week08r-asoc-rev.html" title="Week 8: Full Proof of Associativity:"
-             accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
-      </ul>
-    </div>  
+  
 
     <div class="document">
       <div class="documentwrapper">
@@ -57,7 +52,7 @@
 <p>Question:</p>
 <blockquote class="pull-quote">
 <div><p>Write an OCaml function that will substitute all occurrences of an element in a list by a different element. The argument will have small-to-moderate size and performance considerations are not critical.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">#</span> <span class="n">replace</span><span class="o">;;</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">replace</span><span class="o">;;</span>
 <span class="o">-</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
 <span class="o">#</span> <span class="n">replace</span> <span class="mi">2</span> <span class="mi">0</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">4</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">1</span><span class="o">];;</span>
 <span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span> <span class="mi">0</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">4</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">0</span><span class="o">;</span> <span class="mi">1</span><span class="o">]</span>
@@ -65,7 +60,7 @@
 </div>
 </div></blockquote>
 <p>We found this in the tutorial:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">replace</span> <span class="n">a</span> <span class="n">b</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">replace</span> <span class="n">a</span> <span class="n">b</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
   <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span>
   <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">=</span> <span class="n">a</span>
                <span class="k">then</span> <span class="n">b</span> <span class="o">::</span> <span class="o">(</span><span class="n">replace</span> <span class="n">a</span> <span class="n">b</span> <span class="n">xs</span><span class="o">)</span>
@@ -79,7 +74,7 @@
 <p>Question:</p>
 <blockquote class="pull-quote">
 <div><p>Write an OCaml function that splits a list into list segments containing only identical elements. The function must work on small-to-moderate size lists. Performance of implementation is not critical.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="o">#</span> <span class="n">split</span><span class="o">;;</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="o">#</span> <span class="n">split</span><span class="o">;;</span>
 <span class="o">-</span> <span class="o">:</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="k">&#39;</span><span class="n">a</span> <span class="kt">list</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
 <span class="o">#</span> <span class="n">split</span> <span class="o">[</span><span class="mi">1</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">2</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">3</span><span class="o">;</span><span class="mi">4</span><span class="o">;</span><span class="mi">4</span><span class="o">;</span><span class="mi">5</span><span class="o">;</span><span class="mi">6</span><span class="o">];;</span>
 <span class="o">-</span> <span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span> <span class="kt">list</span> <span class="o">=</span> <span class="o">[[</span><span class="mi">1</span><span class="o">];</span> <span class="o">[</span><span class="mi">2</span><span class="o">;</span> <span class="mi">2</span><span class="o">];</span> <span class="o">[</span><span class="mi">3</span><span class="o">;</span> <span class="mi">3</span><span class="o">;</span> <span class="mi">3</span><span class="o">];</span> <span class="o">[</span><span class="mi">4</span><span class="o">;</span> <span class="mi">4</span><span class="o">];</span> <span class="o">[</span><span class="mi">5</span><span class="o">];</span> <span class="o">[</span><span class="mi">6</span><span class="o">]]</span>
@@ -93,7 +88,7 @@
 </div>
 </div></blockquote>
 <p>We found this in the tutorial:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">split</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">split</span> <span class="n">l</span> <span class="o">=</span> <span class="k">match</span> <span class="n">l</span> <span class="k">with</span>
       <span class="o">|</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">[]</span>
       <span class="o">|</span> <span class="n">x</span> <span class="o">::</span> <span class="n">xs</span> <span class="o">-&gt;</span> <span class="k">let</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">split</span> <span class="n">xs</span> <span class="k">in</span>
                    <span class="k">match</span> <span class="n">ys</span> <span class="k">with</span>
@@ -112,7 +107,7 @@
 <div><p>You are given two lists that have as elements either integers or characters. The characters stand for variables of unknown values. You need to solve the following puzzle: Is there a way to give values to variables so that the two lists are equal?</p>
 <p>For example [x, 1, x] and [3, y, 3] is solvable for x = 3 and y = 1 whereas [x, x, 0] and [1, 2, z] is not solvable.</p>
 <p>Your task is to write an OCaml function that checks whether a puzzle is solvable or not.</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">type</span> <span class="n">puzzle</span> <span class="o">=</span> <span class="nc">K</span> <span class="k">of</span> <span class="kt">int</span> <span class="o">|</span> <span class="nc">U</span> <span class="k">of</span> <span class="kt">char</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">type</span> <span class="n">puzzle</span> <span class="o">=</span> <span class="nc">K</span> <span class="k">of</span> <span class="kt">int</span> <span class="o">|</span> <span class="nc">U</span> <span class="k">of</span> <span class="kt">char</span>
 
 <span class="o">#</span> <span class="n">solvable</span><span class="o">;;</span>
 <span class="o">-</span> <span class="o">:</span> <span class="n">puzzle</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="n">puzzle</span> <span class="kt">list</span> <span class="o">-&gt;</span> <span class="kt">bool</span> <span class="o">=</span> <span class="o">&lt;</span><span class="k">fun</span><span class="o">&gt;</span>
@@ -128,7 +123,7 @@
 <hr class="docutils" />
 <p><strong>In the below solutions, I have fixed a bug since the tutorial.</strong></p>
 <p>We found this in the tutorial:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
   <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">true</span>
   <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="bp">false</span>
   <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">false</span>
@@ -141,7 +136,7 @@
 </pre></div>
 </div>
 <p>Alternatively, this:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
   <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">true</span>
   <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="bp">false</span>
   <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">false</span>
@@ -154,7 +149,7 @@
 </pre></div>
 </div>
 <p>Alternatively, this:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
   <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">true</span>
   <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="bp">false</span>
   <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">false</span>
@@ -167,7 +162,7 @@
 </div>
 <p>In a sense, this is nicer because we have fewer cases. But it&#8217;s a matter of taste.</p>
 <p>Alternatively, this:</p>
-<div class="highlight-ocaml"><div class="highlight"><pre><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
+<div class="highlight-ocaml"><div class="highlight"><pre><span></span><span class="k">let</span> <span class="k">rec</span> <span class="n">solvable</span> <span class="n">xs</span> <span class="n">ys</span> <span class="o">=</span> <span class="k">match</span> <span class="n">xs</span><span class="o">,</span> <span class="n">ys</span> <span class="k">with</span>
   <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">true</span>
   <span class="o">|</span> <span class="bp">[]</span><span class="o">,</span> <span class="o">(</span><span class="n">c</span> <span class="o">::</span> <span class="n">cs</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="bp">false</span>
   <span class="o">|</span> <span class="o">(</span><span class="n">b</span> <span class="o">::</span> <span class="n">bs</span><span class="o">),</span> <span class="bp">[]</span> <span class="o">-&gt;</span> <span class="bp">false</span>
@@ -217,35 +212,35 @@
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
     </div>
-    <div class="related" role="navigation" aria-label="related navigation">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="week10p.html" title="(Week 10 programming: exercises of week 9)"
-             >next</a></li>
-        <li class="right" >
-          <a href="week08r-asoc-rev.html" title="Week 8: Full Proof of Associativity:"
-             >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../index.html">List of extra exercises</a> &raquo;</li> 
-      </ul>
+    <div class="footer">
+      &copy;2015. Feel free to reuse under CC-BY 4.0.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.9</a>
+      
+      |
+      <a href="../_sources/Exercises/week09p-qs.txt"
+          rel="nofollow">Page source</a>
     </div>
-    <div class="footer" role="contentinfo">
-        &copy; Copyright 2015. Feel free to reuse under CC-BY 4.0.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.
-    </div>
+
+    
+    <a href="https://github.com/bgeron/uob-2015-efc" class="github">
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"  class="github"/>
+    </a>
+    
+
+    
   </body>
 </html>
